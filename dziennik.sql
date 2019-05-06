@@ -1,11 +1,18 @@
 create table teachers (
-    id_teacher numeric(10) primary key
+    id_teacher numeric(10) primary key,
+    name character varying(100)
 );
 
 create table classes (
     id_class numeric(10) primary key,
     educator numeric(10) references teachers
 );
+
+--end term grade should be integer >= 1 and <= 6
+create type partial_grade as enum ('1','1+','2-','2','2+','3-','3','3+','4-','4','4+','5-','5','5+','6-','6');
+
+
+
 
 create table students (
     id_student numeric(10) primary key,
@@ -25,7 +32,8 @@ create table teacher_subjects (
 );
 
 create table grades (
-    grade numeric(1) check(grade <= 6),
+    value partial_grade,
+    weight int check(weight >= 0),
     id_student numeric(10) references students,
     subject numeric(10) references subjects,
     teacher numeric(10) references teachers
