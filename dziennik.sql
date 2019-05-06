@@ -3,8 +3,10 @@ create table teachers (
     name character varying(100)
 );
 
+--class name format [1-8][a-z]
 create table classes (
     id_class numeric(10) primary key,
+    name_class char(2) unique,
     educator numeric(10) references teachers
 );
 
@@ -55,3 +57,46 @@ end;
 $grades_teacher_check$ language plpgsql;
 create trigger grades_teacher_check before insert or update on grades
 for each row execute procedure grades_teacher_check();
+
+--generete next id for teacher if not given
+create sequence next_teacher_id start 1 increment by 1;
+
+create or replace function teacher_insert_check()
+returns trigger as $teacher_insert_check$
+  declare
+    id numeric(10);
+    begin
+    if(new.id_teacher is null) then
+      id = (select nextval('next_teacher_id'));
+      loop
+        exit when
+          (select count(*) from teachers t where t.id_teacher = id) = 0;
+          id = (select nextval('next_teacher_id'));
+      end loop;
+      new.id_teacher = id;
+    end if;
+    return new;
+  end;
+  $teacher_insert_check$
+language plpgsql;
+
+--if id not given returns first not used value
+create trigger teacher_insert_check before insert or update on teachers
+  for each row execute procedure teacher_insert_check();
+
+
+
+create or replace function classes_insert_check()
+returns trigger as $classes_insert_check$
+  begin
+    if(substring(new.name_class, 1, 1) <= '8' and substring(new.name_class, 1, 1) >= '0'
+      and substring(new.name_class, 2, 1) >= 'a' and substring(new.name_class, 2, 1) <= 'z') then
+      return new;
+    end if;
+    raise exception 'incorrect class name';
+  end;
+  $classes_insert_check$
+language plpgsql;
+
+create trigger classes_insert_check before insert or update on classes
+  for each row execute procedure classes_insert_check();

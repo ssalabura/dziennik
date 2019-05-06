@@ -4,3 +4,8 @@ drop table if exists classes cascade;
 drop table if exists subjects cascade;
 drop table if exists grades cascade;
 drop table if exists teacher_subjects cascade;
+drop function if exists grades_teacher_check;
+drop function if exists teacher_insert_check;
+drop function if exists classes_insert_check;
+drop type if exists partial_grade;
+drop sequence if exists next_teacher_id;
