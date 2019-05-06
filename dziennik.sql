@@ -95,15 +95,15 @@ create or replace function classes_insert_check()
 returns trigger as $classes_insert_check$
 declare
     res int;
-    numer char;
-    znak char;
+    year char;
+    grp char;
 begin
-    numer = left(new.name, 1);
-    znak = right(new.name, 1);
-    if(numer <= '8' and numer >= '0'
-        and znak >= 'a' and znak <= 'z') then
-            if(znak = 'a') then return new; end if;
-            select into res count(*) from classes where ascii(right(name, 1))=ascii(znak)-1;
+    year = left(new.name, 1);
+    grp = right(new.name, 1);
+    if(year <= '8' and year >= '0'
+        and grp >= 'a' and grp <= 'z') then
+            if(grp = 'a') then return new; end if;
+            select into res count(*) from classes where ascii(right(name, 1))=ascii(grp)-1;
             if(res > 0) then return new; end if;
         end if;
     raise exception 'error: incorrect class name';
