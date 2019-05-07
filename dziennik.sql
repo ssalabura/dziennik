@@ -31,11 +31,32 @@ create table teacher_subjects (
     subject numeric(10) references subjects
 );
 
---end term grade should be integer >= 1 and <= 6
-create type partial_grade as enum ('1','1+','2-','2','2+','3-','3','3+','4-','4','4+','5-','5','5+','6-','6');
+create type grade as enum ('1','1+','2-','2','2+','3-','3','3+','4-','4','4+','5-','5','5+','6-','6');
+
+
+create or replace function grade_to_numeric(g grade) returns numeric(3,2) as
+$$
+declare
+    value numeric(3,2);
+begin
+    value = 0;
+    if g::text like '%+' then
+        value = value + 0.25;
+    end if;
+    if g::text like '%-' then
+        value = value - 0.25;
+    end if;
+    return ((substring(g::text from 1 for 1)::numeric(3,2))+value);
+end;
+$$
+language plpgsql;   
+create cast (grade as numeric(3,2)) with function grade_to_numeric(grade) as implicit;
+
+
+
 
 create table grades (
-    value partial_grade,
+    value grade,
     weight int check(weight >= 0),
     student numeric(10) references students,
     subject numeric(10) references subjects,

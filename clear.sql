@@ -10,4 +10,7 @@ drop function if exists teacher_subject_check() cascade;
 drop function if exists teacher_insert_check() cascade;
 drop function if exists classes_insert_check() cascade;
 
+
+drop function if exists grade_to_numeric(partial_grade);
+drop cast if exists (partial_grade as numeric(3,2));
 drop type if exists partial_grade;
