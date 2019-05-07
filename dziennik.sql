@@ -38,8 +38,9 @@ create table subjects (
 
 --Subjects given teacher can teach
 create table teacher_subjects (
-    teacher numeric(10) references teachers,
-    subject numeric(10) references subjects
+    teacher_id numeric(10) references teachers,
+    subject_id numeric(10) references subjects,
+    unique (teacher_id,subject_id)
 );
 
 create type grade as enum ('1','1+','2-','2','2+','3-','3','3+','4-','4','4+','5-','5','5+','6-','6');
