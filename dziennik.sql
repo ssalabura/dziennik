@@ -1,6 +1,8 @@
 create table teachers (
     teacher_id numeric(10) primary key,
-    name character varying(100)
+    name character varying(100) not null check(name ~ '^[A-Z][a-z]*$'),
+    surname character varying(100) not null check(surname ~ '^[A-Z][a-z-]*$'),
+    email character varying check(email like '%_@__%.__%')
 );
 
 --class name format [1-8][a-z]
@@ -12,8 +14,10 @@ create table classes (
 
 create table students (
     student_id numeric(10) primary key,
-    name character varying(100),
-    class numeric(10) references classes
+    name character varying(100) not null check(name ~ '^[A-Z][a-z]*$'),
+    surname character varying(100)not null check(surname ~ '^[A-Z][a-z-]*$'),
+    class numeric(10) references classes,
+    email character varying check(email like '%_@__%.__%')
 );
 
 create table subjects (
@@ -65,22 +69,16 @@ for each row execute procedure teacher_subject_check();
 create trigger exams_teacher_subject_check before insert or update on exams
 for each row execute procedure teacher_subject_check();
 
---generete next id for teacher if not given
-create sequence next_teacher_id start 1 increment by 1;
 
 create or replace function teacher_insert_check()
 returns trigger as $teacher_insert_check$
-declare
-    id numeric(10);
 begin
     if(new.teacher_id is null) then
-      id = (select nextval('next_teacher_id'));
-      loop
-        exit when
-          (select count(*) from teachers t where t.teacher_id = id) = 0;
-          id = (select nextval('next_teacher_id'));
-      end loop;
-      new.teacher_id = id;
+      new.teacher_id = (select case when
+              (select min(t3.teacher_id) from teachers t3) > 1 then 1 else coalesce(min(t.teacher_id) + 1, 1) end "id"
+    from teachers t left join teachers t2
+    on t.teacher_id = t2.teacher_id - 1
+    where t2.teacher_id is null);
     end if;
     return new;
 end;
