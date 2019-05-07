@@ -5,6 +5,7 @@ drop table if exists subjects cascade;
 drop table if exists teacher_subjects cascade;
 drop table if exists grades cascade;
 drop table if exists exams cascade;
+drop table if exists legal_guardians cascade;
 
 drop function if exists teacher_subject_check() cascade;
 drop function if exists teacher_insert_check() cascade;

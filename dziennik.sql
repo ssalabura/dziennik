@@ -2,7 +2,8 @@ create table teachers (
     teacher_id numeric(10) primary key,
     name character varying(100) not null check(name ~ '^[A-Z][a-z]*$'),
     surname character varying(100) not null check(surname ~ '^[A-Z][a-z-]*$'),
-    email character varying check(email like '%_@__%.__%')
+    email character varying check(email like '%_@__%.__%'),
+    phone numeric(9)
 );
 
 --class name format [1-8][a-z]
@@ -17,7 +18,17 @@ create table students (
     name character varying(100) not null check(name ~ '^[A-Z][a-z]*$'),
     surname character varying(100)not null check(surname ~ '^[A-Z][a-z-]*$'),
     class numeric(10) references classes,
-    email character varying check(email like '%_@__%.__%')
+    email character varying check(email like '%_@__%.__%'),
+    phone numeric(9)
+);
+
+create table legal_guardians (
+  guardian_id numeric(10) primary key,
+  student numeric(10) not null references students,
+  name character varying(100) not null check(name ~ '^[A-Z][a-z]*$'),
+  surname character varying(100)not null check(surname ~ '^[A-Z][a-z-]*$'),
+  email character varying check(email like '%_@__%.__%'),
+  phone numeric(9)
 );
 
 create table subjects (
