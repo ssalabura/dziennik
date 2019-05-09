@@ -51,9 +51,9 @@ create table teacher_subjects (
 
 create table lessons (
     lesson_id numeric(10) check (lesson_id >= 0)  primary key,
-    class_id numeric(10) references classes,
-    subject_id numeric(10) references subjects,
-    topic character varying(500)
+    class_id numeric(10) not null references classes,
+    subject_id numeric(10) not null references subjects,
+    topic character varying(500) not null
 );
 
 create table absences (
