@@ -18,6 +18,7 @@ create table schools_teachers (
 
 );
 
+
 --class name format [1-8][a-z]
 create table classes (
     class_id numeric(10) primary key,
@@ -60,6 +61,21 @@ create table teacher_subjects (
     subject_id numeric(10) references subjects,
     unique (teacher_id,subject_id)
 );
+
+
+create table lessons (
+    lesson_id numeric(10) primary key,
+    class_id numeric(10) references classes,
+    subject_id numeric(10) references subjects,
+    topic character varying(500)
+);
+
+create table absences (
+    lesson_id numeric(10) references lessons,
+    student_id numeric(10) references students
+);
+
+
 
 create type grade as enum ('1','1+','2-','2','2+','3-','3','3+','4-','4','4+','5-','5','5+','6-','6');
 
