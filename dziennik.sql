@@ -6,10 +6,23 @@ create table teachers (
     phone numeric(9)
 );
 
+create table schools (
+    school_id numeric(10) primary key,
+    full_name numeric(10) not null
+);
+
+create table schools_teachers (
+    school_id numeric(10) not null references schools,
+    teacher_id numeric(10) not null references teachers,
+    unique(school_id,teacher_id)
+
+);
+
 --class name format [1-8][a-z]
 create table classes (
     class_id numeric(10) primary key,
     name char(2) unique,
+    school_id numeric(10) references schools,
     educator numeric(10) references teachers
 );
 
