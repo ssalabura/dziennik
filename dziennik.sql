@@ -1,14 +1,17 @@
 create table teachers (
-    teacher_id numeric(10) primary key,
+    teacher_id numeric(10) check (teacher_id >= 0) primary key,
     name character varying(100) not null check(name ~ '^[A-Z][a-z]*$'),
     surname character varying(100) not null check(surname ~ '^[A-Z][a-z-]*$'),
     email character varying check(email like '%_@_%.__%'),
-    phone numeric(9)
+    phone character varying(9) check(phone ~ '[0-9]^9')
 );
 
 create table schools (
-    school_id numeric(10) primary key,
-    full_name numeric(10) not null
+    school_id numeric(10) check (school_id >= 0)  primary key,
+    full_name character varying(300) not null,
+    phone character varying(9) check(phone ~ '[0-9]^9'),
+    email character varying check(email like '%_@_%.__%')
+
 );
 
 create table schools_teachers (
@@ -21,27 +24,27 @@ create table schools_teachers (
 
 --class name format [1-8][a-z]
 create table classes (
-    class_id numeric(10) primary key,
+    class_id numeric(10) check (class_id >= 0) primary key,
     name char(2) unique,
     school_id numeric(10) references schools,
     educator numeric(10) references teachers
 );
 
 create table students (
-    student_id numeric(10) primary key,
+    student_id numeric(10) check (student_id >= 0)  primary key,
     name character varying(100) not null check(name ~ '^[A-Z][a-z]*$'),
     surname character varying(100)not null check(surname ~ '^[A-Z][a-z-]*$'),
     class numeric(10) references classes,
     email character varying check(email like '%_@_%.__%'),
-    phone numeric(9)
+    phone character varying(9) check(phone ~ '[0-9]^9')
 );
 
 create table legal_guardians (
-  guardian_id numeric(10) primary key,
+  guardian_id numeric(10) check (guardian_id >= 0)  primary key,
   name character varying(100) not null check(name ~ '^[A-Z][a-z]*$'),
   surname character varying(100)not null check(surname ~ '^[A-Z][a-z-]*$'),
   email character varying check(email like '%_@_%.__%'),
-  phone numeric(9)
+  phone character varying(9) check(phone ~ '[0-9]^9')
 );
 
 create table guardians_students (
@@ -51,7 +54,7 @@ create table guardians_students (
 );
 
 create table subjects (
-    subject_id numeric(10) primary key,
+    subject_id numeric(10) check (subject_id >= 0)  primary key,
     name character varying(100)
 );
 
@@ -64,7 +67,7 @@ create table teacher_subjects (
 
 
 create table lessons (
-    lesson_id numeric(10) primary key,
+    lesson_id numeric(10) check (lesson_id >= 0)  primary key,
     class_id numeric(10) references classes,
     subject_id numeric(10) references subjects,
     topic character varying(500)
