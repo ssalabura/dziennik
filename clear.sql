@@ -1,6 +1,4 @@
 drop table if exists teachers cascade;
-drop table if exists schools cascade;
-drop table if exists schools_teachers cascade;
 drop table if exists classes cascade;
 drop table if exists students cascade;
 drop table if exists subjects cascade;
