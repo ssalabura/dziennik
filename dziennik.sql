@@ -6,10 +6,9 @@ create table teachers (
     phone character varying(9) check(phone ~ '[0-9]{9}')
 );
 
---class name format [1-8][a-z]
 create table classes (
     class_id numeric(10) check (class_id >= 0) primary key,
-    name char(2) unique,
+    name char(2) check(name ~ '[1-8][a-z]') unique,
     educator numeric(10) references teachers
 );
 
@@ -17,7 +16,7 @@ create table students (
     student_id numeric(10) check (student_id >= 0)  primary key,
     name character varying(100) not null check(name ~ '^[A-Z][a-z]*$'),
     surname character varying(100)not null check(surname ~ '^[A-Z][a-z-]*$'),
-    class numeric(10) references classes,
+    class_id numeric(10) references classes,
     email character varying check(email like '%_@_%.__%'),
     phone character varying(9) check(phone ~ '[0-9]{9}')
 );
@@ -90,14 +89,14 @@ create cast (grade as numeric(3,2)) with function grade_to_numeric(grade) as imp
 create table grades (
     value grade,
     weight int check(weight >= 0),
-    student numeric(10) references students,
-    subject numeric(10) references subjects,
-    teacher numeric(10) references teachers
+    student_id numeric(10) references students,
+    subject_id numeric(10) references subjects,
+    teacher_id numeric(10) references teachers
 );
 
 create table exams (
-    teacher numeric(10) references teachers,
-    subject numeric(10) references subjects,
+    teacher_id numeric(10) references teachers,
+    subject_id numeric(10) references subjects,
     date date not null check (date>now()),
     description character varying(100)
 );
@@ -108,7 +107,7 @@ returns trigger as $teacher_subject_check$
 declare
     res int;
 begin
-    select into res count(*) from teacher_subjects where teacher = new.teacher and subject = new.subject;
+    select into res count(*) from teacher_subjects where teacher_id = new.teacher_id and subject_id = new.subject_id;
     if res = 0 then
         raise exception 'error: given teacher does not teach this subject';
     end if;
@@ -151,12 +150,9 @@ declare
 begin
     year = left(new.name, 1);
     grp = right(new.name, 1);
-    if(year <= '8' and year >= '0'
-        and grp >= 'a' and grp <= 'z') then
-            if(grp = 'a') then return new; end if;
-            select into res count(*) from classes where ascii(right(name, 1))=ascii(grp)-1;
-            if(res > 0) then return new; end if;
-        end if;
+    if(grp = 'a') then return new; end if;
+    select into res count(*) from classes where ascii(right(name, 1))=ascii(grp)-1;
+    if(res > 0) then return new; end if;
     raise exception 'error: incorrect class name';
 end;
 $classes_insert_check$
