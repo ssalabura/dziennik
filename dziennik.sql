@@ -173,7 +173,6 @@ group by g.subject_id, c.class_id;
 create or replace function remove_student()
 returns trigger as $remove_student$
   declare
-    r record;
   begin
     delete from absences a
         where a.student_id = old.student_id;
@@ -181,17 +180,9 @@ returns trigger as $remove_student$
     delete from grades g
       where g.student_id = old.student_id;
 
-    for r in select * from guardians_students gs
-    where gs.student_id = old.student_id
-    loop
-      delete from guardians_students gs2
-      where gs2.student_id = r.student_id and gs2.guardian_id = r.guardian_id;
-      if((select count(*) from guardians_students gs3
-        where gs3.guardian_id = r.guardian_id) < 1) then
-          delete from legal_guardians lg
-        where lg.guardian_id = r.guardian_id;
-      end if;
-    end loop;
+    delete from guardians_students gs
+      where gs.student_id = old.student_id;
+
     return old;
   end;
   $remove_student$
@@ -199,3 +190,35 @@ language plpgsql;
 
 create trigger remove_student before delete on students
   for each row execute procedure remove_student();
+
+create or replace function remove_legal_guardian()
+returns trigger as $remove_legal_guardian$
+  begin
+    SET session_replication_role = replica;
+    delete from guardians_students gs
+      where gs.guardian_id = old.guardian_id;
+    SET session_replication_role = default;
+    return old;
+  end;
+  $remove_legal_guardian$
+language plpgsql;
+
+create trigger remove_legal_guardian before delete on legal_guardians
+  for each row  execute procedure remove_legal_guardian();
+
+create or replace function remove_guardian_student()
+returns trigger as $remove_guardian_student$
+  begin
+    if((select count(*) from guardians_students) < 1) then
+      SET session_replication_role = replica;
+      delete from legal_guardians lg
+      where lg.guardian_id = old.guardian_id;
+      SET session_replication_role = default;
+    end if;
+    return old;
+  end;
+  $remove_guardian_student$
+language plpgsql;
+
+create trigger remove_guardian_student after delete on guardians_students
+  for each row execute procedure remove_guardian_student();
