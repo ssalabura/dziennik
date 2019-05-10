@@ -9,9 +9,11 @@ drop table if exists legal_guardians cascade;
 drop table if exists guardians_students cascade;
 drop table if exists lessons cascade;
 drop table if exists absences cascade;
+drop table if exists teachers_classes_subjects cascade;
 
 drop view if exists classes_avg cascade;
-drop view if exists  students_in_classes cascade;
+drop view if exists students_in_classes cascade;
+drop view if exists class_subjects cascade;
 
 
 drop function if exists teacher_subject_check() cascade;
