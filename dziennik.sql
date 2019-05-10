@@ -166,13 +166,12 @@ select c.class_id, c.name, count(*)"students" from classes c join students s on 
 group by c.class_id order by 1;
 
 create or replace view classes_avg as
-select g.subject_id, c.class_id, c.name, round(avg(g.value), 2)"avg" from grades g join students s on g.student_id = s.student_id
+select g.subject_id, c.class_id, c.name, round(sum(g.value * g.weight) / sum(g.weight), 2)"avg" from grades g join students s on g.student_id = s.student_id
 join classes c on s.class_id = c.class_id
 group by g.subject_id, c.class_id;
 
 create or replace function remove_student()
 returns trigger as $remove_student$
-  declare
   begin
     delete from absences a
         where a.student_id = old.student_id;
