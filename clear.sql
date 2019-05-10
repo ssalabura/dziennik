@@ -18,6 +18,8 @@ drop function if exists teacher_subject_check() cascade;
 drop function if exists teacher_insert_check() cascade;
 drop function if exists classes_insert_check() cascade;
 drop function if exists remove_student() cascade;
+drop function if exists remove_legal_guardian() cascade;
+drop function if exists remove_guardian_student() cascade;
 
 drop cast if exists (grade as numeric(3,2));
 drop function if exists grade_to_numeric(grade);
