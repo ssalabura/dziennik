@@ -160,3 +160,42 @@ language plpgsql;
 
 create trigger classes_insert_check before insert or update on classes
 for each row execute procedure classes_insert_check();
+
+create or replace view students_in_classes as
+select c.class_id, c.name, count(*)"students" from classes c join students s on c.class_id = s.class_id
+group by c.class_id order by 1;
+
+create or replace view classes_avg as
+select g.subject_id, c.class_id, c.name, round(avg(g.value), 2)"avg" from grades g join students s on g.student_id = s.student_id
+join classes c on s.class_id = c.class_id
+group by g.subject_id, c.class_id;
+
+create or replace function remove_student()
+returns trigger as $remove_student$
+  declare
+    r record;
+  begin
+    delete from absences a
+        where a.student_id = old.student_id;
+
+    delete from grades g
+      where g.student_id = old.student_id;
+
+    for r in select * from guardians_students gs
+    where gs.student_id = old.student_id
+    loop
+      delete from guardians_students gs2
+      where gs2.student_id = r.student_id and gs2.guardian_id = r.guardian_id;
+      if((select count(*) from guardians_students gs3
+        where gs3.guardian_id = r.guardian_id) < 1) then
+          delete from legal_guardians lg
+        where lg.guardian_id = r.guardian_id;
+      end if;
+    end loop;
+    return old;
+  end;
+  $remove_student$
+language plpgsql;
+
+create trigger remove_student before delete on students
+  for each row execute procedure remove_student();
