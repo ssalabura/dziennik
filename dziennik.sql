@@ -44,9 +44,8 @@ create table subjects (
 create table teacher_subjects (
     teacher_id numeric(10) references teachers,
     subject_id numeric(10) references subjects,
-    unique (teacher_id,subject_id)
+    primary key (teacher_id,subject_id)
 );
-
 
 create table lessons (
     lesson_id numeric(10) check (lesson_id >= 0)  primary key,
@@ -60,7 +59,17 @@ create table absences (
     student_id numeric(10) references students
 );
 
+create table teachers_classes_subjects (
+  teacher_id numeric(10) not null,
+  subject_id numeric(10) not null,
+  class_id numeric(10) not null references classes,
+  foreign key (teacher_id, subject_id) references teacher_subjects,
+  unique(subject_id, class_id)
+);
 
+create or replace view class_subjects as
+select tcs.class_id, c.name"class_name", tcs.subject_id, s.name"subject_name" from teachers_classes_subjects tcs
+join classes c on tcs.class_id = c.class_id join subjects s on s.subject_id = tcs.subject_id;
 
 create type grade as enum ('1','1+','2-','2','2+','3-','3','3+','4-','4','4+','5-','5','5+','6-','6');
 
@@ -166,9 +175,10 @@ select c.class_id, c.name, count(*)"students" from classes c join students s on 
 group by c.class_id order by 1;
 
 create or replace view classes_avg as
-select g.subject_id, c.class_id, c.name, round(sum(g.value * g.weight) / sum(g.weight), 2)"avg" from grades g join students s on g.student_id = s.student_id
-join classes c on s.class_id = c.class_id
-group by g.subject_id, c.class_id;
+select c.class_id, c.name"class_name", g.subject_id, s2.name"subject_name", round(sum(g.value * g.weight) / sum(g.weight), 2)"avg" from grades g join students s on g.student_id = s.student_id
+join classes c on s.class_id = c.class_id join subjects s2 on g.subject_id = s2.subject_id
+group by c.class_id, g.subject_id, s2.subject_id
+order by c.class_id;
 
 create or replace function remove_student()
 returns trigger as $remove_student$
