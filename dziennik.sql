@@ -45,6 +45,13 @@ create table subjects (
     name character varying(100)
 );
 
+---Subjects given teacher can teach
+create table teacher_subjects (
+    teacher_id numeric(10) references teachers,
+    subject_id numeric(10) references subjects,
+    primary key (teacher_id,subject_id)
+);
+
 create table lessons (
     lesson_id numeric(10) check (lesson_id >= 0) primary key,
     class_id numeric(10) not null references classes,
@@ -61,7 +68,7 @@ create table teachers_classes_subjects (
     teacher_id numeric(10) not null,
     subject_id numeric(10) not null,
     class_id numeric(10) not null references classes,
-    primary key (teacher_id, subject_id),
+    foreign key (teacher_id, subject_id) references teacher_subjects,
     unique(subject_id, class_id)
 );
 

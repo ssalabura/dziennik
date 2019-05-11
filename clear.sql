@@ -7,6 +7,7 @@ drop table if exists guardians_students cascade;
 drop table if exists subjects cascade;
 drop table if exists lessons cascade;
 drop table if exists absences cascade;
+drop table if exists teacher_subjects cascade;
 drop table if exists teachers_classes_subjects cascade;
 drop table if exists grades cascade;
 drop table if exists exams cascade;
