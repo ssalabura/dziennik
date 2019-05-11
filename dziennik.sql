@@ -152,11 +152,14 @@ create or replace view students_in_classes as
     select class_id, name, count(*)"students" from classes_students join classes using(class_id)
     group by class_id, name order by 1;
 
---create or replace view classes_avg as
---select class_id, c.name"class_name", subject_id, s2.name"subject_name", round(sum(g.value * g.weight) / sum(g.weight), 2)"avg" from grades g join students s on g.student_id = s.student_id
---join classes c on s.class_id = c.class_id join subjects s2 on g.subject_id = s2.subject_id
---group by c.class_id, g.subject_id, s2.subject_id
---order by c.class_id;
+create or replace view classes_avg as
+select class_id, c.name"class_name", subject_id, s.name"subject_name", round(sum(value * weight) / sum(weight), 2)"avg" from grades g
+join classes_students cs using(student_id)
+join teachers_classes_subjects tcs using(subject_id,class_id)
+join classes c using(class_id)
+join subjects s using(subject_id)
+group by class_id, c.name, subject_id, s.name
+order by class_id;
 
 create or replace function remove_student()
 returns trigger as $remove_student$
