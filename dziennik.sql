@@ -64,7 +64,7 @@ create table teachers_classes_subjects (
   subject_id numeric(10) not null,
   class_id numeric(10) not null references classes,
   foreign key (teacher_id, subject_id) references teacher_subjects,
-  unique(teacher_id, subject_id, class_id)
+  unique(subject_id, class_id)
 );
 
 create or replace view class_subjects as
