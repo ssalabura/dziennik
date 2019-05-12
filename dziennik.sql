@@ -9,8 +9,7 @@ create table teachers (
 
 create table groups (
     group_id numeric(10) check (group_id >= 0) primary key,
-    name character varying(128) not null unique,
-    educator numeric(10) not null unique references teachers
+    name character varying(128) not null unique
 );
 
 create table students (
