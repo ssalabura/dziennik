@@ -31,7 +31,7 @@ create table legal_guardians (
     name character varying(1024) not null check(name ~ '^[A-Z][a-z]*$'),
     surname character varying(1024) not null check(surname ~ '^[A-Z][a-z-]*$'),
     email character varying(256) unique check(email like '%_@_%.__%'),
-    phone character varying(15) unique check(phone ~ '[0-9]+')
+    phone character varying(16) unique check(phone ~ '[0-9]+')
 );
 
 create table guardians_students (
