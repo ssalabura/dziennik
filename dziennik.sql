@@ -8,7 +8,7 @@ create table teachers (
 
 create table classes (
     class_id numeric(10) check (class_id >= 0) primary key,
-    name char(2) not null,
+    name char(2) not null unique,
     educator numeric(10) not null unique references teachers
 );
 
@@ -69,7 +69,8 @@ create table teachers_classes_subjects (
     teacher_id numeric(10) not null,
     subject_id numeric(10) not null,
     class_id numeric(10) not null references classes,
-    primary key (subject_id, class_id)
+    primary key (subject_id, class_id),
+    foreign key (teacher_id, subject_id) references teacher_subjects
 );
 
 create type grade as enum ('1','1+','2-','2','2+','3-','3','3+','4-','4','4+','5-','5','5+','6-','6');
