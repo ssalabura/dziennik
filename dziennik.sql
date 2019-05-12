@@ -1,6 +1,7 @@
 create table teachers (
     teacher_id numeric(10) check (teacher_id >= 0) primary key,
-    name character varying(1024) not null check(name ~ '^[A-Z][a-z]*$'),
+    PESEL character varying(11) not null unique,
+    name character varying(1024) not null check(name ~ '^([A-Z][a-z]*\s?)+'),
     surname character varying(1024) not null check(surname ~ '^[A-Z][a-z-]*$'),
     email character varying(256) unique check(email like '%_@_%.__%'),
     phone character varying(16) unique check(phone ~ '[0-9]{9}')
@@ -14,7 +15,8 @@ create table classes (
 
 create table students (
     student_id numeric(10) check (student_id >= 0) primary key,
-    name character varying(1024) not null check(name ~ '^[A-Z][a-z]*$'),
+    PESEL character varying(11) not null unique,
+    name character varying(1024) not null check(name ~ '^([A-Z][a-z]*\s?)+'),
     surname character varying(1024) not null check(surname ~ '^[A-Z][a-z-]*$'),
     email character varying(256) unique check(email like '%_@_%.__%'),
     phone character varying(16) unique check(phone ~ '[0-9]+')
@@ -28,7 +30,8 @@ create table classes_students (
 
 create table legal_guardians (
     guardian_id numeric(10) check (guardian_id >= 0) primary key,
-    name character varying(1024) not null check(name ~ '^[A-Z][a-z]*$'),
+    PESEL character varying(11) not null unique,
+    name character varying(1024) not null check(name ~ '^([A-Z][a-z]*\s?)+'),
     surname character varying(1024) not null check(surname ~ '^[A-Z][a-z-]*$'),
     email character varying(256) unique check(email like '%_@_%.__%'),
     phone character varying(16) unique check(phone ~ '[0-9]+')
@@ -191,3 +194,41 @@ language plpgsql;
 
 create trigger remove_guardian_student after delete on guardians_students
     for each row execute procedure remove_guardian_student();
+
+CREATE OR REPLACE FUNCTION PESEL_check() RETURNS trigger AS $PESEL_check$
+declare
+sum numeric = 0;
+BEGIN
+if(length(new.PESEL) != 11) then
+raise exception 'Error: Incorrect PESEL';
+end if;
+if(cast(substring(new.PESEL::text, 5, 2) as numeric) > 31 or cast(substring(new.PESEL::text, 5, 2) as numeric) < 1) then
+raise exception 'Error: Incorrect PESEL';
+end if;
+
+sum = cast(substring(new.PESEL::text, 1, 1) as numeric) * 9 +
+       cast(substring(new.PESEL::text, 2, 1) as numeric) * 7 +
+       cast(substring(new.PESEL::text, 3, 1) as numeric) * 3 +
+       cast(substring(new.PESEL::text, 4, 1) as numeric) * 1 +
+       cast(substring(new.PESEL::text, 5, 1) as numeric) * 9 +
+       cast(substring(new.PESEL::text, 6, 1) as numeric) * 7 +
+       cast(substring(new.PESEL::text, 7, 1) as numeric) * 3 +
+       cast(substring(new.PESEL::text, 8, 1) as numeric) * 1 +
+       cast(substring(new.PESEL::text, 9, 1) as numeric) * 9 +
+       cast(substring(new.PESEL::text, 10, 1) as numeric) * 7;
+sum = sum % 10;
+if(sum != cast(substring(new.PESEL::text, 11, 1) as numeric)) then
+raise exception 'Error: Incorrect PESEL';
+end if;
+return new;
+END;
+$PESEL_check$ LANGUAGE plpgsql;
+
+create trigger students_pesel_check before insert or update on students
+    for each row  execute procedure PESEL_check();
+
+create trigger guardians_pesel_check before insert or update on legal_guardians
+    for each row  execute procedure PESEL_check();
+
+create trigger teachers_pesel_check before insert or update on teachers
+    for each row  execute procedure PESEL_check();

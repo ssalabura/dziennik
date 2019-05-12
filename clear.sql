@@ -25,3 +25,4 @@ drop function if exists teacher_insert_check() cascade;
 drop function if exists remove_student() cascade;
 drop function if exists remove_legal_guardian() cascade;
 drop function if exists remove_guardian_student() cascade;
+drop function if exists pesel_check() cascade;
