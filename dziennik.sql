@@ -64,6 +64,7 @@ create table lessons (
 create table absences (
     lesson_id numeric(10) references lessons,
     student_id numeric(10) references students,
+    absence_type character check(absence_type ~ '[ONSZ]'),
     primary key(lesson_id, student_id)
 );
 
@@ -107,10 +108,12 @@ create table grades (
 create table exams (
     teacher_id numeric(10) not null,
     subject_id numeric(10) not null,
+    group_id numeric(10) not null,
     date date not null check (date>now()),
     description character varying(256),
-    foreign key (teacher_id, subject_id) references teacher_subjects
+    foreign key (group_id, subject_id) references teachers_groups_subjects
 );
+
 
 create or replace function teacher_insert_check()
 returns trigger as $teacher_insert_check$
@@ -137,8 +140,7 @@ create or replace view groups_subjects as
     from teachers_groups_subjects join groups c using(group_id) join subjects s using(subject_id);
 
 create or replace view students_in_groups as
-    select group_id, name, count(*)"students" from groups_students join groups using(group_id)
-    group by group_id, name order by 1;
+    select group_id, name, student_id from groups_students join groups using(group_id) order by 1;
 
 create or replace view groups_avg as
     select group_id, c.name"group_name", subject_id, s.name"subject_name", round(sum(value * weight) / sum(weight), 2)"avg" from grades g
@@ -148,6 +150,30 @@ create or replace view groups_avg as
     join subjects s using(subject_id)
     group by group_id, c.name, subject_id, s.name
     order by group_id;
+
+
+create or replace function absences_students_check()
+returns trigger as $absences_students_check$
+declare
+    am_i_in_given_group int;
+    my_group numeric(10);
+begin
+    select into my_group group_id from lessons join groups using(group_id) where lesson_id = new.lesson_id;
+    select into am_i_in_given_group count(*) from groups_students
+        where group_id = my_group and student_id = new.student_id;
+    if am_i_in_given_group = 0 then
+        raise exception 'trying to set absence of student which is not in given group';
+    end if;
+    return new;
+
+end;
+$absences_students_check$
+language plpgsql;
+
+create trigger absences_students_check before insert or update on absences
+    for each row execute procedure absences_students_check();
+
+--BEGIN REMOVE TRIGGERS
 
 create or replace function remove_student()
 returns trigger as $remove_student$
@@ -194,6 +220,9 @@ language plpgsql;
 create trigger remove_guardian_student after delete on guardians_students
     for each row execute procedure remove_guardian_student();
 
+--END REMOVE TRIGGERS
+
+--BEGIN PESEL 
 CREATE OR REPLACE FUNCTION PESEL_check() RETURNS trigger AS $PESEL_check$
 declare
 sum numeric = 0;
@@ -231,3 +260,5 @@ create trigger guardians_pesel_check before insert or update on legal_guardians
 
 create trigger teachers_pesel_check before insert or update on teachers
     for each row  execute procedure PESEL_check();
+
+--END PESEL 

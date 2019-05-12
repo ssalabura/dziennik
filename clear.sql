@@ -22,6 +22,7 @@ drop view if exists groups_avg cascade;
 
 drop function if exists teacher_subject_check() cascade;
 drop function if exists teacher_insert_check() cascade;
+drop function if exists absences_students_check() cascade;
 drop function if exists remove_student() cascade;
 drop function if exists remove_legal_guardian() cascade;
 drop function if exists remove_guardian_student() cascade;
