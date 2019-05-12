@@ -2206,4 +2206,4 @@ INSERT INTO "absences" (lesson_id,student_id,absence_type) VALUES ('15','20','O'
 
 insert into exams(teacher_id, subject_id, group_id, date, description) VALUES (1, 1, 3, '20200618 10:34:09 AM', 'THINKING');
 insert into exams(teacher_id, subject_id, group_id, date, description) values (36, 4, 5, '20200619 12:34:05 AM', 'Punishment for bad behaviour');
-insert into exams(teacher_id, subject_id, group_id, date, description) values(40, 10, 10, '20120513 08:30:00 AM', 'Createing database for school');
+insert into exams(teacher_id, subject_id, group_id, date, description) values(40, 10, 10, '20200513 08:30:00 AM', 'Createing database for school');
