@@ -16,7 +16,7 @@ drop type if exists grade cascade;
 drop function if exists grade_to_numeric(grade) cascade;
 drop cast if exists (grade as numeric(3,2));
 
-drop view if exists group_subjects cascade;
+drop view if exists groups_subjects cascade;
 drop view if exists students_in_groups cascade;
 drop view if exists groups_avg cascade;
 
