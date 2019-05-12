@@ -7,8 +7,8 @@ create table teachers (
     phone character varying(16) unique check(phone ~ '[0-9]{9}')
 );
 
-create table classes (
-    class_id numeric(10) check (class_id >= 0) primary key,
+create table groups (
+    group_id numeric(10) check (group_id >= 0) primary key,
     name character varying(128) not null unique,
     educator numeric(10) not null unique references teachers
 );
@@ -22,10 +22,10 @@ create table students (
     phone character varying(16) unique check(phone ~ '[0-9]+')
 );
 
-create table classes_students (
-    class_id numeric(10) references classes,
+create table groups_students (
+    group_id numeric(10) references groups,
     student_id numeric(10) references students,
-    primary key(class_id, student_id)
+    primary key(group_id, student_id)
 );
 
 create table legal_guardians (
@@ -57,7 +57,7 @@ create table teacher_subjects (
 
 create table lessons (
     lesson_id numeric(10) check (lesson_id >= 0) primary key,
-    class_id numeric(10) not null references classes,
+    group_id numeric(10) not null references groups,
     subject_id numeric(10) not null references subjects,
     topic character varying(256) not null
 );
@@ -68,11 +68,11 @@ create table absences (
     primary key(lesson_id, student_id)
 );
 
-create table teachers_classes_subjects (
+create table teachers_groups_subjects (
     teacher_id numeric(10) not null,
     subject_id numeric(10) not null,
-    class_id numeric(10) not null references classes,
-    primary key (subject_id, class_id),
+    group_id numeric(10) not null references groups,
+    primary key (subject_id, group_id),
     foreign key (teacher_id, subject_id) references teacher_subjects
 );
 
@@ -133,22 +133,22 @@ language plpgsql;
 create trigger teacher_insert_check before insert or update on teachers
     for each row execute procedure teacher_insert_check();
 
-create or replace view class_subjects as
-    select class_id, c.name"class_name", subject_id, s.name"subject_name" 
-    from teachers_classes_subjects join classes c using(class_id) join subjects s using(subject_id);
+create or replace view groups_subjects as
+    select group_id, c.name"group_name", subject_id, s.name"subject_name" 
+    from teachers_groups_subjects join groups c using(group_id) join subjects s using(subject_id);
 
-create or replace view students_in_classes as
-    select class_id, name, count(*)"students" from classes_students join classes using(class_id)
-    group by class_id, name order by 1;
+create or replace view students_in_groups as
+    select group_id, name, count(*)"students" from groups_students join groups using(group_id)
+    group by group_id, name order by 1;
 
-create or replace view classes_avg as
-    select class_id, c.name"class_name", subject_id, s.name"subject_name", round(sum(value * weight) / sum(weight), 2)"avg" from grades g
-    join classes_students cs using(student_id)
-    join teachers_classes_subjects tcs using(subject_id,class_id)
-    join classes c using(class_id)
+create or replace view groups_avg as
+    select group_id, c.name"group_name", subject_id, s.name"subject_name", round(sum(value * weight) / sum(weight), 2)"avg" from grades g
+    join groups_students cs using(student_id)
+    join teachers_groups_subjects tcs using(subject_id,group_id)
+    join groups c using(group_id)
     join subjects s using(subject_id)
-    group by class_id, c.name, subject_id, s.name
-    order by class_id;
+    group by group_id, c.name, subject_id, s.name
+    order by group_id;
 
 create or replace function remove_student()
 returns trigger as $remove_student$
@@ -156,7 +156,7 @@ begin
     delete from absences a where a.student_id = old.student_id;
     delete from grades g where g.student_id = old.student_id;
     delete from guardians_students gs where gs.student_id = old.student_id;
-    delete from classes_students cs where cs.student_id = old.student_id;
+    delete from groups_students cs where cs.student_id = old.student_id;
     return old;
 end;
 $remove_student$
