@@ -1,23 +1,23 @@
 create table teachers (
     teacher_id numeric(10) check (teacher_id >= 0) primary key,
-    name character varying(100) not null check(name ~ '^[A-Z][a-z]*$'),
-    surname character varying(100) not null check(surname ~ '^[A-Z][a-z-]*$'),
-    email character varying unique check(email like '%_@_%.__%'),
-    phone character varying(9) unique check(phone ~ '[0-9]{9}')
+    name character varying(1024) not null check(name ~ '^[A-Z][a-z]*$'),
+    surname character varying(1024) not null check(surname ~ '^[A-Z][a-z-]*$'),
+    email character varying(256) unique check(email like '%_@_%.__%'),
+    phone character varying(16) unique check(phone ~ '[0-9]{9}')
 );
 
 create table classes (
     class_id numeric(10) check (class_id >= 0) primary key,
-    name char(2) not null unique,
+    name character varying(128) not null unique,
     educator numeric(10) not null unique references teachers
 );
 
 create table students (
     student_id numeric(10) check (student_id >= 0) primary key,
-    name character varying(100) not null check(name ~ '^[A-Z][a-z]*$'),
-    surname character varying(100) not null check(surname ~ '^[A-Z][a-z-]*$'),
-    email character varying unique check(email like '%_@_%.__%'),
-    phone character varying(9) unique check(phone ~ '[0-9]+')
+    name character varying(1024) not null check(name ~ '^[A-Z][a-z]*$'),
+    surname character varying(1024) not null check(surname ~ '^[A-Z][a-z-]*$'),
+    email character varying(256) unique check(email like '%_@_%.__%'),
+    phone character varying(16) unique check(phone ~ '[0-9]+')
 );
 
 create table classes_students (
@@ -28,10 +28,10 @@ create table classes_students (
 
 create table legal_guardians (
     guardian_id numeric(10) check (guardian_id >= 0) primary key,
-    name character varying(100) not null check(name ~ '^[A-Z][a-z]*$'),
-    surname character varying(100) not null check(surname ~ '^[A-Z][a-z-]*$'),
-    email character varying unique check(email like '%_@_%.__%'),
-    phone character varying(9) unique check(phone ~ '[0-9]+')
+    name character varying(1024) not null check(name ~ '^[A-Z][a-z]*$'),
+    surname character varying(1024) not null check(surname ~ '^[A-Z][a-z-]*$'),
+    email character varying(256) unique check(email like '%_@_%.__%'),
+    phone character varying(15) unique check(phone ~ '[0-9]+')
 );
 
 create table guardians_students (
@@ -42,7 +42,7 @@ create table guardians_students (
 
 create table subjects (
     subject_id numeric(10) check (subject_id >= 0) primary key,
-    name character varying(100) not null
+    name character varying(128) not null
 );
 
 ---Subjects given teacher can teach
@@ -56,7 +56,7 @@ create table lessons (
     lesson_id numeric(10) check (lesson_id >= 0) primary key,
     class_id numeric(10) not null references classes,
     subject_id numeric(10) not null references subjects,
-    topic character varying(500) not null
+    topic character varying(256) not null
 );
 
 create table absences (
@@ -106,7 +106,7 @@ create table exams (
     teacher_id numeric(10) not null,
     subject_id numeric(10) not null,
     date date not null check (date>now()),
-    description character varying(100),
+    description character varying(256),
     foreign key (teacher_id, subject_id) references teacher_subjects
 );
 
