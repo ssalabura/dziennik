@@ -1,6 +1,7 @@
 create table teachers (
     teacher_id numeric(10) check (teacher_id >= 0) primary key,
-    name character varying(1024) not null check(name ~ '^[A-Z][a-z]*$'),
+    PESEL character varying(11) not null unique,
+    name character varying(1024) not null check(name ~ '^([A-Z][a-z]*\s?)+'),
     surname character varying(1024) not null check(surname ~ '^[A-Z][a-z-]*$'),
     email character varying(256) unique check(email like '%_@_%.__%'),
     phone character varying(16) unique check(phone ~ '[0-9]{9}')
@@ -14,7 +15,8 @@ create table classes (
 
 create table students (
     student_id numeric(10) check (student_id >= 0) primary key,
-    name character varying(1024) not null check(name ~ '^[A-Z][a-z]*$'),
+    PESEL character varying(11) not null unique,
+    name character varying(1024) not null check(name ~ '^([A-Z][a-z]*\s?)+'),
     surname character varying(1024) not null check(surname ~ '^[A-Z][a-z-]*$'),
     email character varying(256) unique check(email like '%_@_%.__%'),
     phone character varying(16) unique check(phone ~ '[0-9]+')
@@ -28,7 +30,8 @@ create table classes_students (
 
 create table legal_guardians (
     guardian_id numeric(10) check (guardian_id >= 0) primary key,
-    name character varying(1024) not null check(name ~ '^[A-Z][a-z]*$'),
+    PESEL character varying(11) not null unique,
+    name character varying(1024) not null check(name ~ '^([A-Z][a-z]*\s?)+'),
     surname character varying(1024) not null check(surname ~ '^[A-Z][a-z-]*$'),
     email character varying(256) unique check(email like '%_@_%.__%'),
     phone character varying(16) unique check(phone ~ '[0-9]+')
