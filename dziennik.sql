@@ -1,13 +1,13 @@
 create table teachers (
     teacher_id numeric(10) check (teacher_id >= 0) primary key,
-    PESEL character varying(11) not null unique,
-    name character varying(1024) not null check(name ~ '^([A-Z][a-z]*\s?)+'),
-    surname character varying(1024) not null check(surname ~ '^[A-Z][a-z-]*$'),
-    city character varying(1024) not null,
-    street character varying(1024) not null,
-    postalCode character varying(1024) not null,
-    email character varying(256) check(email like '%_@_%.__%'),
-    phone character varying(16) check(phone ~ '[0-9]{9}')
+    PESEL character varying(11) not null,
+    name character varying(1024) not null check(name ~ '^([[:upper:]][[:lower:]]+\s?)+$'),
+    surname character varying(1024) not null check(surname ~ '^([[:upper:]][[:lower:]]+-?)+$'),
+    city character varying(128) not null,
+    street character varying(128) not null,
+    postalCode character varying(16) not null,
+    email character varying(256) check(email ~ '[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,4}'),
+    phone character varying(16) check(phone ~ '[0-9]+')
 );
 
 create table groups (
@@ -17,37 +17,37 @@ create table groups (
 
 create table students (
     student_id numeric(10) check (student_id >= 0) primary key,
-    PESEL character varying(11) not null unique,
-    name character varying(1024) not null check(name ~ '^([A-Z][a-z]*\s?)+'),
-    surname character varying(1024) not null check(surname ~ '^[A-Z][a-z-]*$'),
-    city character varying(1024) not null,
-    street character varying(1024) not null,
-    postalCode character varying(1024) not null,
-    email character varying(256) check(email like '%_@_%.__%'),
+    PESEL character varying(11) not null,
+    name character varying(1024) not null check(name ~ '^([[:upper:]][[:lower:]]+\s?)+$'),
+    surname character varying(1024) not null check(surname ~ '^([[:upper:]][[:lower:]]+-?)+$'),
+    city character varying(128) not null,
+    street character varying(128) not null,
+    postalCode character varying(16) not null,
+    email character varying(256) check(email ~ '[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,4}'),
     phone character varying(16) check(phone ~ '[0-9]+')
 );
 
 create table groups_students (
-    group_id numeric(10) references groups,
-    student_id numeric(10) references students,
+    group_id numeric(10) references groups on delete cascade,
+    student_id numeric(10) references students on delete cascade,
     primary key(group_id, student_id)
 );
 
 create table legal_guardians (
     guardian_id numeric(10) check (guardian_id >= 0) primary key,
-    PESEL character varying(11) not null unique,
-    name character varying(1024) not null check(name ~ '^([A-Z][a-z]*\s?)+'),
-    surname character varying(1024) not null check(surname ~ '^[A-Z][a-z-]*$'),
-    city character varying(1024) not null,
-    street character varying(1024) not null,
-    postalCode character varying(1024) not null,
-    email character varying(256) check(email like '%_@_%.__%'),
+    PESEL character varying(11) not null,
+    name character varying(1024) not null check(name ~ '^([[:upper:]][[:lower:]]+\s?)+$'),
+    surname character varying(1024) not null check(surname ~ '^([[:upper:]][[:lower:]]+-?)+$'),
+    city character varying(128) not null,
+    street character varying(128) not null,
+    postalCode character varying(16) not null,
+    email character varying(256) check(email ~ '[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,4}'),
     phone character varying(16) check(phone ~ '[0-9]+')
 );
 
 create table guardians_students (
-    guardian_id numeric(10) references legal_guardians,
-    student_id numeric(10) references students,
+    guardian_id numeric(10) references legal_guardians on delete cascade,
+    student_id numeric(10) references students on delete cascade,
     primary key(guardian_id, student_id)
 );
 
@@ -58,21 +58,22 @@ create table subjects (
 
 ---Subjects given teacher can teach
 create table teacher_subjects (
-    teacher_id numeric(10) references teachers,
-    subject_id numeric(10) references subjects,
+    teacher_id numeric(10) references teachers on delete cascade,
+    subject_id numeric(10) references subjects on delete cascade,
     primary key (teacher_id,subject_id)
 );
 
 create table lessons (
     lesson_id numeric(10) check (lesson_id >= 0) primary key,
-    group_id numeric(10) not null references groups,
-    subject_id numeric(10) not null references subjects,
-    topic character varying(256) not null
+    group_id numeric(10) not null references groups on delete cascade,
+    subject_id numeric(10) not null references subjects on delete cascade,
+    topic character varying(256) not null,
+    date date not null check(date > now())
 );
 
 create table absences (
-    lesson_id numeric(10) references lessons,
-    student_id numeric(10) references students,
+    lesson_id numeric(10) references lessons on delete cascade,
+    student_id numeric(10) references students on delete cascade,
     absence_type character check(absence_type ~ '[ONSZ]'),
     primary key(lesson_id, student_id)
 );
@@ -80,9 +81,9 @@ create table absences (
 create table teachers_groups_subjects (
     teacher_id numeric(10) not null,
     subject_id numeric(10) not null,
-    group_id numeric(10) not null references groups,
+    group_id numeric(10) not null references groups on delete cascade,
     primary key (subject_id, group_id),
-    foreign key (teacher_id, subject_id) references teacher_subjects
+    foreign key (teacher_id, subject_id) references teacher_subjects on delete cascade
 );
 
 create type grade as enum ('1','1+','2-','2','2+','3-','3','3+','4-','4','4+','5-','5','5+','6-','6');
@@ -108,10 +109,10 @@ create cast (grade as numeric(3,2)) with function grade_to_numeric(grade) as imp
 create table grades (
     value grade not null,
     weight int not null check(weight >= 0),
-    student_id numeric(10) not null references students,
+    student_id numeric(10) not null references students on delete cascade,
     subject_id numeric(10) not null,
     teacher_id numeric(10) not null,
-    foreign key (teacher_id, subject_id) references teacher_subjects
+    foreign key (teacher_id, subject_id) references teacher_subjects on delete cascade
 );
 
 create table exams (
@@ -120,7 +121,7 @@ create table exams (
     group_id numeric(10) not null,
     date date not null check (date>now()),
     description character varying(256),
-    foreign key (group_id, subject_id) references teachers_groups_subjects
+    foreign key (subject_id, group_id) references teachers_groups_subjects on delete cascade
 );
 
 
@@ -171,7 +172,7 @@ begin
     select into am_i_in_given_group count(*) from groups_students
         where group_id = my_group and student_id = new.student_id;
     if am_i_in_given_group = 0 then
-        raise exception 'trying to set absence of student which is not in given group';
+        raise exception 'Error: Trying to set an absence of a student which is not in given group';
     end if;
     return new;
 
@@ -182,56 +183,8 @@ language plpgsql;
 create trigger absences_students_check before insert or update on absences
     for each row execute procedure absences_students_check();
 
---BEGIN REMOVE TRIGGERS
-
-create or replace function remove_student()
-returns trigger as $remove_student$
-begin
-    delete from absences a where a.student_id = old.student_id;
-    delete from grades g where g.student_id = old.student_id;
-    delete from guardians_students gs where gs.student_id = old.student_id;
-    delete from groups_students cs where cs.student_id = old.student_id;
-    return old;
-end;
-$remove_student$
-language plpgsql;
-
-create trigger remove_student before delete on students
-    for each row execute procedure remove_student();
-
-create or replace function remove_legal_guardian()
-returns trigger as $remove_legal_guardian$
-begin
-    SET session_replication_role = replica;
-    delete from guardians_students gs where gs.guardian_id = old.guardian_id;
-    SET session_replication_role = default;
-    return old;
-end;
-$remove_legal_guardian$
-language plpgsql;
-
-create trigger remove_legal_guardian before delete on legal_guardians
-    for each row  execute procedure remove_legal_guardian();
-
-create or replace function remove_guardian_student()
-returns trigger as $remove_guardian_student$
-begin
-    if((select count(*) from guardians_students) < 1) then
-    SET session_replication_role = replica;
-    delete from legal_guardians lg where lg.guardian_id = old.guardian_id;
-    SET session_replication_role = default;
-    end if;
-    return old;
-end;
-$remove_guardian_student$
-language plpgsql;
-
-create trigger remove_guardian_student after delete on guardians_students
-    for each row execute procedure remove_guardian_student();
-
---END REMOVE TRIGGERS
-
 --BEGIN PESEL 
+
 CREATE OR REPLACE FUNCTION PESEL_check() RETURNS trigger AS $PESEL_check$
 declare
 sum numeric = 0;
