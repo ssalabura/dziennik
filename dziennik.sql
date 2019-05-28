@@ -82,7 +82,10 @@ create table teachers_groups_subjects (
     teacher_id numeric(10) not null,
     subject_id numeric(10) not null,
     group_id numeric(10) not null references groups on delete cascade,
-    primary key (subject_id, group_id),
+    day_id numeric(1) not null check(day_id >= 1 and day_id <= 7),
+    slot numeric(2) not null check(slot >= 1 and slot <= 10),
+
+    primary key (subject_id, group_id, day_id,slot),
     foreign key (teacher_id, subject_id) references teacher_subjects on delete cascade
 );
 
