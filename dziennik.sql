@@ -152,6 +152,10 @@ create or replace view groups_subjects as
 create or replace view students_in_groups as
     select group_id, name, student_id from groups_students join groups using(group_id) order by 1;
 
+create or replace view students_subjects as
+    select distinct sg.student_id, sg.group_id, tgs.subject_id, tgs.teacher_id from students_in_groups sg
+        join teachers_groups_subjects tgs on(tgs.group_id = sg.group_id ) order by 1,2,3,4;
+
 create or replace view groups_avg as
     select group_id, c.name"group_name", subject_id, s.name"subject_name", round(sum(value * weight) / sum(weight), 2)"avg" from grades g
     join groups_students cs using(student_id)
@@ -162,6 +166,32 @@ create or replace view groups_avg as
     order by group_id;
 
 
+--GRADES INSERT TRIGGER
+create or replace function grades_students_check()
+returns trigger as $grades_students_check$
+declare
+    learns_subject int;
+    teaches int;
+begin
+    select into learns_subject count(*) from students_subjects where student_id = new.student_id and subject_id = new.subject_id;
+    select into teaches count(*) from teachers_groups_subjects where teacher_id = new.teacher_id and subject_id = new.subject_id;
+    if learns_subject = 0  then
+        raise exception 'Error: Trying to add grade to student which does not learn given subject';
+    end if;
+    if teaches = 0  then
+        raise exception 'Error: Trying to add grade, but given teacher does not teach this subject';
+    end if;
+    return new;
+
+end;
+$grades_students_check$
+language plpgsql;
+
+create trigger grades_students_check before insert or update on grades
+    for each row execute procedure grades_students_check();
+
+
+--ABSENCES INSERT TRIGGER
 create or replace function absences_students_check()
 returns trigger as $absences_students_check$
 declare
