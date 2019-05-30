@@ -419,126 +419,201 @@ INSERT INTO "students" (student_id, PESEL, name, surname, street, city, postalCo
 INSERT INTO "students" (student_id, PESEL, name, surname, street, city, postalCode, email, phone) VALUES ('119','98112638817','Abbot','Carter','9101 Vanguard Drive','Anchorage','99507','sed.turpis.nec@rutrumFusce.com','272847689');
 INSERT INTO "students" (student_id, PESEL, name, surname, street, city, postalCode, email, phone) VALUES ('120','99051259679','Tyrone','Nielsen','912 Countryside Lane','Montgomery','36117','urna.Ut@a.org','946518499');
 
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('20','1');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('17','2');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('6','3');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('5','4');
+--1a Klasa
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','1');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('17','1');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','2');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','3');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','4');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','5');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('4','6');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('9','7');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('18','8');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('10','9');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('14','10');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('16','11');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('13','12');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('11','13');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('15','14');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','6');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','7');
+--Języki
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('17','1');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('21','2');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('32','3');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('24','4');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('32','5');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('22','6');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('32','7');
+--WF
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('49','1');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('49','2');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('68','3');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('49','4');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('68','5');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('68','6');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('68','7');
+--Angielski
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('93','1');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('81','2');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('93','3');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('81','4');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('93','5');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('81','6');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('81','7');
+
+--1b Klasa
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('2','8');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('2','9');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('2','10');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('2','11');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('2','12');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('2','13');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('2','14');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('2','15');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('12','16');
+--Języki
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('22','8');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('18','9');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('33','10');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('18','11');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('33','12');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('33','13');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('25','14');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('25','15');
+--WF
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('52','8');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('62','9');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('52','10');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('62','11');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('52','12');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('52','13');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('62','14');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('62','15');
+--Angielski
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('77','8');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('77','9');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('98','10');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('77','11');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('98','12');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('77','13');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('77','14');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('98','15');
+
+
+
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('3','16');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('3','17');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','18');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('8','19');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('19','20');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('12','21');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('20','22');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','23');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('5','24');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('19','25');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('9','26');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('3','18');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('3','19');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('3','20');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('3','21');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('3','22');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('3','23');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('3','24');
+
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('4','25');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('4','26');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('4','27');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('2','28');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','29');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('17','30');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('6','31');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('8','32');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','33');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('9','34');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('14','35');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('15','36');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('15','37');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('12','38');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('2','39');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('19','40');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('16','41');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('10','42');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('3','43');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('4','44');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('20','45');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('18','46');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('6','47');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('3','48');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','49');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('10','50');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('5','51');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('9','52');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('14','53');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('12','54');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('11','55');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('4','28');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('4','29');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('4','30');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('4','31');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('4','32');
+
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('5','33');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('5','34');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('5','35');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('5','36');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('5','37');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('5','38');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('5','39');
+
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('6','40');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('6','41');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('6','42');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('6','43');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('6','44');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('6','45');
+
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','46');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','47');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','48');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','49');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','50');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','51');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','52');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','53');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','54');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','55');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','56');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('5','57');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('10','58');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('2','59');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('18','60');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('5','61');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('14','62');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('12','63');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('11','64');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('18','65');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('15','66');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('12','67');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('6','68');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('14','69');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('4','70');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('14','71');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('6','72');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('12','73');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('18','74');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('14','75');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('4','76');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','77');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('20','78');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('17','79');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','80');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('5','81');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('14','82');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('17','83');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','84');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('20','85');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('9','86');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('14','87');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('10','88');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','89');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('18','90');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('20','91');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('20','92');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('16','93');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('17','94');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','95');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','96');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('3','97');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('5','98');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('4','99');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','100');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('18','101');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('5','102');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('18','103');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('8','104');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('2','105');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('9','106');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('13','107');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('11','108');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('12','109');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('20','110');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('2','111');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('12','112');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('13','113');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('4','114');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('7','115');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('6','116');
+
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('8','57');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('8','58');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('8','59');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('8','60');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('8','61');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('8','62');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('8','63');
+
+
+
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('9','64');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('9','65');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('9','66');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('9','67');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('9','68');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('9','69');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('9','70');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('9','71');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('9','72');
+
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('10','73');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('10','74');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('10','75');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('10','76');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('10','77');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('10','78');
+
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('11','79');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('11','80');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('11','81');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('11','82');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('11','83');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('11','84');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('11','85');
+
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('12','86');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('12','87');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('12','88');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('12','89');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('12','90');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('12','91');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('12','92');
+
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('13','93');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('13','94');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('13','95');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('13','96');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('13','97');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('13','98');
+
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('14','99');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('14','100');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('14','101');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('14','102');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('14','103');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('14','104');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('14','105');
+
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('15','106');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('15','107');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('15','108');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('15','109');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('15','110');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('15','111');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('15','112');
+
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('16','113');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('16','114');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('16','115');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('16','116');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('16','117');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('16','118');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('4','119');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('4','120');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('16','119');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('16','120');
+
+
 
 INSERT INTO "legal_guardians" (guardian_id, PESEL, name, surname, street, city, postalCode, email, phone) VALUES ('1','00210717433','Nathaniel','Reeves','10 Dalry Lane','Savannah','31419','Abbigail@paolo.ca','893412115');
 INSERT INTO "legal_guardians" (guardian_id, PESEL, name, surname, street, city, postalCode, email, phone) VALUES ('2','00231383174','Abraham','Maxwell','10124 Watsonville Road','Louisville','40272','Abner.Orn@ila.name','656611963');
