@@ -74,7 +74,6 @@ create table lessons (
 create table absences (
     lesson_id numeric(10) references lessons on delete cascade,
     student_id numeric(10) references students on delete cascade,
-    absence_type character check(absence_type ~ '[ONSZ]'),
     primary key(lesson_id, student_id)
 );
 
