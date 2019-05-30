@@ -182,7 +182,7 @@ INSERT INTO "groups" (group_id, name) VALUES ('19','2c,d,e,g,h rosyjski');
 INSERT INTO "groups" (group_id, name) VALUES ('20','2a,b,f rosyjski');
 
 INSERT INTO "groups" (group_id, name) VALUES ('21','1* francuski A2');
-INSERT INTO "groups" (group_id, name) VALUES ('22','1* francuski B1');
+INSERT INTO "groups" (group_id, name) VALUES ('22','1\a,e francuski B1');
 INSERT INTO "groups" (group_id, name) VALUES ('23','2* francuski');
 
 INSERT INTO "groups" (group_id, name) VALUES ('24','1a,e hiszpański');
@@ -294,6 +294,891 @@ INSERT INTO "groups" (group_id, name) VALUES ('105','1c 1/2 ang');
 
 
 
+
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (1,1,2,2,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (1,1,2,2,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (1,1,2,4,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (1,1,2,4,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (1,1,2,5,8);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (2,2,10,5,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (2,2,11,4,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (2,2,12,5,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (2,2,16,4,8);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (3,3,1,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (3,3,2,4,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (3,3,3,4,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (3,3,4,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (3,3,5,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (3,3,6,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (3,3,8,2,5);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,75,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,75,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,75,5,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,75,5,5);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,76,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,76,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,76,2,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,76,4,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,77,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,77,3,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,77,4,5);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,33,3,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,33,3,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,34,5,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,34,5,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,36,1,9);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,36,4,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,38,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,38,1,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,39,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,39,3,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,41,2,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,41,2,8);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,47,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,47,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,47,4,5);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,48,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,48,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,48,2,7);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,49,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,49,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,49,4,6);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,50,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,50,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,50,5,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,51,3,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,51,5,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,51,5,6);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (7,7,1,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (7,7,1,2,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (7,7,1,4,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (7,7,1,4,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (7,7,6,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (7,7,6,2,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (7,7,6,4,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (7,7,6,4,6);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,95,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,77,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,82,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,105,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,96,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,99,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,76,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,98,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,102,3,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,84,3,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,79,4,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,92,4,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,93,4,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,100,4,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,103,5,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,81,5,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,8,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,8,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,8,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,8,4,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,7,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,7,3,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,7,4,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,7,4,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,7,5,3);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,9,17,1,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,9,17,4,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,9,18,3,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,9,18,3,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,9,19,2,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,9,19,2,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,9,20,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,9,20,3,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,4,105,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,4,105,2,5);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,11,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,11,2,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,11,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,11,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,11,4,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,11,5,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,11,5,6);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,1,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,1,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,1,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,1,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,1,3,5);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,15,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,15,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,15,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,15,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,15,4,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,15,4,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,15,5,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,15,5,4);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (12,10,11,1,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (12,10,11,3,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (12,10,88,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (12,10,88,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (12,10,89,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (12,10,89,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (12,10,3,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (12,10,3,2,2);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,1,5,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,1,5,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,2,5,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,2,5,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,3,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,3,3,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,4,4,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,4,4,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,5,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,5,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,6,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,6,1,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,7,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,7,2,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,8,5,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,8,5,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,15,4,8);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,4,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,4,1,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,4,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,4,3,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,12,3,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,12,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,12,5,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,12,5,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,2,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,2,3,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,2,4,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,2,4,3);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,5,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,5,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,6,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,6,5,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,7,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,7,5,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,16,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,16,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,16,5,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,16,5,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,13,9,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,13,9,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,13,9,2,1);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,2,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,2,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,10,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,10,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,4,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,4,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,75,4,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,75,4,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,94,4,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,94,4,7);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (17,5,46,2,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (17,5,46,2,8);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (18,15,2,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (18,15,3,1,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (19,5,37,3,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (19,5,37,3,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (19,5,43,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (19,5,43,3,4);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,52,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,52,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,52,5,3);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,53,3,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,53,4,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,53,4,7);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,54,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,54,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,54,5,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,55,3,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,55,5,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,55,5,6);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,42,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,42,1,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,45,2,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,45,2,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,44,3,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,44,3,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,40,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,40,3,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,32,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,32,3,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,35,5,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,35,5,2);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,101,1,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,101,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,101,4,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,101,4,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,101,5,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,101,5,2);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,102,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,102,5,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,102,5,6);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,103,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,103,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,103,4,3);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,104,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,104,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,104,4,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,104,4,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,104,5,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,104,5,4);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,12,1,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,12,1,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,12,2,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,12,2,4,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,12,3,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,12,3,4,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,11,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,11,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,11,4,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,12,2,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,12,3,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,12,4,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,10,1,9);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,10,3,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,10,4,8);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,24,4,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,24,4,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,25,5,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,25,5,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,26,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,26,1,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,27,3,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,27,3,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,28,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,28,3,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,29,5,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,29,5,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,30,2,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,30,2,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,31,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,31,3,8);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (25,10,10,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (25,10,10,5,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (25,10,2,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (25,10,2,5,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (25,10,75,4,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (25,10,75,4,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (25,10,94,4,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (25,10,94,4,5);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,5,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,6,2,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,6,4,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,1,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,1,2,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,7,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,4,5,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,8,3,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,14,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,14,4,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,90,5,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,90,5,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,91,1,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,91,1,2);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,56,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,56,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,56,4,5);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,57,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,57,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,57,2,7);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,58,3,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,58,4,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,58,4,7);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,59,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,59,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,59,5,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,60,3,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,60,5,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,60,5,6);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,3,15,1,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,3,15,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,3,15,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,3,15,4,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,3,15,4,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,3,7,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,3,7,3,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,17,13,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,17,13,3,2);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,13,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,13,1,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,13,3,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,13,4,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,13,4,2);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,3,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,3,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,3,5,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,3,5,6);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,5,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,5,4,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,5,5,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,5,5,8);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,7,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,7,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,7,3,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,7,5,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,15,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,15,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,15,2,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,15,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,15,3,5);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,11,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,11,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,11,5,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,11,5,8);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,9,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,9,3,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,9,4,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,9,5,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,9,5,6);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,4,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,4,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,4,5,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,4,5,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,10,2,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,10,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,10,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,10,3,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,10,4,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,10,4,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,10,5,3);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,78,1,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,78,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,78,4,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,78,4,2);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,106,1,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,106,1,9);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,106,5,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,106,5,2);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,79,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,79,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,79,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,79,3,8);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,80,1,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,80,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,80,4,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,80,4,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,80,5,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,80,5,2);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,81,3,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,81,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,81,4,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,81,5,5);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,82,4,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,82,5,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,82,5,6);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (35,15,9,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (35,15,9,4,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (35,15,9,4,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (35,15,9,5,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (35,15,9,5,2);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,7,2,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,1,3,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,5,3,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,4,3,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,4,4,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,6,4,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,8,4,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,12,3,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,12,4,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,80,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,80,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,101,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,101,2,4);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,18,82,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,18,103,5,6);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,16,2,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,16,3,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,16,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,16,4,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,16,5,7);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,12,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,12,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,12,3,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,12,4,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,12,4,7);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,12,4,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,12,4,2,5);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,12,8,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,12,8,2,3);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,14,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,14,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,14,5,7);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,13,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,13,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,13,3,6);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,15,4,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,15,5,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,15,5,8);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,83,1,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,83,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,83,2,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,83,4,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,83,5,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,83,5,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,84,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,84,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,84,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,84,3,7);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,85,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,85,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,85,4,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,85,4,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,85,5,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,85,5,2);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,6,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,6,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,6,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,6,4,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,6,4,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,14,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,14,3,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,14,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,14,4,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,14,4,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,14,5,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,14,5,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,13,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,13,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,13,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,13,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,13,3,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,13,4,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,13,4,6);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,86,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,86,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,86,2,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,86,4,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,86,5,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,86,5,2);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,87,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,87,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,87,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,87,4,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,87,5,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,87,5,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,88,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,88,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,88,3,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,88,3,3);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,89,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,89,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,89,3,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,89,3,5);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (42,14,5,3,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (42,14,8,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (42,14,7,3,7);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,100,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,100,4,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,105,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,76,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,99,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,96,2,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,23,104,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,23,87,4,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,92,2,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,92,2,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,93,3,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,77,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,81,3,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,98,3,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,79,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,101,4,3);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,10,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,10,4,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,10,5,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,10,5,2);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,14,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,14,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,14,2,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,14,2,6);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,16,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,16,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,16,3,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,16,3,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,16,4,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,16,4,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,16,5,3);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,8,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,8,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,8,3,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,8,4,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,8,5,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,8,5,5);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,1,2,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,1,5,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,2,3,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,2,5,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,3,3,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,3,5,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,11,3,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,11,5,9);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,12,3,9);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,12,5,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,13,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,13,5,7);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,61,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,61,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,61,4,5);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,62,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,62,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,62,5,3);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,63,1,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,63,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,63,2,3);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,64,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,64,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,64,3,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,65,3,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,65,4,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,65,4,7);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,90,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,90,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,90,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,90,4,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,90,4,2);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,91,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,91,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,91,4,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,91,4,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,91,5,2);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,92,3,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,92,3,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,92,4,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,92,5,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,93,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,93,3,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,93,5,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,93,5,5);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,66,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,66,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,66,4,5);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,67,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,67,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,67,2,7);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,68,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,68,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,68,4,6);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,69,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,69,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,69,3,4);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,94,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,94,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,94,5,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,94,5,5);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,95,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,95,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,95,3,5);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,96,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,96,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,96,4,3);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,97,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,97,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,97,4,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,97,4,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,97,5,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,97,5,2);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,20,21,1,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,20,21,4,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,20,22,5,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,20,22,5,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,20,23,2,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,20,23,2,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,21,1,5,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,21,2,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,21,3,5,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,21,4,4,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,21,5,5,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,21,6,5,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,21,7,5,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,21,8,2,6);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,3,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,3,4,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,1,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,6,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,11,4,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,11,4,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,12,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,12,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,80,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,80,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,101,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,101,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,88,3,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,89,3,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,89,3,3);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,10,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,10,3,9);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,5,1,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,5,5,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,6,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,6,3,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,8,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,8,5,9);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,7,3,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,7,4,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,9,4,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,9,5,7);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,16,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,16,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,16,4,7);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,8,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,8,2,8);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,1,5,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,2,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,3,4,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,4,4,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,5,2,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,6,4,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,7,5,5);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,17,16,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,17,16,4,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,17,16,5,6);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,9,1,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,9,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,9,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,9,2,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,9,3,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,9,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,9,4,1);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,5,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,5,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,5,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,5,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,5,4,2);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,98,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,98,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,98,4,5);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,99,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,99,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,99,2,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,99,4,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,100,2,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,100,3,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,100,3,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,100,5,3);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,86,1,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,86,1,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,86,5,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,86,5,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,83,1,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,83,1,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,83,5,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,83,5,2);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,90,2,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,90,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,90,4,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,90,4,5);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,91,2,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,91,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,91,4,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,91,4,2);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,102,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,102,1,6);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,95,5,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,95,5,6);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,70,1,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,70,2,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,70,2,7);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,71,1,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,71,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,71,2,3);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,72,2,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,72,3,3);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,72,3,4);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,73,3,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,73,5,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,73,5,6);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,107,3,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,107,3,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,107,5,4);
+
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (58,6,74,1,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (58,6,74,2,2);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (58,6,74,2,3);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (59,19,16,1,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (59,19,16,5,4);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (59,19,15,1,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (59,19,15,5,5);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (59,19,14,1,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (59,19,14,5,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (59,19,4,5,6);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (59,19,4,5,7);
+
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (60,1,3,3,1);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (60,1,3,4,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (60,1,3,4,8);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (60,1,3,5,7);
+INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (60,1,3,5,8);
 
 
 
@@ -421,7 +1306,6 @@ INSERT INTO "students" (student_id, PESEL, name, surname, street, city, postalCo
 
 --1a Klasa
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','1');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('17','1');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','2');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','3');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('1','4');
@@ -434,7 +1318,7 @@ INSERT INTO "groups_students" (group_id, student_id) VALUES ('21','2');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('32','3');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('24','4');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('32','5');
-INSERT INTO "groups_students" (group_id, student_id) VALUES ('22','6');
+INSERT INTO "groups_students" (group_id, student_id) VALUES ('2','6');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('32','7');
 --WF
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('49','1');
@@ -489,8 +1373,6 @@ INSERT INTO "groups_students" (group_id, student_id) VALUES ('98','12');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('77','13');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('77','14');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('98','15');
-
-
 
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('3','16');
 INSERT INTO "groups_students" (group_id, student_id) VALUES ('3','17');
@@ -897,888 +1779,6 @@ INSERT INTO "lessons" (lesson_id, group_id, subject_id, topic) VALUES (58, 4, 19
 INSERT INTO "lessons" (lesson_id, group_id, subject_id, topic) VALUES (59, 5, 20, 'Temat 3');
 
 
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (1,1,2,2,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (1,1,2,2,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (1,1,2,4,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (1,1,2,4,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (1,1,2,5,8);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (2,2,10,5,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (2,2,11,4,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (2,2,12,5,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (2,2,16,4,8);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (3,3,1,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (3,3,2,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (3,3,3,4,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (3,3,4,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (3,3,5,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (3,3,6,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (3,3,8,2,5);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,75,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,75,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,75,5,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,75,5,5);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,76,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,76,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,76,2,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,76,4,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,77,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,77,3,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (4,4,77,4,5);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,33,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,33,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,34,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,34,2,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,36,1,9);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,36,4,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,38,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,38,1,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,39,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,39,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,41,2,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (5,5,41,2,8);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,47,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,47,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,47,4,5);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,48,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,48,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,48,2,7);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,49,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,49,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,49,4,6);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,50,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,50,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,50,5,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,51,3,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,51,5,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (6,6,51,5,6);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (7,7,1,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (7,7,1,2,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (7,7,1,4,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (7,7,1,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (7,7,5,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (7,7,5,2,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (7,7,5,4,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (7,7,5,4,6);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,95,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,77,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,82,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,105,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,96,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,99,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,76,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,98,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,102,3,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,84,3,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,79,4,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,92,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,93,4,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,100,4,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,103,5,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (8,8,81,5,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,8,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,8,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,8,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,8,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,7,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,7,3,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,7,4,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,7,4,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (9,1,7,5,3);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,9,17,1,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,9,17,4,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,9,18,3,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,9,18,3,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,9,19,2,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,9,19,2,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,9,20,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,9,20,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,4,105,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (10,4,105,2,5);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,11,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,11,2,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,11,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,11,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,11,4,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,11,5,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,11,5,6);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,1,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,1,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,1,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,1,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,1,3,5);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,15,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,15,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,15,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,15,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,15,4,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,15,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,15,5,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (11,1,15,5,4);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (12,10,11,1,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (12,10,11,3,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (12,10,88,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (12,10,88,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (12,10,89,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (12,10,89,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (12,10,3,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (12,10,3,2,2);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,1,5,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,1,5,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,2,5,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,2,5,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,3,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,3,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,4,4,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,4,4,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,5,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,5,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,6,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,6,1,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,7,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,7,2,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,8,5,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,8,5,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (13,11,15,4,8);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,4,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,4,1,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,4,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,4,3,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,12,3,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,12,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,12,5,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,12,5,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,2,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,2,3,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,2,4,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (14,7,2,4,3);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,5,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,5,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,6,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,6,5,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,7,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,7,5,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,16,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,16,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,16,5,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,12,16,5,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,13,9,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,13,9,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (15,13,9,2,1);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,2,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,2,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,10,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,10,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,4,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,4,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,75,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,75,4,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,94,4,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (16,14,94,4,7);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (17,5,46,2,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (17,5,46,2,8);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (18,15,2,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (18,15,3,1,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (19,5,37,3,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (19,5,37,3,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (19,5,43,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (19,5,43,3,4);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,52,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,52,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,52,5,3);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,53,3,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,53,4,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,53,4,7);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,54,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,54,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,54,5,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,55,3,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,55,5,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (20,6,55,5,6);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,42,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,42,1,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,45,2,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,45,2,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,44,3,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,44,3,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,40,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,40,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,32,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,32,3,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,35,5,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (21,5,35,5,2);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,101,1,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,101,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,101,4,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,101,4,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,101,5,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,101,5,2);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,102,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,102,5,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,102,5,6);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,103,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,103,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,103,4,3);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,104,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,104,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,104,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,104,4,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,104,5,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (22,4,104,5,4);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,12,1,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,12,1,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,12,2,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,12,2,4,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,12,3,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,12,3,4,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,11,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,11,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,11,4,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,12,2,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,12,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,12,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,10,2,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,10,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (23,13,10,4,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,24,4,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,24,4,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,25,5,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,25,5,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,26,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,26,1,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,27,3,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,27,3,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,28,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,28,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,29,5,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,29,5,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,30,2,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,30,2,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,31,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (24,16,31,3,8);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (25,10,10,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (25,10,10,5,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (25,10,2,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (25,10,2,5,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (25,10,75,4,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (25,10,75,4,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (25,10,94,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (25,10,94,4,5);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,5,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,6,2,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,6,4,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,1,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,1,2,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,7,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,4,5,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,8,3,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,14,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,14,4,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,90,5,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,90,5,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,91,1,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (26,15,91,1,2);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,56,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,56,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,56,4,5);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,57,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,57,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,57,2,7);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,58,3,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,58,4,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,58,4,7);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,59,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,59,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,59,5,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,60,3,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,60,5,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (27,6,60,5,6);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,3,15,1,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,3,15,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,3,15,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,3,15,4,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,3,15,4,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,3,7,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,3,7,3,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,17,13,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (28,17,13,3,2);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,13,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,13,1,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,13,3,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,13,4,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,13,4,2);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,3,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,3,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,3,5,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,3,5,6);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,5,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,5,4,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,5,5,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (29,7,5,5,8);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,7,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,7,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,7,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,7,5,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,15,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,15,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,15,2,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,15,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,15,3,5);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,11,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,11,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,11,5,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,11,5,8);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,9,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,9,3,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,9,4,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,9,5,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (30,7,9,5,6);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,4,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,4,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,4,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,4,4,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,10,2,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,10,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,10,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,10,3,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,10,4,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,10,4,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (31,1,10,5,3);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,78,1,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,78,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,78,4,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,78,4,2);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,106,1,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,106,1,9);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,106,5,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,106,5,2);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,79,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,79,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,79,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (33,4,79,3,8);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,80,1,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,80,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,80,4,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,80,4,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,80,5,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,80,5,2);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,81,3,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,81,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,81,4,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,81,5,5);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,82,4,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,82,5,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (34,4,82,5,6);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (35,15,9,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (35,15,9,4,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (35,15,9,4,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (35,15,9,5,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (35,15,9,5,2);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,7,2,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,1,3,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,5,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,4,3,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,4,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,6,4,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,8,4,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,12,3,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,12,4,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,80,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,80,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,101,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (36,10,101,2,4);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,18,82,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,18,103,5,6);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,16,2,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,16,3,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,16,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,16,4,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,16,5,7);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,12,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,12,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,12,3,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,12,4,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (37,1,12,4,7);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,12,4,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,12,4,2,5);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,12,8,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,12,8,2,3);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,14,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,14,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,14,5,7);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,13,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,13,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,13,3,6);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,15,4,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,15,5,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (38,13,15,5,8);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,83,1,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,83,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,83,2,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,83,4,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,83,5,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,83,5,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,84,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,84,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,84,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,84,3,7);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,85,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,85,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,85,4,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,85,4,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,85,5,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (39,4,85,5,2);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,6,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,6,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,6,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,6,4,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,6,4,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,14,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,14,3,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,14,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,14,4,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,14,4,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,14,5,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,14,5,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,13,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,13,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,13,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,13,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,13,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,13,4,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (40,1,13,4,6);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,86,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,86,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,86,2,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,86,4,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,86,5,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,86,5,2);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,87,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,87,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,87,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,87,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,87,5,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,87,5,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,88,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,88,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,88,3,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,88,3,3);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,89,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,89,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,89,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (41,4,89,3,5);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (42,14,5,3,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (42,14,8,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (42,14,7,3,7);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,100,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,100,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,105,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,76,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,97,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,96,2,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,23,104,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,23,87,4,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,92,2,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,92,2,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,68,3,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,52,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,81,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,98,3,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,79,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (43,18,101,4,3);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,10,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,10,4,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,10,5,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,10,5,2);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,14,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,14,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,14,2,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,14,2,6);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,16,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,16,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,16,3,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,16,3,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,16,4,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,16,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,16,5,3);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,8,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,8,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,8,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,8,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,8,5,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (44,7,8,5,5);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,1,2,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,1,5,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,2,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,2,5,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,3,3,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,3,5,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,11,3,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,11,5,9);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,12,3,9);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,12,5,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,13,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (45,19,13,5,7);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,61,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,61,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,61,4,5);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,62,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,62,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,62,5,3);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,63,1,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,63,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,63,2,3);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,64,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,64,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,64,3,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,65,3,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,65,4,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (46,6,65,4,7);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,90,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,90,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,90,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,90,4,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,90,4,2);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,91,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,91,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,91,4,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,91,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,91,5,2);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,92,3,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,92,3,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,92,4,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,92,5,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,93,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,93,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,93,5,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (47,4,93,5,5);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,66,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,66,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,66,4,5);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,67,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,67,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,67,2,7);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,68,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,68,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,68,4,6);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,69,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,69,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (48,6,69,3,4);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,94,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,94,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,94,5,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,94,5,5);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,95,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,95,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,95,3,5);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,96,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,96,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,96,4,3);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,97,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,97,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,97,4,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,97,4,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,97,5,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (49,4,97,5,2);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,20,21,1,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,20,21,4,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,20,22,5,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,20,22,5,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,20,23,2,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,20,23,2,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,21,1,5,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,21,2,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,21,3,5,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,21,4,4,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,21,5,5,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,21,6,5,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,21,7,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (50,21,8,5,8);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,3,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,3,4,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,1,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,6,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,11,4,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,11,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,12,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,12,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,80,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,80,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,101,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,101,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,88,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,89,3,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (51,14,89,3,3);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,10,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,10,3,9);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,5,1,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,5,5,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,6,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,6,3,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,8,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,8,5,9);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,7,3,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,7,4,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,9,4,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (52,19,9,5,7);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,16,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,16,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,16,4,7);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,8,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,8,2,8);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,1,5,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,2,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,3,4,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,4,4,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,5,2,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,6,4,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,22,7,5,5);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,17,16,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,17,16,4,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (53,17,16,5,6);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,9,1,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,9,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,9,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,9,2,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,9,3,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,9,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,9,4,1);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,5,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,5,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,5,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,5,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (54,1,5,4,2);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,98,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,98,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,98,4,5);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,99,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,99,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,99,2,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,99,4,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,100,2,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,100,3,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,100,3,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (55,4,100,5,3);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,86,1,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,86,1,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,86,5,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,86,5,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,83,1,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,83,1,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,83,5,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,83,5,2);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,90,2,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,90,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,90,4,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,90,4,5);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,91,2,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,91,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,91,4,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,91,4,2);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,102,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,102,1,6);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,95,5,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (56,18,95,5,6);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,70,1,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,70,2,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,70,2,7);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,71,1,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,71,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,71,2,3);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,72,2,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,72,3,3);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,72,3,4);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,73,3,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,73,5,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,73,5,6);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,107,3,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,107,3,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (57,6,107,5,4);
-
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (58,6,74,1,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (58,6,74,2,2);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (58,6,74,2,3);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (59,19,16,1,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (59,19,16,5,4);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (59,19,15,1,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (59,19,15,5,5);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (59,19,14,1,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (59,19,14,5,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (59,19,4,5,6);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (59,19,4,5,7);
-
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (60,1,3,3,1);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (60,1,3,4,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (60,1,3,4,8);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (60,1,3,5,7);
-INSERT INTO "teachers_groups_subjects" (teacher_id, subject_id, group_id,day_id,slot) VALUES (60,1,3,5,8);
 
 
 

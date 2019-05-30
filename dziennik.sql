@@ -147,9 +147,9 @@ language plpgsql;
 create trigger teacher_insert_check before insert or update on teachers
     for each row execute procedure teacher_insert_check();
 
-create or replace view groups_subjects as
-    select group_id, c.name"group_name", subject_id, s.name"subject_name" 
-    from teachers_groups_subjects join groups c using(group_id) join subjects s using(subject_id);
+create or replace view groups_subjects_plan as
+    select group_id, c.name"group_name", subject_id, s.name"subject_name", day_id, slot
+    from teachers_groups_subjects join groups c using(group_id) join subjects s using(subject_id) order by 1,2,3;
 
 create or replace view students_in_groups as
     select group_id, name, student_id from groups_students join groups using(group_id) order by 1;
@@ -167,6 +167,55 @@ create or replace view groups_avg as
     group by group_id, c.name, subject_id, s.name
     order by group_id;
 
+--TRIGGER ON ADDDING SUBJECTS TO GROUP
+--GENERALLY ONE SHOULD AVOID ADDING SUBJECTS TO GROUPS WHEN GROUP HAS STUDENTS
+create or replace function group_subject_add_check()
+returns trigger as $group_subject_add_check$
+declare
+    students_conflicts int;
+    teachers_conflicts int;
+begin
+    --get all students in this group, then get all groups where any students of new group belong 
+    select into students_conflicts count(*) from groups_students gs1 join groups_students gs2 using(student_id) 
+        join groups_subjects_plan p on(gs2.group_id = p.group_id)
+        where gs1.group_id = new.group_id and p.slot = new.slot and p.day_id = new.day_id;
+    
+    select into teachers_conflicts count(*) from teachers_groups_subjects ts
+        where ts.slot = new.slot and ts.day_id = new.day_id and ts.teacher_id = new.teacher_id
+    
+    if teachers_conflicts > 0 then
+        raise exception 'Error: after adding this subject to group there will be a teacher that has two or more lessons at the same time';
+    end if;
+    if students_conflicts > 0 then
+        raise exception 'Error: after adding this subject to group there will be a student that has two or more lessons at the same time';
+    end if;
+    return new;
+end;
+$group_subject_add_check$
+language plpgsql;
+
+create trigger group_subject_add_check before insert or update on teachers_groups_subjects
+    for each row execute procedure group_subject_add_check();
+
+
+--TRIGGER ON ADDDING STUDENTS TO GROUP
+create or replace function student_to_group_check()
+returns trigger as $student_to_group_check$
+declare
+    conflicts int;
+begin
+    select into conflicts count(*) from groups_students gs join groups_subjects_plan p1 using(group_id) join groups_subjects_plan p2 using(day_id,slot)
+        where gs.student_id = new.student_id and p2.group_id = new.group_id;
+    if conflicts > 0 then
+        raise exception 'Error: after adding to this group student will have two or more lessons at the same time';
+    end if;
+    return new;
+end;
+$student_to_group_check$
+language plpgsql;
+
+--create trigger student_to_group_check before insert or update on groups_students
+--    for each row execute procedure student_to_group_check();
 
 --GRADES INSERT TRIGGER
 create or replace function grades_students_check()
