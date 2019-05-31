@@ -10,7 +10,11 @@ Aplikacja obsługiwać będzie konta nauczycieli, rodziców/opiekunów prawnych 
 W bazie danych zawarte są również dane kontaktowe do wszystkich osób.
 
 Obecność krotki w tabeli absences oznacza, że dany uczeń był na danych zajęciach nieobecny; gdy takiej krotki nie ma, to był on obecny.
+
 Ocenę z danego przedmiotu można wystawić tylko uczniowi, który chodzi na dany przedmiot, ale nie musi jej wystawiać nauczyciel uczący daną grupę - może to być dowolny nauczyciel, który może uczyć tego przedmiotu. Ma to umożliwić wpisywanie ocen w czasie zastępstwa nauczyciela.
+Tabela exams ma przechowywać egzaminy zaplanowane lub przeprowadzone na konkretnej lekcji.
+Lekcje mogą odbywać się tylko w określonych przedziałach czasu (slotach). Każdy slot jest przedziałem czasu, w którym może odbyć się lekcja (wszystkie lekcje trwają 45 min) - ma to modelować typowy podział godzin w szkołach (inaczej niż na studiach, gdzie godziny zajęć nie są narzucone z góry).
+
 
 Podział pracy:
 
