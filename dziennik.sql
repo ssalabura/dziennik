@@ -77,13 +77,17 @@ create table absences (
     primary key(lesson_id, student_id)
 );
 
+create table slots(
+    slot numeric(10) primary key,
+    start_time time not null
+);
+
 create table teachers_groups_subjects (
     teacher_id numeric(10) not null,
     subject_id numeric(10) not null,
     group_id numeric(10) not null references groups on delete cascade,
     day_id numeric(1) not null check(day_id >= 1 and day_id <= 7),
-    slot numeric(2) not null check(slot >= 1 and slot <= 10),
-
+    slot numeric(10) not null references slots,
     primary key (subject_id, group_id, day_id,slot),
     foreign key (teacher_id, subject_id) references teacher_subjects on delete cascade
 );
@@ -166,6 +170,36 @@ create or replace view groups_avg as
     join subjects s using(subject_id)
     group by group_id, c.name, subject_id, s.name
     order by group_id;
+
+
+--TRIGGER FOR ADDING SLOT
+create or replace function slot_add_check()
+returns trigger as $slot_add_check$
+declare
+    ov int;
+    tim time;
+    n int;
+begin
+    select into ov count(*) from slots where (start_time,start_time + '45 minutes') overlaps (new.start_time, new.start_time + '45 minutes');
+    select into n count(*) from slots where slot < new.slot;
+    select into tim max(start_time) from slots where slot < new.slot;
+    if ov > 0 then
+        raise exception 'Error: lessons slots cannot overlap';
+    end if;
+    if n+1 < new.slot then
+        raise exception 'Error: slots must be indexed with 1..n without gaps';
+    end if;
+    if tim > new.start_time then
+        raise exception 'Error: lesson with higher slot must start later';
+    end if;
+    return new;
+end;
+$slot_add_check$
+language plpgsql;
+
+create trigger slot_add_check before insert or update on slots
+    for each row execute procedure slot_add_check();
+
 
 --TRIGGER ON ADDDING SUBJECTS TO GROUP
 --GENERALLY ONE SHOULD AVOID ADDING SUBJECTS TO GROUPS WHEN GROUP HAS STUDENTS

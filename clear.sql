@@ -1,4 +1,5 @@
 drop table if exists teachers cascade;
+drop table if exists slots cascade;
 drop table if exists groups cascade;
 drop table if exists students cascade;
 drop table if exists groups_students cascade;
