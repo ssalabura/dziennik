@@ -124,13 +124,9 @@ create table grades (
 );
 
 create table exams (
-    teacher_id numeric(10) not null,
-    subject_id numeric(10) not null,
-    group_id numeric(10) not null,
-    date date not null check (date>now()),
-    description character varying(256),
-    foreign key (subject_id, group_id) references teachers_groups_subjects on delete cascade
-);
+    exam_id serial primary key,
+    lesson_id numeric(10) not null references lessons,
+    description character varying(256));
 
 
 create or replace function teacher_insert_check()

@@ -2112,72 +2112,27 @@ INSERT INTO guardians_students (guardian_id, student_id) VALUES
 ('98','36'),
 ('99','59');
 
- INSERT INTO lessons (lesson_id, group_id, subject_id, topic) VALUES 
- (1, 14, 12, 'Mike like sports. Mike loves flowers. '),
- (2, 18, 8, 'Mike watches football. '),
- (3, 3, 18, 'Mike like swimming. I loves flowers. '),
- (4, 3, 4, 'Mike watches football. Rudi loves flowers. '),
- (5, 14, 7, 'Mike like swimming. Mike watches football. '),
- (6, 14, 6, 'Mike watches football. Mike loves flowers. '),
- (7, 7, 15, 'Mike watches football. I like sports. '),
- (8, 9, 7, 'Mike loves flowers. Rudi loves flowers. '),
- (9, 15, 6, 'I loves flowers. Mike watches football. '),
- (10, 14, 8, 'Rudi watches football. I like sports. '),
- (11, 5, 5, 'Mike watches football. Mike watches football. '),
- (12, 12, 14, 'I like swimming. Rudi loves flowers. '),
- (13, 11, 11, 'Rudi watches football. Rudi loves flowers. '),
- (14, 11, 13, 'Rudi watches football. Mike watches football. '),
- (15, 19, 15, 'Mike like swimming. Rudi like sports. '),
- (16, 18, 18, 'Mike like sports. '),
- (17, 15, 7, 'Mike watches football. Mike loves flowers. '),
- (18, 18, 15, 'I like sports. Rudi watches football. '),
- (19, 11, 18, 'Mike watches football. Rudi watches football. '),
- (20, 10, 8, 'Mike loves flowers. Rudi watches football. '),
- (21, 3, 8, 'Mike watches football. Mike loves flowers. '),
- (22, 12, 3, 'Rudi watches football. '),
- (23, 10, 12, 'Rudi watches football. Rudi like sports. '),
- (24, 15, 17, 'I loves flowers. Rudi watches football. '),
- (25, 13, 11, 'Mike watches football. '),
- (26, 3, 5, 'I loves flowers. Rudi watches football. '),
- (27, 19, 12, 'Rudi loves flowers. '),
- (28, 13, 14, 'Mike loves flowers. Rudi like swimming. '),
- (29, 8, 18, 'Mike watches football. Mike loves flowers. '),
- (30, 1, 16, 'Rudi like sports. Rudi watches football. '),
- (31, 14, 13, 'Mike watches football. '),
- (32, 2, 15, 'Mike watches football. Rudi watches football. '),
- (33, 11, 10, 'Mike loves flowers. Mike watches football. '),
- (34, 4, 16, 'Rudi watches football. Rudi loves flowers. '),
- (35, 5, 8, 'Rudi like sports. Mike watches football. '),
- (36, 11, 16, 'Mike watches football. I watches football. '),
- (37, 10, 19, 'Mike like swimming. I watches football. '),
- (38, 10, 2, 'Rudi watches football. Mike loves flowers. '),
- (39, 10, 7, 'Rudi loves flowers. Rudi watches football. '),
- (40, 6, 12, 'Rudi watches football. Mike watches football. '),
- (41, 5, 12, 'Mike watches football. '),
- (42, 16, 11, 'Mike like sports. '),
- (43, 8, 18, 'Mike loves flowers. Mike like sports. '),
- (44, 4, 18, 'I loves flowers. Mike like sports. '),
- (45, 12, 15, 'Mike watches football. Rudi watches football. '),
- (46, 10, 16, 'Rudi watches football. I loves flowers. '),
- (47, 6, 16, 'Mike loves flowers. Rudi watches football. '),
- (48, 9, 6, 'Mike watches football. Mike like swimming. '),
- (49, 18, 17, 'I like sports. Rudi watches football. '),
- (50, 17, 1, 'Mike watches football. Rudi like swimming. '),
- (51, 1, 1, 'Temat 1'),
- (52, 1, 2, 'Temat 1'),
- (53, 1, 5, 'Temat 1'),
- (54, 2, 6, 'Temat 4'),
- (55, 2, 9, 'Temat 9'),
- (56, 2, 10, 'Temat 15'),
- (57, 3, 17, 'Temat 7'),
- (58, 4, 19, 'Temat 8'),
- (59, 5, 20, 'Temat 3');
+ INSERT INTO lessons (lesson_id, group_id, subject_id,date,slot, topic) VALUES 
+ (1, 1, 1, '2019-05-27',3, 'Wzory Viete`a'),
+ (2, 2, 14,'2019-05-27',5, 'Budowa układu pokarmowego'),
+ (3, 89, 4,'2019-05-28',4, 'Past Perfect Continuous'),
+ (4, 100, 18,'2019-05-28',1, 'Gimp'),
+ (5, 63, 6,'2019-05-28',3, 'Haratanie w gałę'),
+ (6, 16, 17,'2019-05-28',6, 'Zwierzęta'),
+ (7, 17, 9,'2019-05-30',1, 'Ну, погоди!'),
+ (8, 4, 11,'2019-05-30',7, 'Pieniądze');
+
+INSERT INTO absences(lesson_id, student_id) VALUES
+(2,8),
+(2,15),
+(1,6),
+(3,84),
+(7,51),
+(5,78);
 
 
 
-
-
-INSERT INTO exams(teacher_id, subject_id, group_id, date, description) VALUES
-(1, 1, 3, '20200618 10:34:09 AM', 'THINKING'),
-(36, 4, 5, '20200619 12:34:05 AM', 'Punishment for bad behaviour'),
-(40, 10, 10, '20200513 08:30:00 AM', 'Createing database for school');
+INSERT INTO exams(lesson_id, description) VALUES
+(1, 'Funkcja kwadratowa'),
+(3, 'Punishment for bad behaviour'),
+(8, 'Creating database for school');
