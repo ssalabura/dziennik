@@ -63,12 +63,18 @@ create table teacher_subjects (
     primary key (teacher_id,subject_id)
 );
 
+create table slots(
+    slot numeric(10) primary key,
+    start_time time not null
+);
+
 create table lessons (
     lesson_id numeric(10) check (lesson_id >= 0) primary key,
     group_id numeric(10) not null references groups on delete cascade,
     subject_id numeric(10) not null references subjects on delete cascade,
     topic character varying(256) not null,
-    date date not null check(date > now())
+    date date not null,
+    slot numeric(10) not null references slots
 );
 
 create table absences (
@@ -77,10 +83,6 @@ create table absences (
     primary key(lesson_id, student_id)
 );
 
-create table slots(
-    slot numeric(10) primary key,
-    start_time time not null
-);
 
 create table teachers_groups_subjects (
     teacher_id numeric(10) not null,
@@ -276,6 +278,27 @@ create trigger grades_students_check before insert or update on grades
     for each row execute procedure grades_students_check();
 
 
+--LESSON INSERT TRIGGER
+--checks if there is lesson in timetable with given day and slot(isodow extracts day of week from date)
+create or replace function lesson_check()
+returns trigger as $lesson_check$
+declare
+    n int;
+begin
+    select into n count(*) from groups_subjects_plan where group_id = new.group_id and subject_id = new.subject_id and slot = new.slot and day_id = extract(isodow from new.date);
+    if n = 0 then
+        raise exception 'Error: according to lessons schedule, this lesson should not be in given day or slot';
+    end if;
+    return new;
+
+end;
+$lesson_check$
+language plpgsql;
+
+create trigger lesson_check before insert or update on lessons
+    for each row execute procedure lesson_check();
+
+
 --ABSENCES INSERT TRIGGER
 create or replace function absences_students_check()
 returns trigger as $absences_students_check$
@@ -297,6 +320,7 @@ language plpgsql;
 
 create trigger absences_students_check before insert or update on absences
     for each row execute procedure absences_students_check();
+
 
 --BEGIN PESEL 
 
