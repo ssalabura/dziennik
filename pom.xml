@@ -10,7 +10,7 @@
   <name>schoolregister</name>
   
   <dependencies>
-    <dependency>
+      <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
       <version>11.0.2</version>
@@ -34,6 +34,16 @@
         <version>11.0.2</version>
         <classifier>mac</classifier>
     </dependency> -->
+      <dependency>
+          <groupId>org.postgresql</groupId>
+          <artifactId>postgresql</artifactId>
+          <version>42.2.5</version>
+      </dependency>
+    <dependency>
+        <groupId>com.googlecode.json-simple</groupId>
+        <artifactId>json-simple</artifactId>
+        <version>1.1</version>
+    </dependency>
   </dependencies>
   
   <build>
@@ -86,6 +96,12 @@
                 </configuration>
             </execution>
         </executions>
+    </plugin>
+
+    <plugin>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.2.5</version>
     </plugin>
     </plugins>
   </build>
