@@ -42,6 +42,16 @@ Szymon Salabura:
 
 
 Aplikacja:
+Jak uruchomić projekt ze źródeł:
+Do uruchomienia projektu ze źródeł należy mieć zainstalowane:
+javę 11 (sudo apt install openjdk-11-jdk)
+javafx 11 (sudo apt install openjfx)
+maven (sudo apt install maven)
+
+następnie do uruchomienia projektu wystarczy komenda:
+mvn compile exec:java
+
+
 
 
 

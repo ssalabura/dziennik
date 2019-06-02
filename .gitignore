@@ -1,0 +1,31 @@
+.idea/
+*.iml
+.DS_Store
+.target
+target/
+pom.xml.tag
+pom.xml.next
+.classpath
+.project
+
+# Class
+*.class
+
+# File-based project format
+*.iws
+
+# IntelliJ
+out/
+
+.idea_modules/
+
+org.eclipse.*
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+
+# Crashlytics plugin (for Android Studio and IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
