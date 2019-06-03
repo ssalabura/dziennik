@@ -15,6 +15,12 @@
       <artifactId>javafx-controls</artifactId>
       <version>11.0.2</version>
     </dependency>
+      <!-- https://mvnrepository.com/artifact/org.mindrot/jbcrypt -->
+      <dependency>
+          <groupId>org.mindrot</groupId>
+          <artifactId>jbcrypt</artifactId>
+          <version>0.3m</version>
+      </dependency>
     <!-- Uncomment for cross-platform fat jar
     <dependency>
         <groupId>org.openjfx</groupId>

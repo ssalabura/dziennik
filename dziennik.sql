@@ -7,7 +7,8 @@ create table teachers (
     street character varying(128) not null,
     postalCode character varying(16) not null,
     email character varying(256) check(email ~ '^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\.[A-Za-z]{2,4}$'),
-    phone character varying(16) check(phone ~ '^\+?[0-9]+$')
+    phone character varying(16) check(phone ~ '^\+?[0-9]+$'),
+    password character varying(100) not null
 );
 
 create table groups (
@@ -24,7 +25,8 @@ create table students (
     street character varying(128) not null,
     postalCode character varying(16) not null,
     email character varying(256) check(email ~ '^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\.[A-Za-z]{2,4}$'),
-    phone character varying(16) check(phone ~ '^\+?[0-9]+$')
+    phone character varying(16) check(phone ~ '^\+?[0-9]+$'),
+    password character varying(100) not null
 );
 
 create table groups_students (
@@ -42,7 +44,8 @@ create table legal_guardians (
     street character varying(128) not null,
     postalCode character varying(16) not null,
     email character varying(256) check(email ~ '^[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\.[A-Za-z]{2,4}$'),
-    phone character varying(16) check(phone ~ '^\+?[0-9]+$')
+    phone character varying(16) check(phone ~ '^\+?[0-9]+$'),
+    password character varying(100) not null
 );
 
 create table guardians_students (

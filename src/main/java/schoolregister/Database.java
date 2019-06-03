@@ -1,5 +1,7 @@
 package schoolregister;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -105,29 +107,32 @@ public class Database {
         return list;
     }
 
-    public void logUser(String email, String password){
+    public short logUser(String email, String password){
+        short mask = 0;
         if(logUser(email, password, Person.Type.student))
-            return;
+            mask |= Main.studentMash;
         if(logUser(email, password, Person.Type.teacher))
-            return;
+            mask |= Main.teacherMask;
         if(logUser(email, password, Person.Type.guardian))
-            return;
-        crash(new Exception("Invalid email/password"));
+            mask |= Main.guardianMask;
+        return mask;
     }
 
     private boolean logUser(String email, String password, Person.Type type){
         boolean result = false;
         try{
             String tableName = (type == Person.Type.guardian) ? "legal_guardians" : type + "s";
-            String columnName = type + "_id";
+            String columnName = type + "_id, password";
             String query = "SELECT "+ columnName + " FROM " + tableName + " WHERE email = ?";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, email);
             ResultSet rs = statement.executeQuery();
             if(rs.next()){
-                Main.userType = type;
-                Main.userID = rs.getInt(1);
-                result = true;
+                if(BCrypt.checkpw(password, rs.getString(2))) {
+                    result = true;
+                    Main.userType = type;
+                    Main.userID = rs.getInt(1);
+                }
             }
             statement.close();
             rs.close();
@@ -143,5 +148,4 @@ public class Database {
         System.err.println(e.getClass().getName()+": "+e.getMessage());
         System.exit(0);
     }
-
 }

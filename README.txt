@@ -53,6 +53,21 @@ przed uruchomieniem projektu należy skonfigurować połączenie z bazą danych 
 Następnie do uruchomienia projektu wystarczy komenda:
 mvn compile exec:java
 
+Aby się zalogować należy wpisać w polu:
+- email - email dowolnej osoby z bazy danych
+- password - email podany w polu 'email' z literami w odwrotnej kolejności
+Przykładowe dane do logowania:
+Uczniowie:
+    Shad@eric.io    oi.cire@dahS
+    Mark@jace.ca    ac.ecaj@kraM
+Nauczyciele:
+    kazik123@op.pl    lp.po@321kizak
+    Sadye@niko.biz    zib.okin@eydaS
+Opiekunowie:
+    Brad@luna.io    oi.anul@darB
+    Nils@ocie.tv    vt.eico@sliN
+
+
 
 
 

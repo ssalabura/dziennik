@@ -18,10 +18,15 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    public static Person.Type userType;
-    public static int userID;
-    private Stage window;
-    private Scene mainScene;
+    public static final short teacherMask = 1;
+    public static final short guardianMask = 1 << 1;
+    public static final short studentMash = 1 << 2;
+    static Person.Type userType;
+    private short userMask = 0;
+    static int userID;
+    static Stage window;
+    static Scene mainScene;
+    static LessonsTable lessonsTable;
     @Override
     public void start(Stage stage) {
         window = stage;
@@ -75,6 +80,22 @@ public class Main extends Application {
 
         grid.add(table, 0, 6);
 
+        Button btn = new Button("Lessons");
+        HBox hbBtn = new HBox(10);
+        hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
+        hbBtn.getChildren().add(btn);
+        grid.add(hbBtn, 1, 20);
+
+        btn.setOnAction(new EventHandler<>() {
+
+            @Override
+            public void handle(ActionEvent e) {
+                if(lessonsTable == null)
+                    lessonsTable = new LessonsTable(1280, 720);
+                window.setScene(lessonsTable);
+            }
+        });
+
         return new Scene(grid, 1280, 720);
     }
 
@@ -87,7 +108,7 @@ public class Main extends Application {
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
-        Text sceneTitle = new Text("Welcome");
+        Text sceneTitle = new Text("Sign in");
         sceneTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
         grid.add(sceneTitle, 0, 0, 2, 1);
 
@@ -103,7 +124,7 @@ public class Main extends Application {
         PasswordField pwBox = new PasswordField();
         grid.add(pwBox, 1, 2);
 
-        Button btn = new Button("Sign in");
+        Button btn = new Button("Log in");
         HBox hbBtn = new HBox(10);
         hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
         hbBtn.getChildren().add(btn);
@@ -112,13 +133,36 @@ public class Main extends Application {
         final Text actionTarget = new Text();
         grid.add(actionTarget, 1, 6);
 
-        btn.setOnAction(new EventHandler<ActionEvent>() {
+
+        Button backButton = new Button("Invalid email/password");
+
+        backButton.setOnAction(new EventHandler<>() {
+                                   @Override
+                                   public void handle(ActionEvent actionEvent) {
+                                       backButton.setDisable(true);
+                                       backButton.setVisible(false);
+                                   }
+                               }
+        );
+        backButton.setDisable(true);
+        backButton.setVisible(false);
+
+
+        grid.add(backButton, 1, 0);
+
+        btn.setOnAction(new EventHandler<>() {
 
             @Override
             public void handle(ActionEvent e) {
-                Database.getInstance().logUser(emailTextField.getText(), pwBox.getText());
-                mainScene = createMainScene();
-                window.setScene(mainScene);
+                userMask = Database.getInstance().logUser(emailTextField.getText(), pwBox.getText());
+                if(userMask != 0) {
+                    mainScene = createMainScene();
+                    window.setScene(mainScene);
+                }
+                else{
+                    backButton.setDisable(false);
+                    backButton.setVisible(true);
+                }
             }
         });
 
@@ -128,5 +172,4 @@ public class Main extends Application {
     static void onLaunch(String[] args) {
         launch();
     }
-
 }
