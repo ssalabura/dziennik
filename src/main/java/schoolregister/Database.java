@@ -1,8 +1,8 @@
 package schoolregister;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Database {
@@ -65,6 +65,77 @@ public class Database {
         catch (Exception e){
             crash(e);
         }
+    }
+
+    private Person createPerson(ResultSet rs, Person.Type type){
+        Person p = new Person(type);
+        try{
+            p.setId(rs.getInt(type + "_id"));
+            p.setPesel(rs.getString("pesel"));
+            p.setName(rs.getString("name"));
+            p.setSurname(rs.getString("surname"));
+            p.setCity(rs.getString("city"));
+            p.setStreet(rs.getString("street"));
+            p.setPostalCode(rs.getString("postalcode"));
+            p.setEmail(rs.getString("email"));
+            p.setPhone(rs.getString("phone"));
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return p;
+    }
+
+    public List<Person> getPeople(Person.Type type){
+        List<Person> list = new ArrayList<>();
+        try{
+            String source = (type == Person.Type.guardian) ? "legal_guardians" : (type + "s");
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT * FROM " + source);
+            while(rs.next()){
+                Person p = createPerson(rs, type);
+                list.add(p);
+            }
+            rs.close();
+            statement.close();
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return list;
+    }
+
+    public void logUser(String email, String password){
+        if(logUser(email, password, Person.Type.student))
+            return;
+        if(logUser(email, password, Person.Type.teacher))
+            return;
+        if(logUser(email, password, Person.Type.guardian))
+            return;
+        crash(new Exception("Invalid email/password"));
+    }
+
+    private boolean logUser(String email, String password, Person.Type type){
+        boolean result = false;
+        try{
+            String tableName = (type == Person.Type.guardian) ? "legal_guardians" : type + "s";
+            String columnName = type + "_id";
+            String query = "SELECT "+ columnName + " FROM " + tableName + " WHERE email = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, email);
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                Main.userType = type;
+                Main.userID = rs.getInt(1);
+                result = true;
+            }
+            statement.close();
+            rs.close();
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return result;
     }
 
     private static void crash(Exception e) {
