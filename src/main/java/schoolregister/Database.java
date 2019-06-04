@@ -1,6 +1,9 @@
 package schoolregister;
 
 import org.mindrot.jbcrypt.BCrypt;
+import schoolregister.DataType.Grade;
+import schoolregister.DataType.Lesson;
+import schoolregister.DataType.Person;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -107,19 +110,46 @@ public class Database {
         return list;
     }
 
+    private Grade createGrade(ResultSet rs){
+        Grade g = new Grade();
+        try{
+            g.setSubject(rs.getString("name"));
+            g.setValue(rs.getString("value"));
+            g.setWeight(rs.getInt("weight"));
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return g;
+    }
+
+    public List<Grade> getGrades(int studentID){
+        List<Grade> list = new ArrayList<>();
+        try{
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT name, value, weight FROM grades g JOIN subjects USING(subject_id) WHERE student_id = " + studentID + " ORDER BY subject_id, weight DESC");
+            while(rs.next()){
+                list.add(createGrade(rs));
+            }
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return list;
+    }
+
     public short logUser(String email, String password){
         short mask = 0;
-        if(logUser(email, password, Person.Type.student))
-            mask |= Main.studentMash;
-        if(logUser(email, password, Person.Type.teacher))
-            mask |= Main.teacherMask;
-        if(logUser(email, password, Person.Type.guardian))
+        if((Main.userIDs[Main.studentMask] = logUser(email, password, Person.Type.student)) != 0)
+            mask |= Main.studentMask;
+        if((Main.userIDs[Main.guardianMask] = logUser(email, password, Person.Type.guardian)) != 0)
             mask |= Main.guardianMask;
+        if((Main.userIDs[Main.teacherMask] = logUser(email, password, Person.Type.teacher)) != 0)
+            mask |= Main.teacherMask;
         return mask;
     }
 
-    private boolean logUser(String email, String password, Person.Type type){
-        boolean result = false;
+    private int logUser(String email, String password, Person.Type type){
         try{
             String tableName = (type == Person.Type.guardian) ? "legal_guardians" : type + "s";
             String columnName = type + "_id, password";
@@ -129,9 +159,7 @@ public class Database {
             ResultSet rs = statement.executeQuery();
             if(rs.next()){
                 if(BCrypt.checkpw(password, rs.getString(2))) {
-                    result = true;
-                    Main.userType = type;
-                    Main.userID = rs.getInt(1);
+                    return rs.getInt(1);
                 }
             }
             statement.close();
@@ -140,7 +168,7 @@ public class Database {
         catch (Exception e){
             crash(e);
         }
-        return result;
+        return 0;
     }
 
     private static void crash(Exception e) {
