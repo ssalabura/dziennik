@@ -7,9 +7,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import schoolregister.DataType.Absence;
 import schoolregister.DataType.Grade;
+import schoolregister.DataType.Person;
+import schoolregister.Database;
 import schoolregister.Factory.SceneFactory;
 import schoolregister.Factory.TableViewFactory;
 
@@ -24,6 +28,15 @@ public class StudentScene {
         grid.setVgap(10);
         grid.setPadding(new Insets(25, 25, 25, 25));
 
+
+        Person student = Database.getInstance().getPerson(studentId, Person.Type.student);
+
+        Text studentInfo = new Text(student.getName() + " " + student.getSurname());
+        studentInfo.setStyle("-fx-font-size: 24");
+        studentInfo.setFill(Color.BLACK);
+        grid.add(studentInfo, 10, 0);
+        if(!forGuardian)
+            studentInfo.setVisible(false);
 
         Label gradesLabel = new Label("Grades");
         gradesLabel.setFont(new Font("Arial", 20));

@@ -105,6 +105,25 @@ public class Database {
         return p;
     }
 
+    public Person getPerson(int id, Person.Type type){
+        try{
+            String tableName = (type == Person.Type.guardian) ? "legal_guardians" : type + "s";
+            String query = "SELECT * FROM " + tableName + " WHERE " + type + "_id = " + id;
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            if(rs.next()){
+                return createPerson(rs, type);
+            }
+            statement.close();
+            rs.close();
+        }
+        catch(Exception e){
+            crash(e);
+        }
+
+        return null;
+    }
+
     public List<Person> getPeople(Person.Type type){
         List<Person> list = new ArrayList<>();
         try{
@@ -112,8 +131,7 @@ public class Database {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("SELECT * FROM " + source);
             while(rs.next()){
-                Person p = createPerson(rs, type);
-                list.add(p);
+                list.add(createPerson(rs, type));
             }
             rs.close();
             statement.close();
@@ -145,6 +163,8 @@ public class Database {
             while(rs.next()){
                 list.add(createGrade(rs));
             }
+            statement.close();
+            rs.close();
         }
         catch (Exception e){
             crash(e);
@@ -161,6 +181,8 @@ public class Database {
             while(rs.next()){
                 list.add(new Absence(rs.getInt("lesson_id"),rs.getInt("slot"),rs.getDate("date").toString(),rs.getString("name")));
             }
+            statement.close();
+            rs.close();
         }
         catch (Exception e){
             crash(e);
@@ -209,6 +231,8 @@ public class Database {
             while(rs.next()){
                 list.add(rs.getInt(1));
             }
+            statement.close();
+            rs.close();
         }
         catch (Exception e){
             crash(e);
