@@ -64,6 +64,7 @@ Uczniowie:
 Nauczyciele:
     kazik123@op.pl    lp.po@321kizak
     Sadye@niko.biz    zib.okin@eydaS
+    Adrain@nella.name eman.allen@niardA - jednocześnie opiekun 2 uczniów
 Opiekunowie:
     Brad@luna.io    oi.anul@darB    - 1 podopieczny
     Fletcher_Legros@aryanna.net    ten.annayra@sorgeL_rehctelF    - 2 podopiecznych

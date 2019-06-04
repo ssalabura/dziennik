@@ -86,7 +86,7 @@ INSERT INTO teachers (PESEL, name, surname, street, city, postalCode, email, pho
 ('76092352574','Kazimierz','Żeromski','Kraków','Mickiewicza 34/12','33100','kazik123@op.pl','459583001','$2a$10$sZkUkKZS/bsHIpry8k5dA.GQDIxXg8u.Ve0elsEGxOBjDrx65ggxW'),
 ('97041187513','Janina','Żółty','Kraków','Krakowska 24/6','33100','janina-zolty@hotmail.com','105324523','$2a$10$pI/RjrgM0aqeu6aqIUpBCOQeMBKRZFGSrVXWJxYplEa/am7vo6G0W'),
 ('88072844272','Kinga','Żuczek','Kraków','Armii Krajowej 14/5','12343','kinga.zuczek@yahoo.com','223663721','$2a$10$4/.h6elw0ELz02r99QTrZ.l8JxjOTMWoZ0blZUB/IInTpnvXHYNQu'),
-('98031661994','Wissam','Math','Kraków','Łojasiewicza 15/7','33100','math@noreply.com','348564831','$2a$10$SiC2a0CBsyzgFddbvy7N6ujM18ksDVdLThufacRiyh8l.SQdb1fXe');
+('02260326726','Abraham','Caldwell','Anchorage','1040 West 27th Avenue','99503','Adrain@nella.name','216416138','$2a$10$.//9QVPPXB0V4KE2LzPXWuZPs5lKK381Xbi2NWtaWZ.PterT8ASeC');
 
 
 INSERT INTO teacher_subjects VALUES

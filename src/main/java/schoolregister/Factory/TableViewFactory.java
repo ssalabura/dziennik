@@ -55,7 +55,6 @@ public class TableViewFactory {
         resultTable.setEditable(false);
 
         ObservableList<Absence> absences = FXCollections.observableArrayList(Database.getInstance().getAbsences(studentId));
-        System.out.println(absences.size());
         TableColumn<Absence, String> dateColumn = new TableColumn<>("date");
         TableColumn<Absence, Integer> slotColumn = new TableColumn<>("slot");
         TableColumn<Absence, String> subjectColumn = new TableColumn<>("subject");
