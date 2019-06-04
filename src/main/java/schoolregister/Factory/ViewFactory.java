@@ -1,26 +1,30 @@
 package schoolregister.Factory;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import schoolregister.DataType.*;
+import schoolregister.DataType.Absence;
+import schoolregister.DataType.Group;
 import schoolregister.Database;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TableViewFactory {
-    private static TableViewFactory factory;
+public class ViewFactory {
+    private static ViewFactory factory;
 
-    private TableViewFactory() {}
+    private ViewFactory() {}
 
-    public static TableViewFactory getInstance(){
+    public static ViewFactory getInstance(){
         if(factory == null)
-            factory = new TableViewFactory();
+            factory = new ViewFactory();
         return factory;
     }
 
@@ -122,5 +126,36 @@ public class TableViewFactory {
         resultTable.getColumns().addAll(idCol, nameCol, surnameCol, peselCol);
 
         return resultTable;
+    }
+
+    @SuppressWarnings("unchecked")
+    public TableView<Grade> getGrades(){
+        TableView<Grade> resultTable = new TableView<>();
+        resultTable.setEditable(false);
+
+        TableColumn<Grade, String> value = new TableColumn<>("value");
+        TableColumn<Grade, Integer> weight = new TableColumn<>("weight");
+
+        value.setCellValueFactory(
+                new PropertyValueFactory<>("value")
+        );
+        weight.setCellValueFactory(
+                new PropertyValueFactory<>("weight")
+        );
+
+        resultTable.getColumns().addAll(value, weight);
+
+
+        return resultTable;
+    }
+
+    public ListView<Group> getGroupsFor(int teacherId){
+        ObservableList<Group> groups = FXCollections.observableArrayList(Database.getInstance().getGroupsFor(teacherId));
+
+        ListView<Group> resultView = new ListView<>(groups);
+        resultView.setEditable(false);
+
+
+        return resultView;
     }
 }

@@ -18,12 +18,12 @@ import schoolregister.DataType.GradeList;
 import schoolregister.DataType.Person;
 import schoolregister.Database;
 import schoolregister.Factory.SceneFactory;
-import schoolregister.Factory.TableViewFactory;
+import schoolregister.Factory.ViewFactory;
 
 import static schoolregister.Main.*;
 
 public class StudentScene {
-    private static TableViewFactory tableFactory = TableViewFactory.getInstance();
+    private static ViewFactory tableFactory = ViewFactory.getInstance();
     public static Scene newScene(int studentId, boolean forGuardian) {
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.BASELINE_LEFT);
