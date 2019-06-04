@@ -1,4 +1,4 @@
-package schoolregister;
+package schoolregister.Scenes;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,15 +8,13 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import schoolregister.DataType.Grade;
-import schoolregister.DataType.Lesson;
 import schoolregister.DataType.LessonsOnSlot;
+import schoolregister.Database;
+import schoolregister.Main;
 
 public class LessonsTableScene {
     private static int id = -1;
@@ -56,23 +54,29 @@ public class LessonsTableScene {
         thu.setSortable(false);
         fri.setSortable(false);
 
-        lessonsTable.setItems(lessons);
+        mon.setReorderable(false);
+        tue.setReorderable(false);
+        wed.setReorderable(false);
+        thu.setReorderable(false);
+        fri.setReorderable(false);
 
+        lessonsTable.setItems(lessons);
+        lessonsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        lessonsTable.setFixedCellSize(60);
         lessonsTable.getColumns().addAll(mon, tue, wed,thu,fri);
         lessonsTable.setEditable(false);
+
+
 
 
 
         Button btn = new Button("Back");
         btn.setMinSize(300,50);
 
-
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                Main.window.setScene(Main.studentScene);
-            }
-        });
+        if(isStudent)
+            btn.setOnAction(e -> Main.window.setScene(Main.studentScene));
+        else
+            btn.setOnAction(e -> Main.window.setScene(Main.teacherScene));
 
         BorderPane pane = new BorderPane();
         BorderPane.setMargin(lessonsTable,new Insets(12,12,12,12));
