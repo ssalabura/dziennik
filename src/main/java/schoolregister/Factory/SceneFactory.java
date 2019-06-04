@@ -16,6 +16,8 @@ import schoolregister.DataType.Absence;
 import schoolregister.DataType.Grade;
 import schoolregister.DataType.Lesson;
 
+import java.util.ArrayList;
+
 import static schoolregister.Main.*;
 
 public class SceneFactory {
@@ -123,7 +125,7 @@ public class SceneFactory {
             @Override
             public void handle(ActionEvent actionEvent) {
                 if(studentScene == null)
-                    studentScene = createStudentScene();
+                    studentScene = createStudentScene(userIDs[studentMask], false);
                 window.setScene(studentScene);
             }
         });
@@ -132,7 +134,7 @@ public class SceneFactory {
             @Override
             public void handle(ActionEvent actionEvent) {
                 if(teacherScene == null)
-                    teacherScene = createTeacherScene();
+                    teacherScene = createTeacherScene(userIDs[teacherMask]);
                 window.setScene(teacherScene);
             }
         });
@@ -140,9 +142,9 @@ public class SceneFactory {
         guardianButton.setOnAction(new EventHandler<>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                if(guardianScene == null)
-                    guardianScene = createGuardianScene();
-                window.setScene(guardianScene);
+                createGuardianScene(userIDs[guardianMask]);
+                currentIndex = 0;
+                window.setScene(studentsScenes.get(0));
             }
         });
 
@@ -159,7 +161,7 @@ public class SceneFactory {
         return LessonsTableScene.newScene();
     }
 
-    public Scene createStudentScene(){
+    public Scene createStudentScene(int studentId, boolean forGuardian){
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.BASELINE_LEFT);
         grid.setHgap(10);
@@ -169,21 +171,52 @@ public class SceneFactory {
 
         Label gradesLabel = new Label("Grades");
         gradesLabel.setFont(new Font("Arial", 20));
-        TableView<Grade> grades = tableFactory.getGradesFor(userIDs[studentMask]);
+        TableView<Grade> grades = tableFactory.getGradesFor(studentId);
         grid.add(gradesLabel, 0, 5);
         grid.add(grades, 0 ,6);
 
         Label absencesLabel = new Label("Absences");
         absencesLabel.setFont(new Font("Arial", 20));
-        TableView<Absence> absences = tableFactory.getAbsencesFor(userIDs[studentMask]);
+        TableView<Absence> absences = tableFactory.getAbsencesFor(studentId);
         grid.add(absencesLabel, 10, 5);
         grid.add(absences, 10 ,6);
 
 
         Button lessonsButton = new Button("Lessons");
         Button backButton = new Button("Back");
+        Button nextButton = new Button("next");
+        Button prevButton = new Button("prev");
         grid.add(backButton, 1, 21);
         grid.add(lessonsButton, 1, 20);
+        grid.add(nextButton, 5, 20);
+        grid.add(prevButton, 4, 20);
+
+
+        if(!forGuardian) {
+            nextButton.setVisible(false);
+            prevButton.setVisible(false);
+        }
+        if(forGuardian && (guardianKids.size() <= 1 || currentIndex == guardianKids.size() - 1))
+            nextButton.setVisible(false);
+
+        if(forGuardian && currentIndex == 0)
+            prevButton.setVisible(false);
+
+        nextButton.setOnAction(new EventHandler<>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                currentIndex++;
+                window.setScene(studentsScenes.get(currentIndex));
+            }
+        });
+
+        prevButton.setOnAction(new EventHandler<>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                currentIndex--;
+                window.setScene(studentsScenes.get(currentIndex));
+            }
+        });
 
         backButton.setOnAction(new EventHandler<>() {
             @Override
@@ -204,7 +237,7 @@ public class SceneFactory {
         return new Scene(grid, 1280, 720);
     }
 
-    public Scene createTeacherScene(){
+    public Scene createTeacherScene(int teacherId){
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.BASELINE_LEFT);
         grid.setHgap(10);
@@ -224,7 +257,9 @@ public class SceneFactory {
         return new Scene(grid, 1280, 720);
     }
 
-    public Scene createGuardianScene(){
+    public void createGuardianScene(int guardianId){
+        guardianKids = new ArrayList<>(Database.getInstance().getGuardianKids(guardianId));
+        studentsScenes = new ArrayList<>();
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.BASELINE_LEFT);
         grid.setHgap(10);
@@ -241,6 +276,14 @@ public class SceneFactory {
             }
         });
 
-        return new Scene(grid, 1280, 720);
+        if(guardianKids.isEmpty()) {
+            studentsScenes.add(new Scene(grid, 1280, 720));
+        }
+
+        for(Integer i : guardianKids){
+            studentsScenes.add(createStudentScene(i, true));
+            currentIndex++;
+        }
+        currentIndex = 0;
     }
 }

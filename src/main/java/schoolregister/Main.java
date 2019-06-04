@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import schoolregister.Factory.SceneFactory;
 
+import java.util.ArrayList;
+
 public class Main extends Application {
     public static final short teacherMask = 1;
     public static final short guardianMask = 1 << 1;
@@ -17,8 +19,11 @@ public class Main extends Application {
     public static Scene mainScene;
     public static Scene lessonsTableScene;
     public static Scene studentScene;
-    public static Scene guardianScene;
     public static Scene teacherScene;
+
+    public static ArrayList<Integer> guardianKids;
+    public static int currentIndex;
+    public static ArrayList<Scene> studentsScenes;
 
     private SceneFactory sceneFactory = SceneFactory.getInstance();
     @Override
