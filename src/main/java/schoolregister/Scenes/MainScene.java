@@ -46,7 +46,8 @@ public class MainScene {
 
         guardianButton.setOnAction(actionEvent -> {
             SceneFactory.getInstance().createGuardianScene(userIDs[guardianMask]);
-            window.setScene(studentsScenes.get(0));
+            if(studentsScenes != null)
+                window.setScene(studentsScenes.get(0));
         });
 
         return new Scene(grid, 1280, 720);

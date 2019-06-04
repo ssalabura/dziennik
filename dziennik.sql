@@ -288,6 +288,9 @@ begin
     if n = 0 then
         raise exception 'Error: according to lessons schedule, this lesson should not be in given day or slot';
     end if;
+    if n > 1 then
+        raise exception 'Error: another lesson in this date, slot and group is already in database';
+    end if;
     return new;
 
 end;
