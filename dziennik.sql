@@ -77,7 +77,8 @@ create table lessons (
     subject_id numeric(10) not null references subjects on delete cascade,
     topic character varying(256) not null,
     date date not null,
-    slot numeric(10) not null references slots
+    slot numeric(10) not null references slots,
+    unique (date,slot,group_id)
 );
 
 create table absences (
@@ -160,8 +161,8 @@ create or replace view students_in_groups as
     select group_id, name, student_id from groups_students join groups using(group_id) order by 1;
 
 create or replace view students_subjects as
-    select distinct sg.student_id, sg.group_id, tgs.subject_id, tgs.teacher_id from students_in_groups sg
-        join teachers_groups_subjects tgs on(tgs.group_id = sg.group_id ) order by 1,2,3,4;
+    select distinct sg.student_id, tgs.subject_id from students_in_groups sg
+        join teachers_groups_subjects tgs on(tgs.group_id = sg.group_id ) order by 1,2;
 
 create or replace view groups_avg as
     select group_id, c.name"group_name", subject_id, s.name"subject_name", round(sum(value * weight) / sum(weight), 2)"avg" from grades g
@@ -287,9 +288,6 @@ begin
     select into n count(*) from groups_subjects_plan where group_id = new.group_id and subject_id = new.subject_id and slot = new.slot and day_id = extract(isodow from new.date);
     if n = 0 then
         raise exception 'Error: according to lessons schedule, this lesson should not be in given day or slot';
-    end if;
-    if n > 1 then
-        raise exception 'Error: another lesson in this date, slot and group is already in database';
     end if;
     return new;
 

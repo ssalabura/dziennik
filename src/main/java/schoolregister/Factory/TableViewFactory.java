@@ -56,7 +56,7 @@ public class TableViewFactory {
         gradesColumn.setCellValueFactory(new PropertyValueFactory<>("grades"));
         averageColumn.setCellValueFactory(new PropertyValueFactory<>("average"));
 
-        subjectName.prefWidthProperty().bind(resultTable.widthProperty().multiply(0.35));
+        subjectName.prefWidthProperty().bind(resultTable.widthProperty().multiply(0.34));
         gradesColumn.prefWidthProperty().bind(resultTable.widthProperty().multiply(0.5));
         gradesColumn.setStyle("-fx-alignment: CENTER");
         averageColumn.prefWidthProperty().bind(resultTable.widthProperty().multiply(0.15));

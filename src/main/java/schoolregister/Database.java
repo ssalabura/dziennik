@@ -32,46 +32,6 @@ public class Database {
         }
     }
 
-    public List<LessonsOnSlot> getLessonsAssignedTo(int id, boolean isStudent) {
-       Lesson[][] lessons = new Lesson[5][10];
-       int maxiSlotNr = 0;
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet rs;
-            if(isStudent)
-                rs = statement.executeQuery("SELECT * FROM students JOIN groups_students USING(student_id) JOIN groups_subjects_plan USING(group_id) WHERE student_id = "+id);
-            else
-                rs = statement.executeQuery("SELECT * FROM groups_subjects_plan JOIN teachers_groups_subjects USING(group_id,day_id,slot,subject_id) WHERE teacher_id = "+id);
-
-            while (rs.next()) {
-                Lesson lesson = new Lesson();
-                lesson.dayId = rs.getInt("day_id");
-                lesson.slot = rs.getInt("slot");
-                lesson.groupId = rs.getInt("group_id");
-                lesson.groupName = rs.getString("group_name");
-                lesson.subjectId = rs.getInt("subject_id");
-                lesson.subjectName = rs.getString("subject_name");
-                lessons[lesson.dayId-1][lesson.slot-1] = lesson;
-                maxiSlotNr = Math.max(maxiSlotNr,lesson.slot);
-            }
-            rs.close();
-            statement.close();
-        }
-        catch (SQLException e) {
-            crash(e);
-        }
-        List<LessonsOnSlot> res = new ArrayList<>();
-        for(int i=0;i<maxiSlotNr;i++)
-            res.add(new LessonsOnSlot());
-
-        for(int i=0;i<lessons.length;i++){
-            for(int j=0;j<maxiSlotNr;j++) {
-                res.get(j).set(i,lessons[i][j]);
-            }
-        }
-        return res;
-    }
-
     private void connect() {
         connection = null;
         try {
@@ -141,6 +101,52 @@ public class Database {
         }
         return list;
     }
+
+    public List<LessonsOnSlot> getLessonsAssignedTo(int id, boolean isStudent) {
+        Lesson[][] lessons = new Lesson[5][10];
+        List<LessonsOnSlot> res = new ArrayList<>();
+        int maxiSlotNr = 0;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs;
+            if(isStudent)
+                rs = statement.executeQuery("SELECT * FROM students JOIN groups_students USING(student_id) JOIN groups_subjects_plan USING(group_id) WHERE student_id = "+id);
+            else
+                rs = statement.executeQuery("SELECT * FROM groups_subjects_plan JOIN teachers_groups_subjects USING(group_id,day_id,slot,subject_id) WHERE teacher_id = "+id);
+
+            while (rs.next()) {
+                Lesson lesson = new Lesson();
+                lesson.dayId = rs.getInt("day_id");
+                lesson.slot = rs.getInt("slot");
+                lesson.groupId = rs.getInt("group_id");
+                lesson.groupName = rs.getString("group_name");
+                lesson.subjectId = rs.getInt("subject_id");
+                lesson.subjectName = rs.getString("subject_name");
+                lessons[lesson.dayId-1][lesson.slot-1] = lesson;
+                maxiSlotNr = Math.max(maxiSlotNr,lesson.slot);
+            }
+            rs.close();
+            statement.close();
+
+            statement = connection.createStatement();
+            rs = statement.executeQuery("SELECT slot,to_char(start_time,'HH24:MI') AS start_time,to_char(start_time+'45 minutes','HH24:MI') AS end_time FROM slots ORDER BY start_time");
+            while (rs.next()) {
+                res.add(new LessonsOnSlot(rs.getInt("slot"),rs.getString("start_time"),rs.getString("end_time")));
+            }
+
+        }
+        catch (SQLException e) {
+            crash(e);
+        }
+
+        for(int i=0;i<lessons.length;i++){
+            for(int j=0;j<maxiSlotNr;j++) {
+                res.get(j).set(i,lessons[i][j]);
+            }
+        }
+        return res;
+    }
+
 
     public List<Grade> getGrades(int studentID){
         List<Grade> list = new ArrayList<>();
