@@ -28,7 +28,7 @@ public class SceneFactory {
     }
 
     public Scene createLessonTableSceneForTeacher(int teacherId) {
-        LessonsTableScene.setToStudent(teacherId);
+        LessonsTableScene.setToTeacher(teacherId);
         return LessonsTableScene.newScene();
     }
 

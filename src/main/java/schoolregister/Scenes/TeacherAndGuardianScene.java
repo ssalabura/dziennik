@@ -16,7 +16,15 @@ public class TeacherAndGuardianScene {
     public static Scene newTeacherScene(int teacherId) {
         GridPane grid = createGrid();
         Button backButton = new Button("Back");
+        Button lessonsButton = new Button("Lessons");
+
         grid.add(backButton, 1, 21);
+        grid.add(lessonsButton, 1, 20);
+
+        lessonsButton.setOnAction(e -> {
+            lessonsTableScene = SceneFactory.getInstance().createLessonTableSceneForTeacher(teacherId);
+            window.setScene(lessonsTableScene);
+        });
 
         backButton.setOnAction(actionEvent -> window.setScene(mainScene));
         return new Scene(grid, 1280, 720);

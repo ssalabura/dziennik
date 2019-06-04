@@ -73,13 +73,10 @@ public class LessonsTableScene {
         Button btn = new Button("Back");
         btn.setMinSize(300,50);
 
-
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                Main.window.setScene(Main.studentScene);
-            }
-        });
+        if(isStudent)
+            btn.setOnAction(e -> Main.window.setScene(Main.studentScene));
+        else
+            btn.setOnAction(e -> Main.window.setScene(Main.teacherScene));
 
         BorderPane pane = new BorderPane();
         BorderPane.setMargin(lessonsTable,new Insets(12,12,12,12));
