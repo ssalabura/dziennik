@@ -7,6 +7,7 @@ public class Grade {
     private int subjectId;
     private float floatValue;
 
+    public Grade() {}
     public Grade(int subjectId, String subject, String value, float floatValue, int weight) {
         this.subjectId = subjectId;
         this.subject = subject;

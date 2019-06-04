@@ -37,7 +37,7 @@ public class Database {
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager
-                    .getConnection("jdbc:postgresql://localhost:"+ConnectionConfig.port+"/" + ConnectionConfig.database,
+                    .getConnection("jdbc:postgresql://" + ConnectionConfig.host + ":" + ConnectionConfig.port+"/" + ConnectionConfig.database,
                             ConnectionConfig.username, ConnectionConfig.password);
         }
         catch (Exception e){
@@ -63,6 +63,24 @@ public class Database {
             crash(e);
         }
         return p;
+    }
+
+    public List<Person> getStudentsFor(int groupId){
+        List<Person> list = new ArrayList<>();
+        try{
+            String query = "select students.* from students join students_in_groups using(student_id) where group_id = " + groupId;
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while(rs.next()){
+                list.add(createPerson(rs, Person.Type.student));
+            }
+            statement.close();
+            rs.close();
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return list;
     }
 
     public Person getPerson(int id, Person.Type type){
@@ -100,6 +118,51 @@ public class Database {
             crash(e);
         }
         return list;
+    }
+
+    private Group createGroup(ResultSet rs){
+        Group g = new Group();
+        try{
+            g.setId(rs.getInt("group_id"));
+            g.setSubjectId(rs.getInt("subject_id"));
+            g.setName(rs.getString("g_name"));
+            g.setSubject(rs.getString("s_name"));
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return g;
+    }
+
+    public List<Group> getGroupsFor(int teacherId){
+        List<Group> list = new ArrayList<>();
+        try{
+            String query = "select teacher_id, group_id, subject_id, subjects.name\"s_name\", groups.name\"g_name\" from teachers_groups_subjects join groups using(group_id) join subjects using(subject_id) where teacher_id = " + teacherId + " group by 1, 2, 3, 4, 5";
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while(rs.next()){
+                list.add(createGroup(rs));
+            }
+            statement.close();
+            rs.close();
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return list;
+    }
+
+    private Grade createGrade(ResultSet rs){
+        Grade g = new Grade();
+        try{
+            g.setSubject(rs.getString("name"));
+            g.setValue(rs.getString("value"));
+            g.setWeight(rs.getInt("weight"));
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return g;
     }
 
     public List<LessonsOnSlot> getLessonsAssignedTo(int id, boolean isStudent) {
@@ -155,6 +218,24 @@ public class Database {
             ResultSet rs = statement.executeQuery("SELECT subject_id,name, value,value::NUMERIC(3,2) as floatValue, weight FROM grades g JOIN subjects USING(subject_id) WHERE student_id = " + studentID + " ORDER BY subject_id, weight DESC");
             while(rs.next()){
                 list.add(new Grade(rs.getInt("subject_id"),rs.getString("name"),rs.getString("value"),rs.getFloat("floatValue"), rs.getInt("weight")));
+            }
+            statement.close();
+            rs.close();
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return list;
+    }
+
+    public List<Grade> getGrades(int studentId, int groupId){
+        List<Grade> list = new ArrayList<>();
+        try{
+            String query = "select name, value, weight from grades join subjects using(subject_id) where student_id = " + studentId + " and student_id in(select student_id from students_in_groups where group_id = " + groupId + ")";
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while(rs.next()){
+                list.add(createGrade(rs));
             }
             statement.close();
             rs.close();
