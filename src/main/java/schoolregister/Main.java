@@ -41,7 +41,7 @@ public class Main extends Application {
         Database.close();
     }
 
-    static void onLaunch(String[] args) {
+    public static void main(String[] args) {
         launch();
     }
 }
