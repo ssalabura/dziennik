@@ -1,4 +1,4 @@
-package schoolregister;
+package schoolregister.DataType;
 
 public class Person {
     private Type type;

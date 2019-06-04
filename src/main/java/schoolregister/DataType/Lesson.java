@@ -1,4 +1,4 @@
-package schoolregister;
+package schoolregister.DataType;
 
 public class Lesson {
     public int subjectId,teacherId,groupId;
