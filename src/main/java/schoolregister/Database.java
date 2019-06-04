@@ -200,6 +200,21 @@ public class Database {
         return 0;
     }
 
+    public List<Integer> getGuardianKids(int guardianID){
+        List<Integer> list = new ArrayList<>();
+        try{
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("SELECT student_id FROM guardians_students WHERE guardian_id = " + guardianID);
+            while(rs.next()){
+                list.add(rs.getInt(1));
+            }
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return list;
+    }
+
     private static void crash(Exception e) {
         e.printStackTrace();
         System.err.println(e.getClass().getName()+": "+e.getMessage());

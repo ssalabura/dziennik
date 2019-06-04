@@ -64,8 +64,8 @@ Nauczyciele:
     kazik123@op.pl    lp.po@321kizak
     Sadye@niko.biz    zib.okin@eydaS
 Opiekunowie:
-    Brad@luna.io    oi.anul@darB
-    Nils@ocie.tv    vt.eico@sliN
+    Brad@luna.io    oi.anul@darB    - 1 podopieczny
+    Fletcher_Legros@aryanna.net    ten.annayra@sorgeL_rehctelF    - 2 podopiecznych
 
 
 
