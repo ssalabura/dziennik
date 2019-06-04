@@ -1,6 +1,7 @@
 package schoolregister;
 
 import org.mindrot.jbcrypt.BCrypt;
+import schoolregister.DataType.Absence;
 import schoolregister.DataType.Grade;
 import schoolregister.DataType.Lesson;
 import schoolregister.DataType.Person;
@@ -138,6 +139,22 @@ public class Database {
         return list;
     }
 
+    public List<Absence> getAbsences(int studentId) {
+        List<Absence> list = new ArrayList<>();
+        try{
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(
+                    "SELECT lesson_id,slot,date,s.name FROM absences JOIN lessons USING(lesson_id) JOIN subjects s USING(subject_id) WHERE student_id = "+studentId);
+            while(rs.next()){
+                list.add(new Absence(rs.getInt("lesson_id"),rs.getInt("slot"),rs.getDate("date").toString(),rs.getString("name")));
+            }
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return list;
+    }
+
     public short logUser(String email, String password){
         short mask = 0;
         if((Main.userIDs[Main.studentMask] = logUser(email, password, Person.Type.student)) != 0)
@@ -176,4 +193,6 @@ public class Database {
         System.err.println(e.getClass().getName()+": "+e.getMessage());
         System.exit(0);
     }
+
+
 }

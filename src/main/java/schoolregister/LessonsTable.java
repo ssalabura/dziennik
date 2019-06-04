@@ -38,7 +38,6 @@ public class LessonsTable extends Scene {
         gridPane.add(btn, 6, 1);
 
         btn.setOnAction(new EventHandler<ActionEvent>() {
-
             @Override
             public void handle(ActionEvent e) {
                 Main.window.setScene(Main.mainScene);

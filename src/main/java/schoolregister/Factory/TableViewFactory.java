@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import schoolregister.DataType.Absence;
 import schoolregister.Database;
 import schoolregister.DataType.Grade;
 import schoolregister.DataType.Person;
@@ -44,6 +45,33 @@ public class TableViewFactory {
         resultTable.setItems(grades);
         resultTable.getColumns().addAll(subjectName, value, weight);
 
+
+        return resultTable;
+    }
+
+    @SuppressWarnings("unchecked")
+    public TableView<Absence> getAbsencesFor(int studentId){
+        TableView<Absence> resultTable = new TableView<>();
+        resultTable.setEditable(false);
+
+        ObservableList<Absence> absences = FXCollections.observableArrayList(Database.getInstance().getAbsences(studentId));
+        System.out.println(absences.size());
+        TableColumn<Absence, String> dateColumn = new TableColumn<>("date");
+        TableColumn<Absence, Integer> slotColumn = new TableColumn<>("slot");
+        TableColumn<Absence, String> subjectColumn = new TableColumn<>("subject");
+
+        dateColumn.setCellValueFactory(
+                new PropertyValueFactory<>("date")
+        );
+        slotColumn.setCellValueFactory(
+                new PropertyValueFactory<>("slot")
+        );
+        subjectColumn.setCellValueFactory(
+                new PropertyValueFactory<>("subject")
+        );
+
+        resultTable.setItems(absences);
+        resultTable.getColumns().addAll(dateColumn, slotColumn, subjectColumn);
 
         return resultTable;
     }

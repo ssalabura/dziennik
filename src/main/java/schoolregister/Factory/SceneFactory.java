@@ -12,6 +12,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import schoolregister.*;
+import schoolregister.DataType.Absence;
 import schoolregister.DataType.Grade;
 
 import static schoolregister.Main.*;
@@ -43,12 +44,15 @@ public class SceneFactory {
         grid.add(email, 0, 1);
 
         TextField emailTextField = new TextField();
+        //emailTextField.setText("Alison@carlo.com");
         grid.add(emailTextField, 1, 1);
+
 
         Label pw = new Label("Password:");
         grid.add(pw, 0, 2);
 
         PasswordField pwBox = new PasswordField();
+        //pwBox.setText("moc.olrac@nosilA");
         grid.add(pwBox, 1, 2);
 
         Button btn = new Button("Log in");
@@ -157,6 +161,13 @@ public class SceneFactory {
         TableView<Grade> grades = tableFactory.getGradesFor(userIDs[studentMask]);
         grid.add(gradesLabel, 0, 5);
         grid.add(grades, 0 ,6);
+
+        Label absencesLabel = new Label("Absences");
+        absencesLabel.setFont(new Font("Arial", 20));
+        TableView<Absence> absences = tableFactory.getAbsencesFor(userIDs[studentMask]);
+        grid.add(absencesLabel, 10, 5);
+        grid.add(absences, 10 ,6);
+
 
         Button lessonsButton = new Button("Lessons");
         Button backButton = new Button("Back");
