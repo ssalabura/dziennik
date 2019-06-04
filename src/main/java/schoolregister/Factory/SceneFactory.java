@@ -14,7 +14,8 @@ import javafx.scene.text.Text;
 import schoolregister.*;
 import schoolregister.DataType.Absence;
 import schoolregister.DataType.Grade;
-import schoolregister.DataType.Lesson;
+import schoolregister.Scenes.LessonsTableScene;
+import schoolregister.Scenes.LoginScene;
 
 import java.util.ArrayList;
 
@@ -33,71 +34,7 @@ public class SceneFactory {
     }
 
     public Scene createLoginScene(){
-        GridPane grid = new GridPane();
-        grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
-
-        Text sceneTitle = new Text("Sign in");
-        sceneTitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        grid.add(sceneTitle, 0, 0, 2, 1);
-
-        Label email = new Label("Email:");
-        grid.add(email, 0, 1);
-
-        TextField emailTextField = new TextField();
-        //emailTextField.setText("Alison@carlo.com");
-        grid.add(emailTextField, 1, 1);
-
-
-        Label pw = new Label("Password:");
-        grid.add(pw, 0, 2);
-
-        PasswordField pwBox = new PasswordField();
-        //pwBox.setText("moc.olrac@nosilA");
-        grid.add(pwBox, 1, 2);
-
-        Button btn = new Button("Log in");
-        HBox hbBtn = new HBox(10);
-        hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
-        hbBtn.getChildren().add(btn);
-        grid.add(hbBtn, 1, 4);
-
-        final Text actionTarget = new Text();
-        grid.add(actionTarget, 1, 6);
-
-
-        Button backButton = new Button("Invalid email/password");
-
-        backButton.setOnAction(new EventHandler<>() {
-                                   @Override
-                                   public void handle(ActionEvent actionEvent) {
-                                       backButton.setVisible(false);
-                                   }
-                               }
-        );
-        backButton.setVisible(false);
-
-
-        grid.add(backButton, 1, 0);
-
-        btn.setOnAction(new EventHandler<>() {
-
-            @Override
-            public void handle(ActionEvent e) {
-                userMask = Database.getInstance().logUser(emailTextField.getText(), pwBox.getText());
-                if(userMask != 0) {
-                    mainScene = createMainScene();
-                    Main.window.setScene(mainScene);
-                }
-                else{
-                    backButton.setVisible(true);
-                }
-            }
-        });
-
-        return new Scene(grid, 1280, 720);
+        return LoginScene.newScene();
     }
 
     public Scene createMainScene(){
