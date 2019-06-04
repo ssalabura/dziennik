@@ -142,26 +142,13 @@ public class Database {
         return list;
     }
 
-    private Grade createGrade(ResultSet rs){
-        Grade g = new Grade();
-        try{
-            g.setSubject(rs.getString("name"));
-            g.setValue(rs.getString("value"));
-            g.setWeight(rs.getInt("weight"));
-        }
-        catch (Exception e){
-            crash(e);
-        }
-        return g;
-    }
-
     public List<Grade> getGrades(int studentID){
         List<Grade> list = new ArrayList<>();
         try{
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT name, value, weight FROM grades g JOIN subjects USING(subject_id) WHERE student_id = " + studentID + " ORDER BY subject_id, weight DESC");
+            ResultSet rs = statement.executeQuery("SELECT subject_id,name, value,value::NUMERIC(3,2) as floatValue, weight FROM grades g JOIN subjects USING(subject_id) WHERE student_id = " + studentID + " ORDER BY subject_id, weight DESC");
             while(rs.next()){
-                list.add(createGrade(rs));
+                list.add(new Grade(rs.getInt("subject_id"),rs.getString("name"),rs.getString("value"),rs.getFloat("floatValue"), rs.getInt("weight")));
             }
             statement.close();
             rs.close();
@@ -179,7 +166,25 @@ public class Database {
             ResultSet rs = statement.executeQuery(
                     "SELECT lesson_id,slot,date,s.name FROM absences JOIN lessons USING(lesson_id) JOIN subjects s USING(subject_id) WHERE student_id = "+studentId);
             while(rs.next()){
-                list.add(new Absence(rs.getInt("lesson_id"),rs.getInt("slot"),rs.getDate("date").toString(),rs.getString("name")));
+                list.add(new Absence(rs.getInt("lesson_id"),rs.getInt("slot"),rs.getDate("date"),rs.getString("name")));
+            }
+            statement.close();
+            rs.close();
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return list;
+    }
+
+    public List<Subject> getAllSubjects(int studentId) {
+        List<Subject> list = new ArrayList<>();
+        try{
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(
+                    "SELECT subject_id,name FROM students_subjects JOIN subjects USING(subject_id) WHERE student_id = "+studentId);
+            while(rs.next()){
+                list.add(new Subject(rs.getInt("subject_id"),rs.getString("name")));
             }
             statement.close();
             rs.close();

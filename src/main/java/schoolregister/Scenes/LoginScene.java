@@ -39,7 +39,7 @@ public class LoginScene {
         grid.add(email, 0, 1);
 
         TextField emailTextField = new TextField();
-        emailTextField.setText("Alison@carlo.com");
+        emailTextField.setText("Edison@shaniya.net");
         grid.add(emailTextField, 1, 1);
 
 
@@ -47,7 +47,7 @@ public class LoginScene {
         grid.add(pw, 0, 2);
 
         PasswordField pwBox = new PasswordField();
-        pwBox.setText("moc.olrac@nosilA");
+        pwBox.setText("ten.ayinahs@nosidE");
         grid.add(pwBox, 1, 2);
 
         Button btn = new Button("Log in");

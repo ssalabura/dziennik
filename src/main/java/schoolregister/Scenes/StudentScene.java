@@ -1,17 +1,20 @@
 package schoolregister.Scenes;
 
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import schoolregister.DataType.Absence;
 import schoolregister.DataType.Grade;
+import schoolregister.DataType.GradeList;
 import schoolregister.DataType.Person;
 import schoolregister.Database;
 import schoolregister.Factory.SceneFactory;
@@ -34,32 +37,41 @@ public class StudentScene {
         Text studentInfo = new Text(student.getName() + " " + student.getSurname());
         studentInfo.setStyle("-fx-font-size: 24");
         studentInfo.setFill(Color.BLACK);
-        grid.add(studentInfo, 10, 0);
+        grid.add(studentInfo, 0, 3,2,1);
         if(!forGuardian)
             studentInfo.setVisible(false);
 
         Label gradesLabel = new Label("Grades");
         gradesLabel.setFont(new Font("Arial", 20));
-        TableView<Grade> grades = tableFactory.getGradesFor(studentId);
-        grid.add(gradesLabel, 0, 5);
-        grid.add(grades, 0 ,6);
+        TableView<GradeList> grades = tableFactory.getGradesFor(studentId);
+        grid.add(gradesLabel, 0, 0,2,1);
+        grid.add(grades, 0 ,1,2,1);
 
         Label absencesLabel = new Label("Absences");
         absencesLabel.setFont(new Font("Arial", 20));
         TableView<Absence> absences = tableFactory.getAbsencesFor(studentId);
-        grid.add(absencesLabel, 10, 5);
-        grid.add(absences, 10 ,6);
+        grid.add(absencesLabel, 2, 0,2,1);
+        grid.add(absences, 2 ,1,2,1);
 
 
         Button lessonsButton = new Button("Lessons");
         Button backButton = new Button("Back");
         Button nextButton = new Button("next");
         Button prevButton = new Button("prev");
-        grid.add(backButton, 1, 21);
-        grid.add(lessonsButton, 1, 20);
-        grid.add(nextButton, 5, 20);
-        grid.add(prevButton, 4, 20);
 
+
+        backButton.setMinSize(80,30);
+        lessonsButton.setMinSize(80,30);
+        nextButton.setMinSize(80,30);
+        backButton.setMinSize(80,30);
+
+
+        grid.add(backButton, 0, 4);
+        grid.add(lessonsButton, 1, 4);
+        grid.add(prevButton, 2, 4,2,1);
+        grid.add(nextButton, 2, 5,2,1);
+        GridPane.setHalignment(prevButton, HPos.RIGHT);
+        GridPane.setHalignment(nextButton,HPos.RIGHT);
 
         if(!forGuardian) {
             nextButton.setVisible(false);
