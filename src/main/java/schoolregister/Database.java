@@ -97,6 +97,7 @@ public class Database {
             p.setPostalCode(rs.getString("postalcode"));
             p.setEmail(rs.getString("email"));
             p.setPhone(rs.getString("phone"));
+            p.setHash(rs.getString("password"));
         }
         catch (Exception e){
             crash(e);
@@ -221,5 +222,25 @@ public class Database {
         System.exit(0);
     }
 
+    public void testLogAll(boolean onlyErrors){
+        testLog(getPeople(Person.Type.teacher), onlyErrors, "TEACHERS");
+        testLog(getPeople(Person.Type.student), onlyErrors, "STUDENTS");
+        testLog(getPeople(Person.Type.guardian), onlyErrors, "GUARDIANS");
+    }
 
+    private void testLog(List<Person> users, boolean onlyErrors, String type){
+        System.out.println("---------------------------------" + type);
+        for(Person p : users){
+            StringBuilder password = new StringBuilder(p.getEmail()).reverse();
+            boolean goodPassword = BCrypt.checkpw(password.toString(), p.getHash());
+            if(onlyErrors){
+                if(!goodPassword)
+                    System.out.println(p.getId() + " ERROR");
+            }
+            else{
+                System.out.println(p.getId() + (goodPassword ? " OK" : " ERROR"));
+            }
+        }
+        System.out.println("-----------------------------------------------");
+    }
 }
