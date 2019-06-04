@@ -11,6 +11,16 @@ public class Person {
     private String postalCode;
     private String email;
     private String phone;
+    private String hash;
+
+    public String getHash() {
+        return hash;
+    }
+
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
+
 
     public enum Type{
         teacher, student, guardian;
