@@ -143,7 +143,6 @@ public class SceneFactory {
             @Override
             public void handle(ActionEvent actionEvent) {
                 createGuardianScene(userIDs[guardianMask]);
-                currentIndex = 0;
                 window.setScene(studentsScenes.get(0));
             }
         });
@@ -206,6 +205,7 @@ public class SceneFactory {
             @Override
             public void handle(ActionEvent actionEvent) {
                 currentIndex++;
+                studentScene = studentsScenes.get(currentIndex);
                 window.setScene(studentsScenes.get(currentIndex));
             }
         });
@@ -214,6 +214,7 @@ public class SceneFactory {
             @Override
             public void handle(ActionEvent actionEvent) {
                 currentIndex--;
+                studentScene = studentsScenes.get(currentIndex);
                 window.setScene(studentsScenes.get(currentIndex));
             }
         });
@@ -229,7 +230,7 @@ public class SceneFactory {
 
             @Override
             public void handle(ActionEvent e) {
-                lessonsTableScene = createLessonTableSceneForStudent(userIDs[studentMask]);
+                lessonsTableScene = createLessonTableSceneForStudent(studentId);
                 window.setScene(lessonsTableScene);
             }
         });
@@ -258,6 +259,7 @@ public class SceneFactory {
     }
 
     public void createGuardianScene(int guardianId){
+        currentIndex = 0;
         guardianKids = new ArrayList<>(Database.getInstance().getGuardianKids(guardianId));
         studentsScenes = new ArrayList<>();
         GridPane grid = new GridPane();
@@ -285,5 +287,6 @@ public class SceneFactory {
             currentIndex++;
         }
         currentIndex = 0;
+        studentScene = studentsScenes.get(currentIndex);
     }
 }
