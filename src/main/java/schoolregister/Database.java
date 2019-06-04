@@ -1,10 +1,7 @@
 package schoolregister;
 
 import org.mindrot.jbcrypt.BCrypt;
-import schoolregister.DataType.Absence;
-import schoolregister.DataType.Grade;
-import schoolregister.DataType.Lesson;
-import schoolregister.DataType.Person;
+import schoolregister.DataType.*;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -35,8 +32,9 @@ public class Database {
         }
     }
 
-    public Lesson[][] getLessonsAssignedTo(int id, boolean isStudent) {
+    public List<LessonsOnSlot> getLessonsAssignedTo(int id, boolean isStudent) {
        Lesson[][] lessons = new Lesson[5][10];
+       int maxiSlotNr = 0;
         try {
             Statement statement = connection.createStatement();
             ResultSet rs;
@@ -54,6 +52,7 @@ public class Database {
                 lesson.subjectId = rs.getInt("subject_id");
                 lesson.subjectName = rs.getString("subject_name");
                 lessons[lesson.dayId-1][lesson.slot-1] = lesson;
+                maxiSlotNr = Math.max(maxiSlotNr,lesson.slot);
             }
             rs.close();
             statement.close();
@@ -61,7 +60,16 @@ public class Database {
         catch (SQLException e) {
             crash(e);
         }
-        return lessons;
+        List<LessonsOnSlot> res = new ArrayList<>();
+        for(int i=0;i<maxiSlotNr;i++)
+            res.add(new LessonsOnSlot());
+
+        for(int i=0;i<lessons.length;i++){
+            for(int j=0;j<maxiSlotNr;j++) {
+                res.get(j).set(i,lessons[i][j]);
+            }
+        }
+        return res;
     }
 
     private void connect() {
