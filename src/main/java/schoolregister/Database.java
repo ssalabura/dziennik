@@ -35,12 +35,16 @@ public class Database {
         }
     }
 
-    public Lesson[][] getLessonsAssignedTo(int studentId) {
+    public Lesson[][] getLessonsAssignedTo(int id, boolean isStudent) {
        Lesson[][] lessons = new Lesson[5][10];
         try {
             Statement statement = connection.createStatement();
-            //TODO SQL injection
-            ResultSet rs = statement.executeQuery("SELECT * FROM students JOIN groups_students using(student_id) join groups_subjects_plan using(group_id) where student_id = "+studentId+";");
+            ResultSet rs;
+            if(isStudent)
+                rs = statement.executeQuery("SELECT * FROM students JOIN groups_students USING(student_id) JOIN groups_subjects_plan USING(group_id) WHERE student_id = "+id);
+            else
+                rs = statement.executeQuery("SELECT * FROM groups_subjects_plan JOIN teachers_groups_subjects USING(group_id,day_id,slot,subject_id) WHERE teacher_id = "+id);
+
             while (rs.next()) {
                 Lesson lesson = new Lesson();
                 lesson.dayId = rs.getInt("day_id");

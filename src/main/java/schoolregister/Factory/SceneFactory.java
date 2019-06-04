@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 import schoolregister.*;
 import schoolregister.DataType.Absence;
 import schoolregister.DataType.Grade;
+import schoolregister.DataType.Lesson;
 
 import static schoolregister.Main.*;
 
@@ -148,6 +149,16 @@ public class SceneFactory {
         return new Scene(grid, 1280, 720);
     }
 
+    public Scene createLessonTableSceneForStudent(int studentId) {
+        LessonsTableScene.setToStudent(studentId);
+        return LessonsTableScene.newScene();
+    }
+
+    public Scene createLessonTableSceneForTeacher(int teacherId) {
+        LessonsTableScene.setToStudent(teacherId);
+        return LessonsTableScene.newScene();
+    }
+
     public Scene createStudentScene(){
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.BASELINE_LEFT);
@@ -185,9 +196,8 @@ public class SceneFactory {
 
             @Override
             public void handle(ActionEvent e) {
-                if(lessonsTable == null)
-                    lessonsTable = new LessonsTable(1280, 720);
-                window.setScene(lessonsTable);
+                lessonsTableScene = createLessonTableSceneForStudent(userIDs[studentMask]);
+                window.setScene(lessonsTableScene);
             }
         });
 

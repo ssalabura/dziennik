@@ -15,7 +15,7 @@ public class Main extends Application {
     public static Stage window;
 
     public static Scene mainScene;
-    public static Scene lessonsTable;
+    public static Scene lessonsTableScene;
     public static Scene studentScene;
     public static Scene guardianScene;
     public static Scene teacherScene;
