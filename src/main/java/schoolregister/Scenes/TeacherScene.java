@@ -81,7 +81,7 @@ public class TeacherScene {
 
 
         addRowButton.setOnAction(e -> {
-            if(grades.isVisible()) {
+            if(grades.isVisible() && currentStudent.getPerson() != null) {
                 Pair<String, String> p = AddGradeDialog.showAndWait();
                 if (p == null)
                     return;
@@ -184,22 +184,18 @@ public class TeacherScene {
             currentLesson.setLesson(t1);
         });
 
-        absencesLabel.setVisible(false);
-        absences.setVisible(false);
+        setAbsencesVisible(absencesLabel, false);
 
-        lessonTopicLabel.setVisible(false);
-        lessons.setVisible(false);
+        setLessonsVisible(lessonTopicLabel, false);
 
         backButton.setOnAction(actionEvent -> window.setScene(mainScene));
         gradesButton.setOnAction(actionEvent -> {
             if(currentType.getValue() == 0)
                 return;
 
-            absencesLabel.setVisible(false);
-            absences.setVisible(false);
+            setAbsencesVisible(absencesLabel, false);
 
-            lessonTopicLabel.setVisible(false);
-            lessons.setVisible(false);
+            setLessonsVisible(lessonTopicLabel, false);
 
             if(currentType.getValue() == 2 && currentGroup.getGroup() != null){
                 fillStudents();
@@ -209,11 +205,9 @@ public class TeacherScene {
                 fillGrades();
             }
 
-            studentsLabel.setVisible(true);
-            students.setVisible(true);
+            setStudentsVisible(studentsLabel, true);
 
-            gradesLabel.setVisible(true);
-            grades.setVisible(true);
+            setGradesVisible(gradesLabel, true);
 
             currentType.setValue(0);
             currentLesson.setLesson(null);
@@ -223,11 +217,9 @@ public class TeacherScene {
             if(currentType.getValue() == 1)
                 return;
 
-            gradesLabel.setVisible(false);
-            grades.setVisible(false);
+            setGradesVisible(gradesLabel, false);
 
-            lessonTopicLabel.setVisible(false);
-            lessons.setVisible(false);
+            setLessonsVisible(lessonTopicLabel, false);
 
             if(currentType.getValue() == 2 && currentGroup.getGroup() != null){
                 fillStudents();
@@ -237,11 +229,9 @@ public class TeacherScene {
                 fillAbsences();
             }
 
-            studentsLabel.setVisible(true);
-            students.setVisible(true);
+            setStudentsVisible(studentsLabel, true);
 
-            absencesLabel.setVisible(true);
-            absences.setVisible(true);
+            setAbsencesVisible(absencesLabel, true);
 
             currentType.setValue(1);
             currentLesson.setLesson(null);
@@ -252,21 +242,17 @@ public class TeacherScene {
                 return;
             currentStudent.setPerson(null);
 
-            gradesLabel.setVisible(false);
-            grades.setVisible(false);
+            setGradesVisible(gradesLabel, false);
 
-            absencesLabel.setVisible(false);
-            absences.setVisible(false);
+            setAbsencesVisible(absencesLabel, false);
 
-            studentsLabel.setVisible(false);
-            students.setVisible(false);
+            setStudentsVisible(studentsLabel, false);
 
             if(currentGroup.getGroup() != null){
                 fillLessons();
             }
 
-            lessonTopicLabel.setVisible(true);
-            lessons.setVisible(true);
+            setLessonsVisible(lessonTopicLabel, true);
 
             currentType.setValue(2);
         });
@@ -291,6 +277,26 @@ public class TeacherScene {
     public static TableView<Grade> fillGrades(){
         grades.setItems(FXCollections.observableArrayList(Database.getInstance().getGrades(currentStudent.getPerson().getId(), currentGroup.getGroup().getSubjectId())));
         return grades;
+    }
+
+    public static void setLessonsVisible(Label label, boolean isVisible){
+        label.setVisible(isVisible);
+        lessons.setVisible(isVisible);
+    }
+
+    public static void setStudentsVisible(Label label, boolean isVisible){
+        label.setVisible(isVisible);
+        students.setVisible(isVisible);
+    }
+
+    public static void setAbsencesVisible(Label label, boolean isVisible){
+        label.setVisible(isVisible);
+        absences.setVisible(isVisible);
+    }
+
+    public static void setGradesVisible(Label label, boolean isVisible){
+        label.setVisible(isVisible);
+        grades.setVisible(isVisible);
     }
 
 }
