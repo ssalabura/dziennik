@@ -3,10 +3,9 @@ package schoolregister.Factory;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import schoolregister.DataType.*;
@@ -131,7 +130,7 @@ public class ViewFactory {
     @SuppressWarnings("unchecked")
     public TableView<Grade> getGrades(){
         TableView<Grade> resultTable = new TableView<>();
-        resultTable.setEditable(false);
+        resultTable.setEditable(true);
 
         TableColumn<Grade, String> value = new TableColumn<>("value");
         TableColumn<Grade, Integer> weight = new TableColumn<>("weight");
@@ -149,12 +148,49 @@ public class ViewFactory {
         return resultTable;
     }
 
-    public ListView<Group> getGroupsFor(int teacherId){
+    @SuppressWarnings("unchecked")
+    public TableView<Group> getGroupsFor(int teacherId){
+        TableView<Group> resultView = new TableView<>();
         ObservableList<Group> groups = FXCollections.observableArrayList(Database.getInstance().getGroupsFor(teacherId));
 
-        ListView<Group> resultView = new ListView<>(groups);
+        TableColumn<Group, String> groupName = new TableColumn<>("group");
+        TableColumn<Group, String> subjectName = new TableColumn<>("subject");
+
+        groupName.setCellValueFactory(
+                new PropertyValueFactory<>("name")
+        );
+        subjectName.setCellValueFactory(
+                new PropertyValueFactory<>("subject")
+        );
+
+        resultView.getColumns().addAll(groupName, subjectName);
         resultView.setEditable(false);
 
+        resultView.setItems(groups);
+
+        return resultView;
+    }
+
+    @SuppressWarnings("unchecked")
+    public TableView<Person> getStudents(){
+        TableView<Person> resultView = new TableView<>();
+
+        TableColumn<Person, Integer> studentId = new TableColumn<>("id");
+        TableColumn<Person, String> name = new TableColumn<>("name");
+        TableColumn<Person, String> surName = new TableColumn<>("surname");
+
+        studentId.setCellValueFactory(
+                new PropertyValueFactory<>("id")
+        );
+        name.setCellValueFactory(
+                new PropertyValueFactory<>("name")
+        );
+        surName.setCellValueFactory(
+                new PropertyValueFactory<>("surname")
+        );
+
+        resultView.getColumns().addAll(studentId, name, surName);
+        resultView.setEditable(false);
 
         return resultView;
     }
