@@ -2,12 +2,13 @@ package schoolregister.Scenes;
 
 import javafx.collections.FXCollections;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import schoolregister.DataType.*;
 import schoolregister.Database;
-import schoolregister.Factory.SceneFactory;
 import schoolregister.Factory.ViewFactory;
 import schoolregister.Wrapper.GroupWrapper;
 import schoolregister.Wrapper.IntegerWrapper;
@@ -17,7 +18,8 @@ import schoolregister.utils.ExceptionHandler;
 
 import java.sql.SQLException;
 
-import static schoolregister.Main.*;
+import static schoolregister.Main.mainScene;
+import static schoolregister.Main.window;
 
 public class TeacherScene {
     private static ViewFactory viewFactory = ViewFactory.getInstance();
@@ -270,7 +272,7 @@ public class TeacherScene {
     }
 
     public static TableView<Grade> fillGrades(){
-        grades.setItems(FXCollections.observableArrayList(Database.getInstance().getGrades(currentStudent.getPerson().getId(), currentGroup.getGroup().getId())));
+        grades.setItems(FXCollections.observableArrayList(Database.getInstance().getGrades(currentStudent.getPerson().getId(), currentGroup.getGroup().getSubjectId())));
         return grades;
     }
 

@@ -12,7 +12,6 @@ import javafx.scene.layout.GridPane;
 import javafx.util.converter.IntegerStringConverter;
 import schoolregister.DataType.*;
 import schoolregister.Database;
-import schoolregister.Scenes.TeacherScene;
 import schoolregister.utils.ExceptionHandler;
 
 import java.sql.Date;

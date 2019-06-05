@@ -97,15 +97,13 @@ public class Database {
 
     public List<Person> getStudentsFor(int groupId){
         List<Person> list = new ArrayList<>();
-        try{
-            String query = "select students.* from students join students_in_groups using(student_id) where group_id = " + groupId;
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery(query);
+
+        String query = "select students.* from students join students_in_groups using(student_id) where group_id = " + groupId;
+
+        try(Statement statement = connection.createStatement(); ResultSet rs = statement.executeQuery(query)){
             while(rs.next()){
                 list.add(createPerson(rs, Person.Type.student));
             }
-            statement.close();
-            rs.close();
         }
         catch (Exception e){
             ExceptionHandler.crash(e);
@@ -114,16 +112,14 @@ public class Database {
     }
 
     public Person getPerson(int id, Person.Type type){
-        try{
-            String tableName = (type == Person.Type.guardian) ? "legal_guardians" : type + "s";
-            String query = "SELECT * FROM " + tableName + " WHERE " + type + "_id = " + id;
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery(query);
+        String tableName = (type == Person.Type.guardian) ? "legal_guardians" : type + "s";
+        String query = "SELECT * FROM " + tableName + " WHERE " + type + "_id = " + id;
+
+        try(Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query)){
             if(rs.next()){
                 return createPerson(rs, type);
             }
-            statement.close();
-            rs.close();
         }
         catch(Exception e){
             ExceptionHandler.crash(e);
@@ -134,15 +130,15 @@ public class Database {
 
     public List<Person> getPeople(Person.Type type){
         List<Person> list = new ArrayList<>();
-        try{
-            String source = (type == Person.Type.guardian) ? "legal_guardians" : (type + "s");
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT * FROM " + source);
+
+        String source = (type == Person.Type.guardian) ? "legal_guardians" : (type + "s");
+        String query = "SELECT * FROM " + source;
+
+        try(Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query)){
             while(rs.next()){
                 list.add(createPerson(rs, type));
             }
-            rs.close();
-            statement.close();
         }
         catch (Exception e){
             ExceptionHandler.crash(e);
@@ -152,15 +148,14 @@ public class Database {
 
     public List<Group> getGroupsFor(int teacherId){
         List<Group> list = new ArrayList<>();
-        try{
-            String query = "select teacher_id, group_id, subject_id, subjects.name\"s_name\", groups.name\"g_name\" from teachers_groups_subjects join groups using(group_id) join subjects using(subject_id) where teacher_id = " + teacherId + " group by 1, 2, 3, 4, 5";
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery(query);
+
+        String query = "select teacher_id, group_id, subject_id, subjects.name\"s_name\", groups.name\"g_name\" from teachers_groups_subjects join groups using(group_id) join subjects using(subject_id) where teacher_id = " + teacherId + " group by 1, 2, 3, 4, 5";
+
+        try(Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query)){
             while(rs.next()){
                 list.add(createGroup(rs));
             }
-            statement.close();
-            rs.close();
         }
         catch (Exception e){
             ExceptionHandler.crash(e);
@@ -171,15 +166,21 @@ public class Database {
     public List<LessonsOnSlot> getLessonsAssignedTo(int id, boolean isStudent) {
         Lesson[][] lessons = new Lesson[5][10];
         List<LessonsOnSlot> res = new ArrayList<>();
-        int maxiSlotNr = 0;
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet rs;
-            if(isStudent)
-                rs = statement.executeQuery("SELECT * FROM students JOIN groups_students USING(student_id) JOIN groups_subjects_plan USING(group_id) WHERE student_id = "+id);
-            else
-                rs = statement.executeQuery("SELECT * FROM groups_subjects_plan JOIN teachers_groups_subjects USING(group_id,day_id,slot,subject_id) WHERE teacher_id = "+id);
 
+        String query;
+
+        String query2 = "SELECT slot,to_char(start_time,'HH24:MI') AS start_time,to_char(start_time+'45 minutes','HH24:MI') AS end_time FROM slots ORDER BY start_time";
+
+        if(isStudent)
+            query = "SELECT * FROM students JOIN groups_students USING(student_id) JOIN groups_subjects_plan USING(group_id) WHERE student_id = "+id;
+        else
+            query = "SELECT * FROM groups_subjects_plan JOIN teachers_groups_subjects USING(group_id,day_id,slot,subject_id) WHERE teacher_id = "+id;
+
+        int maxiSlotNr = 0;
+
+        try (Statement statement = connection.createStatement();
+              ResultSet rs = statement.executeQuery(query);
+              ResultSet rs2 = statement.executeQuery(query2)){
             while (rs.next()) {
                 Lesson lesson = new Lesson();
                 lesson.dayId = rs.getInt("day_id");
@@ -191,13 +192,9 @@ public class Database {
                 lessons[lesson.dayId-1][lesson.slot-1] = lesson;
                 maxiSlotNr = Math.max(maxiSlotNr,lesson.slot);
             }
-            rs.close();
-            statement.close();
 
-            statement = connection.createStatement();
-            rs = statement.executeQuery("SELECT slot,to_char(start_time,'HH24:MI') AS start_time,to_char(start_time+'45 minutes','HH24:MI') AS end_time FROM slots ORDER BY start_time");
-            while (rs.next()) {
-                res.add(new LessonsOnSlot(rs.getInt("slot"),rs.getString("start_time"),rs.getString("end_time")));
+            while (rs2.next()) {
+                res.add(new LessonsOnSlot(rs2.getInt("slot"),rs2.getString("start_time"),rs2.getString("end_time")));
             }
 
         }
@@ -215,15 +212,14 @@ public class Database {
 
     public List<Lesson> getLessons(int groupId, int subject_id){
         List<Lesson> list = new ArrayList<>();
-        try{
-            String query = "select * from lessons where group_id = " + groupId + " and subject_id = " + subject_id;
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery(query);
+
+        String query = "select * from lessons where group_id = " + groupId + " and subject_id = " + subject_id;
+
+        try(Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query)){
             while(rs.next()){
                 list.add(createLesson(rs));
             }
-            statement.close();
-            rs.close();
         }
         catch (Exception e){
             ExceptionHandler.crash(e);
@@ -239,19 +235,18 @@ public class Database {
 
     public List<Grade> getGrades(int studentId, int subject_id){
         List<Grade> list = new ArrayList<>();
-        try{
-            String query = "SELECT grade_id,subject_id,name, value,value::NUMERIC(3,2) as floatValue, weight FROM grades g JOIN subjects USING(subject_id) WHERE student_id =" + studentId;
-            if(subject_id != -1)
-                query +=  " AND subject_id = " + subject_id;
-            query += " ORDER BY subject_id, weight DESC";
 
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery(query);
+        String query = "SELECT grade_id,subject_id,name, value,value::NUMERIC(3,2) as floatValue, weight FROM grades g JOIN subjects USING(subject_id) WHERE student_id =" + studentId;
+
+        if(subject_id != -1)
+            query +=  " AND subject_id = " + subject_id;
+        query += " ORDER BY subject_id, weight DESC";
+
+        try(Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query)){
             while(rs.next()){
                 list.add(new Grade(rs.getInt("grade_id"), rs.getInt("subject_id"),rs.getString("name"),rs.getString("value"),rs.getFloat("floatValue"), rs.getInt("weight")));
             }
-            statement.close();
-            rs.close();
         }
         catch (Exception e){
             ExceptionHandler.crash(e);
@@ -261,15 +256,14 @@ public class Database {
 
     public List<Absence> getAbsences(int studentId) {
         List<Absence> list = new ArrayList<>();
-        try{
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery(
-                    "SELECT lesson_id,slot,date,s.name FROM absences JOIN lessons USING(lesson_id) JOIN subjects s USING(subject_id) WHERE student_id = "+studentId);
+
+        String query = "SELECT lesson_id,slot,date,s.name FROM absences JOIN lessons USING(lesson_id) JOIN subjects s USING(subject_id) WHERE student_id = "+studentId;
+
+        try(Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query)){
             while(rs.next()){
                 list.add(new Absence(rs.getInt("lesson_id"),rs.getInt("slot"),rs.getDate("date"),rs.getString("name")));
             }
-            statement.close();
-            rs.close();
         }
         catch (Exception e){
             ExceptionHandler.crash(e);
@@ -279,15 +273,14 @@ public class Database {
 
     public List<Absence> getAbsences(int studentId, int groupId, int subjectId){
         List<Absence> list = new ArrayList<>();
-        try{
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery(
-                    "SELECT lesson_id,slot,date,s.name FROM absences JOIN lessons USING(lesson_id) JOIN subjects s USING(subject_id) WHERE student_id = "+studentId + " and subject_id = " + subjectId + " and group_id = " + groupId);
+
+        String query = "SELECT lesson_id,slot,date,s.name FROM absences JOIN lessons USING(lesson_id) JOIN subjects s USING(subject_id) WHERE student_id = "+studentId + " and subject_id = " + subjectId + " and group_id = " + groupId;
+
+        try(Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query)){
             while(rs.next()){
                 list.add(new Absence(rs.getInt("lesson_id"),rs.getInt("slot"),rs.getDate("date"),rs.getString("name")));
             }
-            statement.close();
-            rs.close();
         }
         catch (Exception e){
             ExceptionHandler.crash(e);
@@ -297,15 +290,14 @@ public class Database {
 
     public List<Subject> getAllSubjects(int studentId) {
         List<Subject> list = new ArrayList<>();
-        try{
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery(
-                    "SELECT subject_id,name FROM students_subjects JOIN subjects USING(subject_id) WHERE student_id = "+studentId);
+
+        String query = "SELECT subject_id,name FROM students_subjects JOIN subjects USING(subject_id) WHERE student_id = "+studentId;
+
+        try(Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query)){
             while(rs.next()){
                 list.add(new Subject(rs.getInt("subject_id"),rs.getString("name")));
             }
-            statement.close();
-            rs.close();
         }
         catch (Exception e){
             ExceptionHandler.crash(e);
@@ -325,20 +317,19 @@ public class Database {
     }
 
     private int logUser(String email, String password, Person.Type type){
-        try{
-            String tableName = (type == Person.Type.guardian) ? "legal_guardians" : type + "s";
-            String columnName = type + "_id, password";
-            String query = "SELECT "+ columnName + " FROM " + tableName + " WHERE email = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
+        String tableName = (type == Person.Type.guardian) ? "legal_guardians" : type + "s";
+        String columnName = type + "_id, password";
+        String query = "SELECT "+ columnName + " FROM " + tableName + " WHERE email = ?";
+
+        try(PreparedStatement statement = connection.prepareStatement(query)){
             statement.setString(1, email);
-            ResultSet rs = statement.executeQuery();
-            if(rs.next()){
-                if(BCrypt.checkpw(password, rs.getString(2))) {
-                    return rs.getInt(1);
+            try(ResultSet rs = statement.executeQuery()) {
+                if (rs.next()) {
+                    if (BCrypt.checkpw(password, rs.getString(2))) {
+                        return rs.getInt(1);
+                    }
                 }
             }
-            statement.close();
-            rs.close();
         }
         catch (Exception e){
             ExceptionHandler.crash(e);
@@ -348,14 +339,14 @@ public class Database {
 
     public List<Integer> getGuardianKids(int guardianID){
         List<Integer> list = new ArrayList<>();
-        try{
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT student_id FROM guardians_students WHERE guardian_id = " + guardianID);
+
+        String query = "SELECT student_id FROM guardians_students WHERE guardian_id = " + guardianID;
+
+        try(Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query)){
             while(rs.next()){
                 list.add(rs.getInt(1));
             }
-            statement.close();
-            rs.close();
         }
         catch (Exception e){
             ExceptionHandler.crash(e);
@@ -365,32 +356,35 @@ public class Database {
 
     public void updateGrade(Grade grade, String newValue, int weight) throws SQLException{
         String query = "UPDATE grades SET weight = ? , value = ?::GRADE WHERE grade_id = ?";
-        PreparedStatement statement = connection.prepareStatement(query);
-        statement.setInt(1,weight);
-        statement.setString(2, newValue);
-        statement.setLong(3, grade.getId());
-        statement.execute();
-        statement.close();
+
+        try(PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, weight);
+            statement.setString(2, newValue);
+            statement.setLong(3, grade.getId());
+            statement.execute();
+        }
     }
 
     public void removeGrade(long id) throws SQLException {
         String query = "DELETE FROM grades WHERE grade_id = ?";
-        PreparedStatement statement = connection.prepareStatement(query);
-        statement.setLong(1,id);
-        statement.execute();
-        statement.close();
+
+        try(PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setLong(1, id);
+            statement.execute();
+        }
     }
 
     public void addGrade(String value, int weight, int student_id, int subject_id, int techer_id) throws SQLException {
         String query = "INSERT INTO grades (value, weight, student_id, subject_id, teacher_id) VALUES (?::GRADE,?,?,?,?)";
-        PreparedStatement statement = connection.prepareStatement(query);
-        statement.setString(1,value);
-        statement.setInt(2,weight);
-        statement.setInt(3,student_id);
-        statement.setInt(4,subject_id);
-        statement.setInt(5,techer_id);
-        statement.execute();
-        statement.close();
+
+        try(PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, value);
+            statement.setInt(2, weight);
+            statement.setInt(3, student_id);
+            statement.setInt(4, subject_id);
+            statement.setInt(5, techer_id);
+            statement.execute();
+        }
     }
 
     public void testLogAll(boolean onlyErrors){
