@@ -9,15 +9,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
-import schoolregister.DataType.Absence;
-import schoolregister.DataType.Grade;
-import schoolregister.DataType.Group;
-import schoolregister.DataType.Person;
+import schoolregister.DataType.*;
 import schoolregister.Database;
 import schoolregister.Factory.SceneFactory;
 import schoolregister.Factory.ViewFactory;
 import schoolregister.Wrapper.GroupWrapper;
 import schoolregister.Wrapper.IntegerWrapper;
+import schoolregister.Wrapper.LessonWrapper;
 import schoolregister.Wrapper.PersonWrapper;
 
 import java.util.ArrayList;
@@ -31,16 +29,19 @@ public class TeacherAndGuardianScene {
         TableView<Grade> grades = viewFactory.getGrades();
         TableView<Person> students = viewFactory.getStudents();
         TableView<Absence> absences = viewFactory.getAbsences();
+        TableView<Lesson> lessons = viewFactory.getLessons();
 
         GroupWrapper currentGroup = new GroupWrapper();
         PersonWrapper currentStudent = new PersonWrapper();
         IntegerWrapper currentType = new IntegerWrapper(0);
+        LessonWrapper currentLesson = new LessonWrapper();
 
         GridPane grid = createGrid();
         Button backButton = new Button("Back");
         Button lessonsButton = new Button("Lessons");
         Button gradesButton = new Button("Grades");
         Button absencesButton = new Button("absences");
+        Button lessonTopicButton = new Button("LessonTopic");
 
         Label groupsLabel = new Label("Groups");
         groupsLabel.setFont(new Font("Arial", 20));
@@ -50,11 +51,14 @@ public class TeacherAndGuardianScene {
         gradesLabel.setFont(new Font("Arial", 20));
         Label absencesLabel = new Label("Absences");
         absencesLabel.setFont(new Font("Arial", 20));
+        Label lessonTopicLabel = new Label("LessonTopic");
+        lessonTopicLabel.setFont(new Font("Arial", 20));
 
         grid.add(backButton, 1, 21);
         grid.add(lessonsButton, 1, 20);
         grid.add(gradesButton, 1, 22);
         grid.add(absencesButton, 1, 23);
+        grid.add(lessonTopicButton, 1, 24);
         grid.add(groupsLabel, 0, 5);
         grid.add(groups, 0, 6);
         grid.add(studentsLabel, 10, 5);
@@ -63,6 +67,8 @@ public class TeacherAndGuardianScene {
         grid.add(grades, 20, 6);
         grid.add(absencesLabel, 20, 5);
         grid.add(absences, 20, 6);
+        grid.add(lessonTopicLabel, 10, 5);
+        grid.add(lessons, 10, 6);
 
         lessonsButton.setOnAction(e -> {
             lessonsTableScene = SceneFactory.getInstance().createLessonTableSceneForTeacher(teacherId);
@@ -72,10 +78,16 @@ public class TeacherAndGuardianScene {
         groups.getSelectionModel().selectedItemProperty().addListener((observableValue, group, t1) -> {
             currentGroup.setGroup(t1);
             if(t1 != null) {
-                students.setItems(FXCollections.observableArrayList(Database.getInstance().getStudentsFor(t1.getId())));
+                if(currentType.getValue() != 2)
+                    students.setItems(FXCollections.observableArrayList(Database.getInstance().getStudentsFor(t1.getId())));
+                else
+                    lessons.setItems(FXCollections.observableArrayList(Database.getInstance().getLessons(currentGroup.getGroup().getId(), currentGroup.getGroup().getSubjectId())));
             }
             else{
-                students.getItems().clear();
+                if(currentType.getValue() != 2)
+                    students.getItems().clear();
+                else
+                    lessons.getItems().clear();
             }
         });
 
@@ -98,6 +110,7 @@ public class TeacherAndGuardianScene {
                         break;
                     case 1:
                         absences.getItems().clear();
+                        break;
                 }
             }
         });
@@ -105,35 +118,87 @@ public class TeacherAndGuardianScene {
         absencesLabel.setVisible(false);
         absences.setVisible(false);
 
+        lessonTopicLabel.setVisible(false);
+        lessons.setVisible(false);
+
         backButton.setOnAction(actionEvent -> window.setScene(mainScene));
         gradesButton.setOnAction(actionEvent -> {
             if(currentType.getValue() == 0)
                 return;
-            currentType.setValue(0);
 
-            gradesLabel.setVisible(true);
-            grades.setVisible(true);
+            absencesLabel.setVisible(false);
+            absences.setVisible(false);
+
+            lessonTopicLabel.setVisible(false);
+            lessons.setVisible(false);
+
+            if(currentType.getValue() == 2 && currentGroup.getGroup() != null){
+                students.setItems(FXCollections.observableArrayList(Database.getInstance().getStudentsFor(currentGroup.getGroup().getId())));
+            }
+
             if(currentStudent.getPerson() != null && currentGroup.getGroup() != null){
                 grades.setItems(FXCollections.observableArrayList(Database.getInstance().getGrades(currentStudent.getPerson().getId(), currentGroup.getGroup().getId())));
             }
 
-            absencesLabel.setVisible(false);
-            absences.setVisible(false);
+            studentsLabel.setVisible(true);
+            students.setVisible(true);
+
+            gradesLabel.setVisible(true);
+            grades.setVisible(true);
+
+            currentType.setValue(0);
         });
 
         absencesButton.setOnAction(actionEvent -> {
             if(currentType.getValue() == 1)
                 return;
-            currentType.setValue(1);
 
-            absencesLabel.setVisible(true);
-            absences.setVisible(true);
+            gradesLabel.setVisible(false);
+            grades.setVisible(false);
+
+            lessonTopicLabel.setVisible(false);
+            lessons.setVisible(false);
+
+            if(currentType.getValue() == 2 && currentGroup.getGroup() != null){
+                students.setItems(FXCollections.observableArrayList(Database.getInstance().getStudentsFor(currentGroup.getGroup().getId())));
+            }
+
             if(currentStudent.getPerson() != null && currentGroup.getGroup() != null){
                 absences.setItems(FXCollections.observableArrayList(Database.getInstance().getAbsences(currentStudent.getPerson().getId(), currentGroup.getGroup().getId(), currentGroup.getGroup().getSubjectId())));
             }
 
+            studentsLabel.setVisible(true);
+            students.setVisible(true);
+
+            absencesLabel.setVisible(true);
+            absences.setVisible(true);
+
+            currentType.setValue(1);
+        });
+
+        lessonTopicButton.setOnAction(actionEvent -> {
+            if(currentType.getValue() == 2)
+                return;
+            currentStudent.setPerson(null);
+
             gradesLabel.setVisible(false);
             grades.setVisible(false);
+
+            absencesLabel.setVisible(false);
+            absences.setVisible(false);
+
+            studentsLabel.setVisible(false);
+            students.setVisible(false);
+
+            if(currentGroup.getGroup() != null){
+                lessons.setItems(FXCollections.observableArrayList(Database.getInstance().getLessons(currentGroup.getGroup().getId(), currentGroup.getGroup().getSubjectId())));
+            }
+
+            lessonTopicLabel.setVisible(true);
+            lessons.setVisible(true);
+
+            currentType.setValue(2);
+
         });
         return new Scene(grid, 1280, 720);
     }

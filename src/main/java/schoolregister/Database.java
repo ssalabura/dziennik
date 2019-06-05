@@ -19,7 +19,7 @@ public class Database {
         }
         return instance;
     }
-    public static void close() {
+    static void close() {
         if(instance != null) {
             try {
                 instance.connection.close();
@@ -63,6 +63,34 @@ public class Database {
             crash(e);
         }
         return p;
+    }
+
+    private Group createGroup(ResultSet rs){
+        Group g = new Group();
+        try{
+            g.setId(rs.getInt("group_id"));
+            g.setSubjectId(rs.getInt("subject_id"));
+            g.setName(rs.getString("g_name"));
+            g.setSubject(rs.getString("s_name"));
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return g;
+    }
+
+    private Lesson createLesson(ResultSet rs){
+        Lesson l = new Lesson();
+        try{
+            l.setId(rs.getInt("lesson_id"));
+            l.setDate(rs.getDate("date"));
+            l.setTopic(rs.getString("topic"));
+            l.setSlot(rs.getInt("slot"));
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return l;
     }
 
     public List<Person> getStudentsFor(int groupId){
@@ -118,20 +146,6 @@ public class Database {
             crash(e);
         }
         return list;
-    }
-
-    private Group createGroup(ResultSet rs){
-        Group g = new Group();
-        try{
-            g.setId(rs.getInt("group_id"));
-            g.setSubjectId(rs.getInt("subject_id"));
-            g.setName(rs.getString("g_name"));
-            g.setSubject(rs.getString("s_name"));
-        }
-        catch (Exception e){
-            crash(e);
-        }
-        return g;
     }
 
     public List<Group> getGroupsFor(int teacherId){
@@ -196,6 +210,25 @@ public class Database {
         }
         return res;
     }
+
+    public List<Lesson> getLessons(int groupId, int subject_id){
+        List<Lesson> list = new ArrayList<>();
+        try{
+            String query = "select * from lessons where group_id = " + groupId + " and subject_id = " + subject_id;
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while(rs.next()){
+                list.add(createLesson(rs));
+            }
+            statement.close();
+            rs.close();
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return list;
+    }
+
 
 
     public List<Grade> getGrades(int studentID){

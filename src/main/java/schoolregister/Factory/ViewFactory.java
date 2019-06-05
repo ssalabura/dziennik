@@ -214,4 +214,32 @@ public class ViewFactory {
 
         return resultView;
     }
+
+    @SuppressWarnings("unchecked")
+    public TableView<Lesson> getLessons(){
+        TableView<Lesson> resultView = new TableView<>();
+
+        TableColumn<Lesson, Date> date = new TableColumn<>("date");
+        TableColumn<Lesson, Integer> slot = new TableColumn<>("slot");
+        TableColumn<Lesson, Integer> lessonId = new TableColumn<>("id");
+        TableColumn<Lesson, String> topic = new TableColumn<>("topic");
+
+        date.setCellValueFactory(
+                new PropertyValueFactory<>("date")
+        );
+        slot.setCellValueFactory(
+                new PropertyValueFactory<>("slot")
+        );
+        lessonId.setCellValueFactory(
+                new PropertyValueFactory<>("id")
+        );
+        topic.setCellValueFactory(
+                new PropertyValueFactory<>("topic")
+        );
+
+        resultView.getColumns().addAll(date, slot, lessonId, topic);
+        resultView.setEditable(true);
+
+        return resultView;
+    }
 }
