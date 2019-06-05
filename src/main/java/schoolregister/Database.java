@@ -152,19 +152,6 @@ public class Database {
         return list;
     }
 
-    private Grade createGrade(ResultSet rs){
-        Grade g = new Grade();
-        try{
-            g.setSubject(rs.getString("name"));
-            g.setValue(rs.getString("value"));
-            g.setWeight(rs.getInt("weight"));
-        }
-        catch (Exception e){
-            crash(e);
-        }
-        return g;
-    }
-
     public List<LessonsOnSlot> getLessonsAssignedTo(int id, boolean isStudent) {
         Lesson[][] lessons = new Lesson[5][10];
         List<LessonsOnSlot> res = new ArrayList<>();
@@ -212,30 +199,21 @@ public class Database {
 
 
     public List<Grade> getGrades(int studentID){
-        List<Grade> list = new ArrayList<>();
-        try{
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT subject_id,name, value,value::NUMERIC(3,2) as floatValue, weight FROM grades g JOIN subjects USING(subject_id) WHERE student_id = " + studentID + " ORDER BY subject_id, weight DESC");
-            while(rs.next()){
-                list.add(new Grade(rs.getInt("subject_id"),rs.getString("name"),rs.getString("value"),rs.getFloat("floatValue"), rs.getInt("weight")));
-            }
-            statement.close();
-            rs.close();
-        }
-        catch (Exception e){
-            crash(e);
-        }
-        return list;
+        return getGrades(studentID,-1);
     }
 
-    public List<Grade> getGrades(int studentId, int groupId){
+    public List<Grade> getGrades(int studentId, int subject_id){
         List<Grade> list = new ArrayList<>();
         try{
-            String query = "select name, value, weight from grades join subjects using(subject_id) where student_id = " + studentId + " and student_id in(select student_id from students_in_groups where group_id = " + groupId + ")";
+            String query = "SELECT subject_id,name, value,value::NUMERIC(3,2) as floatValue, weight FROM grades g JOIN subjects USING(subject_id) WHERE student_id =" + studentId;
+            if(subject_id != -1)
+                query +=  " AND subject_id = " + subject_id;
+            query += " ORDER BY subject_id, weight DESC";
+
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(query);
             while(rs.next()){
-                list.add(createGrade(rs));
+                list.add(new Grade(rs.getInt("subject_id"),rs.getString("name"),rs.getString("value"),rs.getFloat("floatValue"), rs.getInt("weight")));
             }
             statement.close();
             rs.close();
