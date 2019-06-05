@@ -124,6 +124,7 @@ create table grades (
     student_id numeric(10) not null references students on delete cascade,
     subject_id numeric(10) not null,
     teacher_id numeric(10) not null,
+    grade_id serial primary key,
     foreign key (teacher_id, subject_id) references teacher_subjects on delete cascade
 );
 
