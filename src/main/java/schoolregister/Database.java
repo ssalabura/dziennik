@@ -374,15 +374,14 @@ public class Database {
         }
     }
 
-    public void addGrade(String value, int weight, int student_id, int subject_id, int techer_id) throws SQLException {
+    public void addGrade(String value, int weight, int student_id, int subject_id, int teacher_id) throws SQLException {
         String query = "INSERT INTO grades (value, weight, student_id, subject_id, teacher_id) VALUES (?::GRADE,?,?,?,?)";
-
         try(PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, value);
             statement.setInt(2, weight);
             statement.setInt(3, student_id);
             statement.setInt(4, subject_id);
-            statement.setInt(5, techer_id);
+            statement.setInt(5, teacher_id);
             statement.execute();
         }
     }

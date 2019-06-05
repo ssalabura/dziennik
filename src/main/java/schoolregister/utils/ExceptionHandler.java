@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ExceptionHandler {
 
-    public static void onFailUpdate(SQLException e) {
+    public static void onFailUpdate(Exception e) {
         System.out.println("querying failed");
         System.out.println(e);
         TeacherScene.fillGrades();

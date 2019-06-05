@@ -7,8 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
+import javafx.util.Pair;
 import schoolregister.DataType.*;
 import schoolregister.Database;
+import schoolregister.Dialogs.AddGradeDialog;
 import schoolregister.Factory.ViewFactory;
 import schoolregister.Wrapper.GroupWrapper;
 import schoolregister.Wrapper.IntegerWrapper;
@@ -77,6 +79,21 @@ public class TeacherScene {
         addRowButton.setMinSize(120,30);
         deleteRowButton.setMinSize(120,30);
 
+
+        addRowButton.setOnAction(e -> {
+            if(grades.isVisible()) {
+                Pair<String, String> p = AddGradeDialog.showAndWait();
+                if (p == null)
+                    return;
+                try {
+                    int weight = Integer.parseInt(p.getValue());
+                    Database.getInstance().addGrade(p.getKey(), weight, currentStudent.getPerson().getId(), currentGroup.getGroup().getSubjectId(), teacherId);
+                    fillGrades();
+                } catch (SQLException | NumberFormatException x) {
+                    ExceptionHandler.onFailUpdate(x);
+                }
+            }
+        });
 
         deleteRowButton.setOnAction(e -> {
             Grade selectedItem = grades.getSelectionModel().getSelectedItem();
