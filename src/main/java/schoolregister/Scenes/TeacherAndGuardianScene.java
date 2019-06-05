@@ -1,14 +1,11 @@
 package schoolregister.Scenes;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
@@ -18,7 +15,8 @@ import schoolregister.DataType.Person;
 import schoolregister.Database;
 import schoolregister.Factory.SceneFactory;
 import schoolregister.Factory.ViewFactory;
-
+import schoolregister.Wrapper.GroupWrapper;
+import schoolregister.Wrapper.PersonWrapper;
 
 import java.util.ArrayList;
 
@@ -28,11 +26,12 @@ public class TeacherAndGuardianScene {
     private static ViewFactory viewFactory = ViewFactory.getInstance();
     public static Scene newTeacherScene(int teacherId) {
 
-        ListView<Group> groups = viewFactory.getGroupsFor(teacherId);
+        TableView<Group> groups = viewFactory.getGroupsFor(teacherId);
         TableView<Grade> grades = viewFactory.getGrades();
-        ListView<Person> students = new ListView<>();
+        TableView<Person> students = viewFactory.getStudents();
 
-        Group currentGroup = new Group();
+        GroupWrapper currentGroup = new GroupWrapper();
+        PersonWrapper currentStudent = new PersonWrapper();
 
         GridPane grid = createGrid();
         Button backButton = new Button("Back");
@@ -70,8 +69,9 @@ public class TeacherAndGuardianScene {
         });
 
         students.getSelectionModel().selectedItemProperty().addListener((observableValue, person, t1) -> {
+            currentStudent.setPerson(t1);
             if(t1 != null){
-                grades.setItems(FXCollections.observableArrayList(Database.getInstance().getGrades(t1.getId(), currentGroup.getId())));
+                grades.setItems(FXCollections.observableArrayList(Database.getInstance().getGrades(t1.getId(), currentGroup.getGroup().getId())));
             }
             else{
                 grades.getItems().clear();
