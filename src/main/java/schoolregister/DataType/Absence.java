@@ -45,4 +45,12 @@ public class Absence {
             return "Thursday";
         return "Friday";
     }
+
+    public int getLessonId() {
+        return lessonId;
+    }
+
+    public void setLessonId(int lessonId) {
+        this.lessonId = lessonId;
+    }
 }
