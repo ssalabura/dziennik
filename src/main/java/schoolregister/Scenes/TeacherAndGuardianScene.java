@@ -1,5 +1,4 @@
 package schoolregister.Scenes;
-
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -133,6 +132,10 @@ public class TeacherAndGuardianScene {
             }
         });
 
+        lessons.getSelectionModel().selectedItemProperty().addListener((observableValue, lesson, t1) -> {
+            currentLesson.setLesson(t1);
+        });
+
         absencesLabel.setVisible(false);
         absences.setVisible(false);
 
@@ -165,6 +168,7 @@ public class TeacherAndGuardianScene {
             grades.setVisible(true);
 
             currentType.setValue(0);
+            currentLesson.setLesson(null);
         });
 
         absencesButton.setOnAction(actionEvent -> {
@@ -192,6 +196,7 @@ public class TeacherAndGuardianScene {
             absences.setVisible(true);
 
             currentType.setValue(1);
+            currentLesson.setLesson(null);
         });
 
         lessonTopicButton.setOnAction(actionEvent -> {
@@ -216,7 +221,6 @@ public class TeacherAndGuardianScene {
             lessons.setVisible(true);
 
             currentType.setValue(2);
-
         });
         return new Scene(grid, 1280, 720);
     }
