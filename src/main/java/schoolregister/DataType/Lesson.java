@@ -1,5 +1,7 @@
 package schoolregister.DataType;
 
+import schoolregister.utils.Time;
+
 import java.sql.Date;
 
 public class Lesson {
@@ -23,6 +25,10 @@ public class Lesson {
 
     public void setDayId(int dayId) {
         this.dayId = dayId;
+    }
+
+    public String getDayOfWeek() {
+        return Time.dateToDayString(date);
     }
 
     public void setSubjectName(String subjectName) {

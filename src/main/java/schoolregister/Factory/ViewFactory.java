@@ -220,20 +220,23 @@ public class ViewFactory {
         TableView<Absence> resultView = new TableView<>();
 
         TableColumn<Absence, Date> date = new TableColumn<>("date");
+        TableColumn<Absence, Integer> day = new TableColumn<>("day");
         TableColumn<Absence, Integer> slot = new TableColumn<>("slot");
-        TableColumn<Absence, Integer> lessonId = new TableColumn<>("lessonId");
 
-        date.setCellValueFactory(
-                new PropertyValueFactory<>("date")
-        );
-        slot.setCellValueFactory(
-                new PropertyValueFactory<>("slot")
-        );
-        lessonId.setCellValueFactory(
-                new PropertyValueFactory<>("lessonId")
-        );
 
-        resultView.getColumns().addAll(date, slot, lessonId);
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        day.setCellValueFactory(new PropertyValueFactory<>("dayOfWeek"));
+        slot.setCellValueFactory(new PropertyValueFactory<>("slot"));
+
+        date.prefWidthProperty().bind(resultView.widthProperty().multiply(0.4));
+        date.setStyle("-fx-alignment: CENTER");
+        day.prefWidthProperty().bind(resultView.widthProperty().multiply(0.39));
+        day.setStyle("-fx-alignment: CENTER");
+        slot.prefWidthProperty().bind(resultView.widthProperty().multiply(0.2));
+        slot.setStyle("-fx-alignment: CENTER");
+
+
+        resultView.getColumns().addAll(date, day, slot);
         resultView.setEditable(true);
 
         return resultView;
@@ -244,24 +247,25 @@ public class ViewFactory {
         TableView<Lesson> resultView = new TableView<>();
 
         TableColumn<Lesson, Date> date = new TableColumn<>("date");
+        TableColumn<Lesson, String> day = new TableColumn<>("day");
         TableColumn<Lesson, Integer> slot = new TableColumn<>("slot");
-        TableColumn<Lesson, Integer> lessonId = new TableColumn<>("id");
         TableColumn<Lesson, String> topic = new TableColumn<>("topic");
 
-        date.setCellValueFactory(
-                new PropertyValueFactory<>("date")
-        );
-        slot.setCellValueFactory(
-                new PropertyValueFactory<>("slot")
-        );
-        lessonId.setCellValueFactory(
-                new PropertyValueFactory<>("id")
-        );
-        topic.setCellValueFactory(
-                new PropertyValueFactory<>("topic")
-        );
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        day.setCellValueFactory(new PropertyValueFactory<>("dayOfWeek"));
+        slot.setCellValueFactory(new PropertyValueFactory<>("slot"));
+        topic.setCellValueFactory(new PropertyValueFactory<>("topic"));
 
-        resultView.getColumns().addAll(date, slot, lessonId, topic);
+        date.prefWidthProperty().bind(resultView.widthProperty().multiply(0.10));
+        date.setStyle("-fx-alignment: CENTER");
+        day.prefWidthProperty().bind(resultView.widthProperty().multiply(0.10));
+        day.setStyle("-fx-alignment: CENTER");
+        slot.prefWidthProperty().bind(resultView.widthProperty().multiply(0.05));
+        slot.setStyle("-fx-alignment: CENTER");
+        topic.prefWidthProperty().bind(resultView.widthProperty().multiply(0.74));
+
+
+        resultView.getColumns().addAll(date,day, slot, topic);
         resultView.setEditable(true);
 
         return resultView;

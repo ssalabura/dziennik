@@ -41,8 +41,8 @@ public class TeacherAndGuardianScene {
         Button backButton = new Button("Back");
         Button lessonsButton = new Button("Lessons");
         Button gradesButton = new Button("Grades");
-        Button absencesButton = new Button("absences");
-        Button lessonTopicButton = new Button("LessonTopic");
+        Button absencesButton = new Button("Absences");
+        Button lessonTopicButton = new Button("Topics");
 
         Label groupsLabel = new Label("Groups");
         groupsLabel.setFont(new Font("Arial", 20));
@@ -52,24 +52,41 @@ public class TeacherAndGuardianScene {
         gradesLabel.setFont(new Font("Arial", 20));
         Label absencesLabel = new Label("Absences");
         absencesLabel.setFont(new Font("Arial", 20));
-        Label lessonTopicLabel = new Label("LessonTopic");
+        Label lessonTopicLabel = new Label("Topics");
         lessonTopicLabel.setFont(new Font("Arial", 20));
 
-        grid.add(backButton, 1, 21);
-        grid.add(lessonsButton, 1, 20);
-        grid.add(gradesButton, 1, 22);
-        grid.add(absencesButton, 1, 23);
-        grid.add(lessonTopicButton, 1, 24);
-        grid.add(groupsLabel, 0, 5);
-        grid.add(groups, 0, 6);
-        grid.add(studentsLabel, 10, 5);
-        grid.add(students, 10, 6);
-        grid.add(gradesLabel, 20, 5);
-        grid.add(grades, 20, 6);
-        grid.add(absencesLabel, 20, 5);
-        grid.add(absences, 20, 6);
-        grid.add(lessonTopicLabel, 10, 5);
-        grid.add(lessons, 10, 6);
+        backButton.setMinSize(120,30);
+        lessonsButton.setMinSize(120,30);
+        lessonTopicButton.setMinSize(120,30);
+        gradesButton.setMinSize(120,30);
+        absencesButton.setMinSize(120,30);
+
+        grid.add(backButton, 0, 4);
+        grid.add(lessonsButton, 1, 4);
+        grid.add(lessonTopicButton, 1, 5);
+        grid.add(gradesButton, 2, 4);
+        grid.add(absencesButton, 2, 5);
+
+
+        grid.add(groupsLabel, 0, 0);
+        grid.add(groups, 0, 1);
+        groups.setMinSize(300,400);
+
+        grid.add(studentsLabel, 1, 0);
+        grid.add(students, 1, 1);
+        students.setMinSize(300,400);
+
+        grid.add(gradesLabel, 2, 0);
+        grid.add(grades, 2, 1);
+        grades.setMinSize(400,400);
+
+        grid.add(absencesLabel, 2, 0);
+        grid.add(absences, 2, 1);
+        absences.setMinSize(400,400);
+
+        grid.add(lessonTopicLabel, 1, 0);
+        grid.add(lessons, 1, 1,2,1);
+        lessons.setMinSize(900,400);
 
         lessonsButton.setOnAction(e -> {
             lessonsTableScene = SceneFactory.getInstance().createLessonTableSceneForTeacher(teacherId);

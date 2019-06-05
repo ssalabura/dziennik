@@ -1,4 +1,6 @@
 package schoolregister.DataType;
+import schoolregister.utils.Time;
+
 import java.sql.Date;
 import java.util.Calendar;
 
@@ -28,22 +30,7 @@ public class Absence {
     }
 
     public String getDayOfWeek() {
-        Calendar c = Calendar.getInstance();
-        c.setTime(date);
-        int dayOfWeek =  c.get(Calendar.DAY_OF_WEEK);
-        return dayOfWeekToString(dayOfWeek);
-    }
-
-    private String dayOfWeekToString(int dayOfWeek) {
-        if(dayOfWeek == 2)
-            return "Monday";
-        if(dayOfWeek == 3)
-            return "Tuesday";
-        if(dayOfWeek == 4)
-            return "Wednesday";
-        if(dayOfWeek == 5)
-            return "Thursday";
-        return "Friday";
+       return Time.dateToDayString(date);
     }
 
     public int getLessonId() {
