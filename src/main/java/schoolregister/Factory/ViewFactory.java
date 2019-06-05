@@ -1,18 +1,14 @@
 package schoolregister.Factory;
 
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.*;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.layout.StackPane;
-import javafx.util.Callback;
 import schoolregister.DataType.*;
-import schoolregister.DataType.Absence;
-import schoolregister.DataType.Group;
 import schoolregister.Database;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -191,6 +187,30 @@ public class ViewFactory {
 
         resultView.getColumns().addAll(studentId, name, surName);
         resultView.setEditable(false);
+
+        return resultView;
+    }
+
+    @SuppressWarnings("unchecked")
+    public TableView<Absence> getAbsences(){
+        TableView<Absence> resultView = new TableView<>();
+
+        TableColumn<Absence, Date> date = new TableColumn<>("date");
+        TableColumn<Absence, Integer> slot = new TableColumn<>("slot");
+        TableColumn<Absence, Integer> lessonId = new TableColumn<>("lessonId");
+
+        date.setCellValueFactory(
+                new PropertyValueFactory<>("date")
+        );
+        slot.setCellValueFactory(
+                new PropertyValueFactory<>("slot")
+        );
+        lessonId.setCellValueFactory(
+                new PropertyValueFactory<>("lessonId")
+        );
+
+        resultView.getColumns().addAll(date, slot, lessonId);
+        resultView.setEditable(true);
 
         return resultView;
     }

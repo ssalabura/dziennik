@@ -242,6 +242,24 @@ public class Database {
         return list;
     }
 
+    public List<Absence> getAbsences(int studentId, int groupId, int subjectId){
+        List<Absence> list = new ArrayList<>();
+        try{
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(
+                    "SELECT lesson_id,slot,date,s.name FROM absences JOIN lessons USING(lesson_id) JOIN subjects s USING(subject_id) WHERE student_id = "+studentId + " and subject_id = " + subjectId + " and group_id = " + groupId);
+            while(rs.next()){
+                list.add(new Absence(rs.getInt("lesson_id"),rs.getInt("slot"),rs.getDate("date"),rs.getString("name")));
+            }
+            statement.close();
+            rs.close();
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return list;
+    }
+
     public List<Subject> getAllSubjects(int studentId) {
         List<Subject> list = new ArrayList<>();
         try{
