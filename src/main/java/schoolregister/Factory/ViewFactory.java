@@ -5,10 +5,13 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.util.converter.IntegerStringConverter;
 import schoolregister.DataType.*;
 import schoolregister.Database;
 
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -126,21 +129,42 @@ public class ViewFactory {
     @SuppressWarnings("unchecked")
     public TableView<Grade> getGrades(){
         TableView<Grade> resultTable = new TableView<>();
-        resultTable.setEditable(true);
-
+        resultTable.setEditable(false);
         TableColumn<Grade, String> value = new TableColumn<>("value");
         TableColumn<Grade, Integer> weight = new TableColumn<>("weight");
 
-        value.setCellValueFactory(
-                new PropertyValueFactory<>("value")
-        );
-        weight.setCellValueFactory(
-                new PropertyValueFactory<>("weight")
-        );
+        value.setCellValueFactory(new PropertyValueFactory<>("value"));
+        value.setCellFactory(TextFieldTableCell.forTableColumn());
+        value.setOnEditCommit(
+                (TableColumn.CellEditEvent<Grade, String> t) -> {
+                    final int pos = t.getTablePosition().getRow();
+                    final Grade grade =  t.getTableView().getItems().get(pos);
+                    try {
+                        Database.getInstance().updateGrade(grade, t.getNewValue(), grade.getWeight());
+                        grade.setValue(t.getNewValue());
+                    }
+                    catch (SQLException e) {
+                        onFailUpdate(e);
+                    }
+                });
+
+        weight.setCellValueFactory(new PropertyValueFactory<>("weight"));
+        weight.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
+        weight.setOnEditCommit(
+                (TableColumn.CellEditEvent<Grade, Integer> t) -> {
+                    final int pos = t.getTablePosition().getRow();
+                    final Grade grade =  t.getTableView().getItems().get(pos);
+                    try {
+                        Database.getInstance().updateGrade(grade, grade.getValue(), t.getNewValue());
+                        grade.setWeight(t.getNewValue());
+                    }
+                    catch (SQLException e) {
+                        onFailUpdate(e);
+                    }
+                });
+
 
         resultTable.getColumns().addAll(value, weight);
-
-
         return resultTable;
     }
 
@@ -216,7 +240,7 @@ public class ViewFactory {
     }
 
     @SuppressWarnings("unchecked")
-    public TableView<Lesson> getLessons(){
+    public TableView<Lesson> getLessons() {
         TableView<Lesson> resultView = new TableView<>();
 
         TableColumn<Lesson, Date> date = new TableColumn<>("date");
@@ -241,5 +265,10 @@ public class ViewFactory {
         resultView.setEditable(true);
 
         return resultView;
+    }
+
+    private void onFailUpdate(SQLException e) {
+        System.out.println("querying failed");
+        System.out.println(e);
     }
 }

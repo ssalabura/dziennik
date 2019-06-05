@@ -6,9 +6,10 @@ public class Grade {
     private int weight;
     private int subjectId;
     private float floatValue;
+    private long id;
 
-    public Grade() {}
-    public Grade(int subjectId, String subject, String value, float floatValue, int weight) {
+    public Grade(long id, int subjectId, String subject, String value, float floatValue, int weight) {
+        this.id = id;
         this.subjectId = subjectId;
         this.subject = subject;
         this.floatValue = floatValue;
@@ -55,5 +56,13 @@ public class Grade {
 
     public float getFloatValue() {
         return floatValue;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

@@ -27,6 +27,7 @@ public class TeacherAndGuardianScene {
     public static Scene newTeacherScene(int teacherId) {
         TableView<Group> groups = viewFactory.getGroupsFor(teacherId);
         TableView<Grade> grades = viewFactory.getGrades();
+        grades.setEditable(true);
         TableView<Person> students = viewFactory.getStudents();
         TableView<Absence> absences = viewFactory.getAbsences();
         TableView<Lesson> lessons = viewFactory.getLessons();

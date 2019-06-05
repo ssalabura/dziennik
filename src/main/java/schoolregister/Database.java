@@ -238,7 +238,7 @@ public class Database {
     public List<Grade> getGrades(int studentId, int subject_id){
         List<Grade> list = new ArrayList<>();
         try{
-            String query = "SELECT subject_id,name, value,value::NUMERIC(3,2) as floatValue, weight FROM grades g JOIN subjects USING(subject_id) WHERE student_id =" + studentId;
+            String query = "SELECT grade_id,subject_id,name, value,value::NUMERIC(3,2) as floatValue, weight FROM grades g JOIN subjects USING(subject_id) WHERE student_id =" + studentId;
             if(subject_id != -1)
                 query +=  " AND subject_id = " + subject_id;
             query += " ORDER BY subject_id, weight DESC";
@@ -246,7 +246,7 @@ public class Database {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(query);
             while(rs.next()){
-                list.add(new Grade(rs.getInt("subject_id"),rs.getString("name"),rs.getString("value"),rs.getFloat("floatValue"), rs.getInt("weight")));
+                list.add(new Grade(rs.getInt("grade_id"), rs.getInt("subject_id"),rs.getString("name"),rs.getString("value"),rs.getFloat("floatValue"), rs.getInt("weight")));
             }
             statement.close();
             rs.close();
@@ -359,6 +359,16 @@ public class Database {
             crash(e);
         }
         return list;
+    }
+
+    public void updateGrade(Grade grade, String newValue, int weight) throws SQLException{
+        String query = "UPDATE grades SET weight = ? , value = ?::GRADE WHERE grade_id = ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setInt(1,weight);
+        statement.setString(2, newValue);
+        statement.setLong(3, grade.getId());
+        statement.execute();
+        statement.close();
     }
 
     private static void crash(Exception e) {
