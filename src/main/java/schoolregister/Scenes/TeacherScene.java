@@ -1,7 +1,6 @@
 package schoolregister.Scenes;
+
 import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,26 +16,35 @@ import schoolregister.Wrapper.IntegerWrapper;
 import schoolregister.Wrapper.LessonWrapper;
 import schoolregister.Wrapper.PersonWrapper;
 
-import java.util.ArrayList;
-
 import static schoolregister.Main.*;
 
-public class TeacherAndGuardianScene {
+public class TeacherScene {
     private static ViewFactory viewFactory = ViewFactory.getInstance();
+
+    public static TableView<Group> groups;
+    public static TableView<Grade> grades;
+    public static TableView<Person> students;
+    public static TableView<Absence> absences;
+    public static TableView<Lesson> lessons;
+
+    public static GroupWrapper currentGroup;
+    public static PersonWrapper currentStudent;
+    public static LessonWrapper currentLesson;
+
     public static Scene newTeacherScene(int teacherId) {
-        TableView<Group> groups = viewFactory.getGroupsFor(teacherId);
-        TableView<Grade> grades = viewFactory.getGrades();
+        groups = viewFactory.getGroupsFor(teacherId);
+        grades = viewFactory.getGrades();
         grades.setEditable(true);
-        TableView<Person> students = viewFactory.getStudents();
-        TableView<Absence> absences = viewFactory.getAbsences();
-        TableView<Lesson> lessons = viewFactory.getLessons();
+        students = viewFactory.getStudents();
+        absences = viewFactory.getAbsences();
+        lessons = viewFactory.getLessons();
 
-        GroupWrapper currentGroup = new GroupWrapper();
-        PersonWrapper currentStudent = new PersonWrapper();
+        currentGroup = new GroupWrapper();
+        currentStudent = new PersonWrapper();
         IntegerWrapper currentType = new IntegerWrapper(0);
-        LessonWrapper currentLesson = new LessonWrapper();
+        currentLesson = new LessonWrapper();
 
-        GridPane grid = createGrid();
+        GridPane grid = viewFactory.createGrid();
         Button backButton = new Button("Back");
         Button lessonsButton = new Button("Lessons");
         Button gradesButton = new Button("Grades");
@@ -96,9 +104,9 @@ public class TeacherAndGuardianScene {
             currentGroup.setGroup(t1);
             if(t1 != null) {
                 if(currentType.getValue() != 2)
-                    students.setItems(FXCollections.observableArrayList(Database.getInstance().getStudentsFor(t1.getId())));
+                    fillStudents();
                 else
-                    lessons.setItems(FXCollections.observableArrayList(Database.getInstance().getLessons(currentGroup.getGroup().getId(), currentGroup.getGroup().getSubjectId())));
+                    fillLessons();
             }
             else{
                 if(currentType.getValue() != 2)
@@ -113,10 +121,10 @@ public class TeacherAndGuardianScene {
             if(t1 != null){
                 switch (currentType.getValue()){
                     case 0:
-                        grades.setItems(FXCollections.observableArrayList(Database.getInstance().getGrades(t1.getId(), currentGroup.getGroup().getId())));
+                        fillGrades();
                         break;
                     case 1:
-                        absences.setItems(FXCollections.observableArrayList(Database.getInstance().getAbsences(t1.getId(), currentGroup.getGroup().getId(), currentGroup.getGroup().getSubjectId())));
+                        fillAbsences();
                         break;
                 }
             }
@@ -154,11 +162,11 @@ public class TeacherAndGuardianScene {
             lessons.setVisible(false);
 
             if(currentType.getValue() == 2 && currentGroup.getGroup() != null){
-                students.setItems(FXCollections.observableArrayList(Database.getInstance().getStudentsFor(currentGroup.getGroup().getId())));
+                fillStudents();
             }
 
             if(currentStudent.getPerson() != null && currentGroup.getGroup() != null){
-                grades.setItems(FXCollections.observableArrayList(Database.getInstance().getGrades(currentStudent.getPerson().getId(), currentGroup.getGroup().getId())));
+                fillGrades();
             }
 
             studentsLabel.setVisible(true);
@@ -182,11 +190,11 @@ public class TeacherAndGuardianScene {
             lessons.setVisible(false);
 
             if(currentType.getValue() == 2 && currentGroup.getGroup() != null){
-                students.setItems(FXCollections.observableArrayList(Database.getInstance().getStudentsFor(currentGroup.getGroup().getId())));
+                fillStudents();
             }
 
             if(currentStudent.getPerson() != null && currentGroup.getGroup() != null){
-                absences.setItems(FXCollections.observableArrayList(Database.getInstance().getAbsences(currentStudent.getPerson().getId(), currentGroup.getGroup().getId(), currentGroup.getGroup().getSubjectId())));
+                fillAbsences();
             }
 
             studentsLabel.setVisible(true);
@@ -214,7 +222,7 @@ public class TeacherAndGuardianScene {
             students.setVisible(false);
 
             if(currentGroup.getGroup() != null){
-                lessons.setItems(FXCollections.observableArrayList(Database.getInstance().getLessons(currentGroup.getGroup().getId(), currentGroup.getGroup().getSubjectId())));
+                fillLessons();
             }
 
             lessonTopicLabel.setVisible(true);
@@ -225,37 +233,24 @@ public class TeacherAndGuardianScene {
         return new Scene(grid, 1280, 720);
     }
 
-
-    public static Scene newGuardianScene(int guardianId) {
-        currentIndex = 0;
-        guardianKids = new ArrayList<>(Database.getInstance().getGuardianKids(guardianId));
-        studentsScenes = new ArrayList<>();
-        GridPane grid = createGrid();
-
-        Button backButton = new Button("Back");
-            grid.add(backButton, 1, 21);
-
-            backButton.setOnAction(actionEvent -> window.setScene(mainScene));
-
-            if(guardianKids.isEmpty()) {
-            studentsScenes.add(new Scene(grid, 1280, 720));
-        }
-
-            for(Integer i : guardianKids){
-            studentsScenes.add(SceneFactory.getInstance().createStudentScene(i, true));
-            currentIndex++;
-        }
-        currentIndex = 0;
-        studentScene = studentsScenes.get(currentIndex);
-        return studentScene;
+    public static TableView<Lesson> fillLessons(){
+        lessons.setItems(FXCollections.observableArrayList(Database.getInstance().getLessons(currentGroup.getGroup().getId(), currentGroup.getGroup().getSubjectId())));
+        return lessons;
     }
 
-    private static GridPane createGrid() {
-        GridPane grid = new GridPane();
-        grid.setAlignment(Pos.BASELINE_LEFT);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
-        return grid;
+    public static TableView<Person> fillStudents(){
+        students.setItems(FXCollections.observableArrayList(Database.getInstance().getStudentsFor(currentGroup.getGroup().getId())));
+        return students;
     }
+
+    public static TableView<Absence> fillAbsences(){
+        absences.setItems(FXCollections.observableArrayList(Database.getInstance().getAbsences(currentStudent.getPerson().getId(), currentGroup.getGroup().getId(), currentGroup.getGroup().getSubjectId())));
+        return absences;
+    }
+
+    public static TableView<Grade> fillGrades(){
+        grades.setItems(FXCollections.observableArrayList(Database.getInstance().getGrades(currentStudent.getPerson().getId(), currentGroup.getGroup().getId())));
+        return grades;
+    }
+
 }

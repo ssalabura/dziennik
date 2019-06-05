@@ -2,10 +2,13 @@ package schoolregister.Factory;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.GridPane;
 import javafx.util.converter.IntegerStringConverter;
 import schoolregister.DataType.*;
 import schoolregister.Database;
@@ -24,6 +27,15 @@ public class ViewFactory {
         if(factory == null)
             factory = new ViewFactory();
         return factory;
+    }
+
+    public GridPane createGrid() {
+        GridPane grid = new GridPane();
+        grid.setAlignment(Pos.BASELINE_LEFT);
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(25, 25, 25, 25));
+        return grid;
     }
 
     @SuppressWarnings("unchecked")

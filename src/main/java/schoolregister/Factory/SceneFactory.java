@@ -37,10 +37,10 @@ public class SceneFactory {
     }
 
     public Scene createTeacherScene(int teacherId){
-       return TeacherAndGuardianScene.newTeacherScene(teacherId);
+       return TeacherScene.newTeacherScene(teacherId);
     }
 
     public Scene createGuardianScene(int guardianId) {
-        return TeacherAndGuardianScene.newGuardianScene(guardianId);
+        return GuardianScene.newGuardianScene(guardianId);
     }
 }
