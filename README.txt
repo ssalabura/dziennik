@@ -48,11 +48,18 @@ javę 11 (sudo apt install openjdk-11-jdk)
 javafx 11 (sudo apt install openjfx)
 maven (sudo apt install maven).
 
-przed uruchomieniem projektu należy skonfigurować połączenie z bazą danych w pliku src/main/java/schoolregister/ConnectionConfig.java
-należy wprowadzić nazwę bazy danych, w której został uruchomiony dziennik.sql, nazwa użytkownika mającego prawa do tej bazy i hasło do niego (zmiana domyślnego portu nie jest obowiązkowa).
+Aplikacja domyślnie łączy się z serwerem w chmurze (na potrzeby tego projektu wykorzystaliśmy darmowy hosting z ograniczeniami prędkości oraz limitem maksymalnie 5 osób korzystających jednocześnie z bazy).
+Aby zmienić domyślne parametry połączenia (np. w celu lokalnego przetestowania) wystarczy znodyfikować plik src/main/java/schoolregister/ConnectionConfig.java przed zbuildowaniem projektu.
+
 
 Następnie do uruchomienia projektu wystarczy komenda:
 mvn compile exec:java
+
+Do aplikacji można utworzyć plik .jar działający na różnych systemach operacyjnych (windows,mac i linux). W tym celu należy użyć komend:
+mvn compile package
+java -jar shade/schoolregister.jar
+
+
 
 Aby się zalogować należy wpisać w polu:
 - email - email dowolnej osoby z bazy danych
