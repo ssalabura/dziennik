@@ -2,6 +2,7 @@ package schoolregister;
 
 import org.mindrot.jbcrypt.BCrypt;
 import schoolregister.DataType.*;
+import schoolregister.utils.ExceptionHandler;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class Database {
         }
         return instance;
     }
+
     static void close() {
         if(instance != null) {
             try {
@@ -27,7 +29,7 @@ public class Database {
                 instance = null;
             }
             catch (SQLException e) {
-                crash(e);
+                ExceptionHandler.crash(e);
             }
         }
     }
@@ -41,7 +43,7 @@ public class Database {
                             ConnectionConfig.username, ConnectionConfig.password);
         }
         catch (Exception e){
-            crash(e);
+            ExceptionHandler.crash(e);
         }
     }
 
@@ -60,7 +62,7 @@ public class Database {
             p.setHash(rs.getString("password"));
         }
         catch (Exception e){
-            crash(e);
+            ExceptionHandler.crash(e);
         }
         return p;
     }
@@ -74,7 +76,7 @@ public class Database {
             g.setSubject(rs.getString("s_name"));
         }
         catch (Exception e){
-            crash(e);
+            ExceptionHandler.crash(e);
         }
         return g;
     }
@@ -88,7 +90,7 @@ public class Database {
             l.setSlot(rs.getInt("slot"));
         }
         catch (Exception e){
-            crash(e);
+            ExceptionHandler.crash(e);
         }
         return l;
     }
@@ -106,7 +108,7 @@ public class Database {
             rs.close();
         }
         catch (Exception e){
-            crash(e);
+            ExceptionHandler.crash(e);
         }
         return list;
     }
@@ -124,7 +126,7 @@ public class Database {
             rs.close();
         }
         catch(Exception e){
-            crash(e);
+            ExceptionHandler.crash(e);
         }
 
         return null;
@@ -143,7 +145,7 @@ public class Database {
             statement.close();
         }
         catch (Exception e){
-            crash(e);
+            ExceptionHandler.crash(e);
         }
         return list;
     }
@@ -161,7 +163,7 @@ public class Database {
             rs.close();
         }
         catch (Exception e){
-            crash(e);
+            ExceptionHandler.crash(e);
         }
         return list;
     }
@@ -200,7 +202,7 @@ public class Database {
 
         }
         catch (SQLException e) {
-            crash(e);
+            ExceptionHandler.crash(e);
         }
 
         for(int i=0;i<lessons.length;i++){
@@ -224,7 +226,7 @@ public class Database {
             rs.close();
         }
         catch (Exception e){
-            crash(e);
+            ExceptionHandler.crash(e);
         }
         return list;
     }
@@ -252,7 +254,7 @@ public class Database {
             rs.close();
         }
         catch (Exception e){
-            crash(e);
+            ExceptionHandler.crash(e);
         }
         return list;
     }
@@ -270,7 +272,7 @@ public class Database {
             rs.close();
         }
         catch (Exception e){
-            crash(e);
+            ExceptionHandler.crash(e);
         }
         return list;
     }
@@ -288,7 +290,7 @@ public class Database {
             rs.close();
         }
         catch (Exception e){
-            crash(e);
+            ExceptionHandler.crash(e);
         }
         return list;
     }
@@ -306,7 +308,7 @@ public class Database {
             rs.close();
         }
         catch (Exception e){
-            crash(e);
+            ExceptionHandler.crash(e);
         }
         return list;
     }
@@ -339,7 +341,7 @@ public class Database {
             rs.close();
         }
         catch (Exception e){
-            crash(e);
+            ExceptionHandler.crash(e);
         }
         return 0;
     }
@@ -356,7 +358,7 @@ public class Database {
             rs.close();
         }
         catch (Exception e){
-            crash(e);
+            ExceptionHandler.crash(e);
         }
         return list;
     }
@@ -371,10 +373,24 @@ public class Database {
         statement.close();
     }
 
-    private static void crash(Exception e) {
-        e.printStackTrace();
-        System.err.println(e.getClass().getName()+": "+e.getMessage());
-        System.exit(0);
+    public void removeGrade(long id) throws SQLException {
+        String query = "DELETE FROM grades WHERE grade_id = ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setLong(1,id);
+        statement.execute();
+        statement.close();
+    }
+
+    public void addGrade(String value, int weight, int student_id, int subject_id, int techer_id) throws SQLException {
+        String query = "INSERT INTO grades (value, weight, student_id, subject_id, teacher_id) VALUES (?::GRADE,?,?,?,?)";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setString(1,value);
+        statement.setInt(2,weight);
+        statement.setInt(3,student_id);
+        statement.setInt(4,subject_id);
+        statement.setInt(5,techer_id);
+        statement.execute();
+        statement.close();
     }
 
     public void testLogAll(boolean onlyErrors){

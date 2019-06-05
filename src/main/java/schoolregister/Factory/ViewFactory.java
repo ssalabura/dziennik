@@ -12,6 +12,8 @@ import javafx.scene.layout.GridPane;
 import javafx.util.converter.IntegerStringConverter;
 import schoolregister.DataType.*;
 import schoolregister.Database;
+import schoolregister.Scenes.TeacherScene;
+import schoolregister.utils.ExceptionHandler;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -156,7 +158,7 @@ public class ViewFactory {
                         grade.setValue(t.getNewValue());
                     }
                     catch (SQLException e) {
-                        onFailUpdate(e);
+                        ExceptionHandler.onFailUpdate(e);
                     }
                 });
 
@@ -171,7 +173,7 @@ public class ViewFactory {
                         grade.setWeight(t.getNewValue());
                     }
                     catch (SQLException e) {
-                        onFailUpdate(e);
+                        ExceptionHandler.onFailUpdate(e);
                     }
                 });
 
@@ -283,8 +285,4 @@ public class ViewFactory {
         return resultView;
     }
 
-    private void onFailUpdate(SQLException e) {
-        System.out.println("querying failed");
-        System.out.println(e);
-    }
 }

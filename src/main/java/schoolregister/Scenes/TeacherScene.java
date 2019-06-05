@@ -2,9 +2,7 @@ package schoolregister.Scenes;
 
 import javafx.collections.FXCollections;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import schoolregister.DataType.*;
@@ -15,6 +13,9 @@ import schoolregister.Wrapper.GroupWrapper;
 import schoolregister.Wrapper.IntegerWrapper;
 import schoolregister.Wrapper.LessonWrapper;
 import schoolregister.Wrapper.PersonWrapper;
+import schoolregister.utils.ExceptionHandler;
+
+import java.sql.SQLException;
 
 import static schoolregister.Main.*;
 
@@ -50,6 +51,9 @@ public class TeacherScene {
         Button gradesButton = new Button("Grades");
         Button absencesButton = new Button("Absences");
         Button lessonTopicButton = new Button("Topics");
+        Button addRowButton = new Button("Add");
+        Button deleteRowButton = new Button("Remove");
+
 
         Label groupsLabel = new Label("Groups");
         groupsLabel.setFont(new Font("Arial", 20));
@@ -68,11 +72,31 @@ public class TeacherScene {
         gradesButton.setMinSize(120,30);
         absencesButton.setMinSize(120,30);
 
+        addRowButton.setMinSize(120,30);
+        deleteRowButton.setMinSize(120,30);
+
+
+        deleteRowButton.setOnAction(e -> {
+            Grade selectedItem = grades.getSelectionModel().getSelectedItem();
+            try {
+                if(!grades.isVisible() || grades.getSelectionModel() == null || grades.getSelectionModel() .getSelectedItem() == null)
+                    return;
+                Database.getInstance().removeGrade(grades.getSelectionModel().getSelectedItem().getId());
+                grades.getItems().remove(selectedItem);
+            }
+            catch(SQLException x) {
+                ExceptionHandler.onFailUpdate(x);
+            }
+        });
+
+
         grid.add(backButton, 0, 4);
         grid.add(lessonsButton, 1, 4);
         grid.add(lessonTopicButton, 1, 5);
         grid.add(gradesButton, 2, 4);
         grid.add(absencesButton, 2, 5);
+        grid.add(addRowButton,3,4);
+        grid.add(deleteRowButton,4,4);
 
 
         grid.add(groupsLabel, 0, 0);
@@ -80,25 +104,22 @@ public class TeacherScene {
         groups.setMinSize(300,400);
 
         grid.add(studentsLabel, 1, 0);
-        grid.add(students, 1, 1);
+        grid.add(students, 1, 1,2,1);
         students.setMinSize(300,400);
 
-        grid.add(gradesLabel, 2, 0);
-        grid.add(grades, 2, 1);
+        grid.add(gradesLabel, 3, 0);
+        grid.add(grades, 3, 1,2,1);
         grades.setMinSize(400,400);
 
-        grid.add(absencesLabel, 2, 0);
-        grid.add(absences, 2, 1);
+        grid.add(absencesLabel, 3, 0);
+        grid.add(absences, 3, 1,2,1);
         absences.setMinSize(400,400);
 
         grid.add(lessonTopicLabel, 1, 0);
-        grid.add(lessons, 1, 1,2,1);
+        grid.add(lessons, 1, 1,4,1);
         lessons.setMinSize(900,400);
 
-        lessonsButton.setOnAction(e -> {
-            lessonsTableScene = SceneFactory.getInstance().createLessonTableSceneForTeacher(teacherId);
-            window.setScene(lessonsTableScene);
-        });
+
 
         groups.getSelectionModel().selectedItemProperty().addListener((observableValue, group, t1) -> {
             currentGroup.setGroup(t1);
