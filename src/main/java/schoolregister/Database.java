@@ -179,8 +179,9 @@ public class Database {
         int maxiSlotNr = 0;
 
         try (Statement statement = connection.createStatement();
+              Statement statement2 = connection.createStatement();
               ResultSet rs = statement.executeQuery(query);
-              ResultSet rs2 = statement.executeQuery(query2)){
+              ResultSet rs2 = statement2.executeQuery(query2)){
             while (rs.next()) {
                 Lesson lesson = new Lesson();
                 lesson.dayId = rs.getInt("day_id");

@@ -11,6 +11,7 @@ import javafx.util.Pair;
 import schoolregister.DataType.*;
 import schoolregister.Database;
 import schoolregister.Dialogs.AddGradeDialog;
+import schoolregister.Factory.SceneFactory;
 import schoolregister.Factory.ViewFactory;
 import schoolregister.Wrapper.GroupWrapper;
 import schoolregister.Wrapper.IntegerWrapper;
@@ -20,8 +21,7 @@ import schoolregister.utils.ExceptionHandler;
 
 import java.sql.SQLException;
 
-import static schoolregister.Main.mainScene;
-import static schoolregister.Main.window;
+import static schoolregister.Main.*;
 
 public class TeacherScene {
     private static ViewFactory viewFactory = ViewFactory.getInstance();
@@ -187,6 +187,11 @@ public class TeacherScene {
         setAbsencesVisible(absencesLabel, false);
 
         setLessonsVisible(lessonTopicLabel, false);
+
+        lessonsButton.setOnAction(actionEvent -> {
+            lessonsTableScene = SceneFactory.getInstance().createLessonTableSceneForTeacher(teacherId);
+            window.setScene(lessonsTableScene);
+        });
 
         backButton.setOnAction(actionEvent -> window.setScene(mainScene));
         gradesButton.setOnAction(actionEvent -> {
