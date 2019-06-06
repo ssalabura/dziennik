@@ -1,6 +1,7 @@
 package schoolregister.Scenes;
 
 import javafx.collections.FXCollections;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -58,7 +59,7 @@ public class TeacherScene {
         students = viewFactory.getStudents();
         absences = viewFactory.getAbsences();
         lessons = viewFactory.getLessons();
-        exams = viewFactory.getExams();
+        exams = viewFactory.getExamsForTeacher();
 
         currentGroup = new GroupWrapper();
         currentStudent = new PersonWrapper();
@@ -393,30 +394,30 @@ public class TeacherScene {
     }
 
     public static void setLessonsVisible(Label label, boolean isVisible){
-        absencesCheckButton.setVisible(isVisible);
+        setVisible(isVisible, label, absencesCheckButton, lessons);
         deleteRowButton.setVisible(!isVisible);
-        label.setVisible(isVisible);
-        lessons.setVisible(isVisible);
     }
 
     public static void setStudentsVisible(Label label, boolean isVisible){
-        label.setVisible(isVisible);
-        students.setVisible(isVisible);
+        setVisible(isVisible, label, students);
     }
 
     public static void setAbsencesVisible(Label label, boolean isVisible){
-        label.setVisible(isVisible);
-        absences.setVisible(isVisible);
+        setVisible(isVisible, label, absences);
         addRowButton.setVisible(!isVisible);
     }
 
     public static void setGradesVisible(Label label, boolean isVisible){
-        label.setVisible(isVisible);
-        grades.setVisible(isVisible);
+        setVisible(isVisible, label, grades);
     }
 
     public static void setExamsVisible(Label label, boolean isVisible){
-        label.setVisible(isVisible);
-        exams.setVisible(isVisible);
+        setVisible(isVisible, label, exams);
+    }
+
+    private static void setVisible(boolean isVisible, Node... args){
+        for(Node node : args){
+            node.setVisible(isVisible);
+        }
     }
 }

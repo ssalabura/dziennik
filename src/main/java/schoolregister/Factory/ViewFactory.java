@@ -305,7 +305,7 @@ public class ViewFactory {
     }
 
     @SuppressWarnings("unchecked")
-    public TableView<Exam> getExams() {
+    public TableView<Exam> getExamsForTeacher() {
         TableView<Exam> resultView = new TableView<>();
 
         TableColumn<Exam, Date> date = new TableColumn<>("date");
@@ -329,6 +329,40 @@ public class ViewFactory {
 
         resultView.getColumns().addAll(date,day, slot, description);
         resultView.setEditable(true);
+
+        return resultView;
+    }
+
+    @SuppressWarnings("unchecked")
+    public TableView<Exam> getExamsForStudent(int studentId) {
+        TableView<Exam> resultView = new TableView<>();
+
+        TableColumn<Exam, String> subjectName = new TableColumn<>("subject");
+        TableColumn<Exam, Date> date = new TableColumn<>("date");
+        TableColumn<Exam, String> day = new TableColumn<>("day");
+        TableColumn<Exam, Integer> slot = new TableColumn<>("slot");
+        TableColumn<Exam, String> description = new TableColumn<>("description");
+
+        subjectName.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        day.setCellValueFactory(new PropertyValueFactory<>("dayOfWeek"));
+        slot.setCellValueFactory(new PropertyValueFactory<>("slot"));
+        description.setCellValueFactory(new PropertyValueFactory<>("topic"));
+
+        subjectName.prefWidthProperty().bind(resultView.widthProperty().multiply(0.10));
+        date.prefWidthProperty().bind(resultView.widthProperty().multiply(0.10));
+        date.setStyle("-fx-alignment: CENTER");
+        day.prefWidthProperty().bind(resultView.widthProperty().multiply(0.10));
+        day.setStyle("-fx-alignment: CENTER");
+        slot.prefWidthProperty().bind(resultView.widthProperty().multiply(0.05));
+        slot.setStyle("-fx-alignment: CENTER");
+        description.prefWidthProperty().bind(resultView.widthProperty().multiply(0.74));
+
+
+        resultView.setItems(FXCollections.observableArrayList(Database.getInstance().getExamsForStudent(studentId)));
+
+        resultView.getColumns().addAll(date,day, slot, description);
+        resultView.setEditable(false);
 
         return resultView;
     }

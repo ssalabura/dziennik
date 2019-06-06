@@ -96,7 +96,7 @@ public class Database {
         return l;
     }
 
-    private Exam createExam(ResultSet rs){
+    private Exam createExamForTeacher(ResultSet rs){
         Exam exam = new Exam();
         try{
             exam.setLessonId(rs.getInt("lesson_id"));
@@ -104,6 +104,17 @@ public class Database {
             exam.setDate(rs.getDate("date"));
             exam.setSlot(rs.getInt("slot"));
             exam.setDescription(rs.getString("description"));
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return exam;
+    }
+
+    private Exam createExamForStudent(ResultSet rs){
+        Exam exam = createExamForTeacher(rs);
+        try{
+            exam.setSubjectName(rs.getString("name"));
         }
         catch (Exception e){
             crash(e);
@@ -388,7 +399,25 @@ public class Database {
         try(Statement statement = connection.createStatement();
              ResultSet rs = statement.executeQuery(query)){
             while(rs.next()) {
-                list.add(createExam(rs));
+                list.add(createExamForTeacher(rs));
+            }
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return list;
+    }
+
+    public List<Exam> getExamsForStudent(int studentId){
+        List<Exam> list = new ArrayList<>();
+
+        String query = "select exam_id, description, name, l.* from exams join lessons l using(lesson_id) join subjects using(subject_id) " +
+                "where group_id in(select group_id from students_in_groups where student_id = " + studentId + ")";
+
+        try(Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(query)){
+            while(rs.next()){
+                list.add(createExamForStudent(rs));
             }
         }
         catch (Exception e){

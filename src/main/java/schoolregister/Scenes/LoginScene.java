@@ -5,11 +5,17 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.util.Duration;
 import schoolregister.Database;
 import schoolregister.Factory.SceneFactory;
@@ -20,8 +26,8 @@ import static schoolregister.Main.userMask;
 
 public class LoginScene {
     static int badTries;
-    static String defaultMail = "Anahi_Treutel@triston.us";
-    static String defaultPassword = "su.notsirt@letuerT_ihanA";
+    static String defaultMail = "Adrain@nella.name";
+    static String defaultPassword = "eman.allen@niardA";
 
     @SuppressWarnings("unchecked")
     public static Scene newScene() {
