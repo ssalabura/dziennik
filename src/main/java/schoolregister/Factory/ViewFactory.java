@@ -328,6 +328,20 @@ public class ViewFactory {
         description.prefWidthProperty().bind(resultView.widthProperty().multiply(0.74));
 
 
+        description.setCellFactory(TextFieldTableCell.forTableColumn());
+        description.setOnEditCommit(
+                (TableColumn.CellEditEvent<Exam, String> t) -> {
+                    final int pos = t.getTablePosition().getRow();
+                    final Exam exam =  t.getTableView().getItems().get(pos);
+                    try {
+                        Database.getInstance().updateExam(exam, t.getNewValue());
+                        exam.setDescription(t.getNewValue());
+                    }
+                    catch (SQLException e) {
+                        ExceptionHandler.onFailUpdate(e, TeacherScene.currentType.getValue());
+                    }
+                });
+
         resultView.getColumns().addAll(date,day, slot, description);
         resultView.setEditable(true);
 

@@ -476,6 +476,16 @@ public class Database {
         }
     }
 
+    public void updateExam(Exam exam, String newValue) throws SQLException{
+        String query = "UPDATE exams SET description = ? WHERE exam_id = ?";
+
+        try(PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, newValue);
+            statement.setInt(2, exam.getExamId());
+            statement.execute();
+        }
+    }
+
     public void removeAbsence(int student_id, int lesson_id) throws SQLException {
         String query = "DELETE FROM absences WHERE student_id = ? AND lesson_id = ?";
 
