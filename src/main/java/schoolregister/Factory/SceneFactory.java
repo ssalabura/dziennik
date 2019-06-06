@@ -1,6 +1,7 @@
 package schoolregister.Factory;
 
 import javafx.scene.Scene;
+import schoolregister.DataType.Person;
 import schoolregister.Scenes.*;
 
 public class SceneFactory {
@@ -42,5 +43,9 @@ public class SceneFactory {
 
     public Scene createGuardianScene(int guardianId) {
         return GuardianScene.newGuardianScene(guardianId);
+    }
+
+    public Scene createUserInfoScreen(Person user){
+        return UserInfoScene.newScene(user);
     }
 }

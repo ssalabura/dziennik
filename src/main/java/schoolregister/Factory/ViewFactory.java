@@ -5,11 +5,14 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
+import javafx.util.Callback;
 import javafx.util.converter.IntegerStringConverter;
 import schoolregister.DataType.*;
 import schoolregister.Database;
@@ -424,6 +427,73 @@ public class ViewFactory {
 
         resultView.getColumns().addAll(date,day, slot, description);
         resultView.setEditable(false);
+
+        return resultView;
+    }
+
+
+
+    @SuppressWarnings("unchecked")
+    public TableView<Attribute> userInfoTable(Person user){
+        TableView<Attribute> resultView = new TableView<>();
+        TableColumn<Attribute, String> attributes = new TableColumn<>("");
+        TableColumn<Attribute, String> values = new TableColumn<>("");
+
+        Attribute name = new Attribute("Name", user.getName());
+        Attribute surname = new Attribute("Surname", user.getSurname());
+        Attribute pesel = new Attribute("PESEL", user.getPesel());
+        Attribute email = new Attribute("Email", user.getEmail());
+        Attribute phone = new Attribute("Phone", user.getPhone());
+        Attribute city = new Attribute("City", user.getCity());
+        Attribute street = new Attribute("Street", user.getStreet());
+        Attribute postalCode = new Attribute("Postalcode", user.getPostalCode());
+
+        attributes.setCellValueFactory(
+                new PropertyValueFactory<>("name")
+        );
+
+        values.setCellValueFactory(
+                new PropertyValueFactory<>("value")
+        );
+
+
+        attributes.prefWidthProperty().bind(resultView.widthProperty().multiply(0.10));
+        values.prefWidthProperty().bind(resultView.widthProperty().multiply(0.90));
+
+        ObservableList<Attribute> list = FXCollections.observableArrayList();
+
+        list.addAll(name, surname, pesel, email, phone, city, street, postalCode);
+
+        System.out.println(list.size());
+
+        resultView.getColumns().addAll(attributes, values);
+
+        resultView.setItems(list);
+
+        resultView.setEditable(false);
+
+        resultView.setFixedCellSize(60);
+        resultView.getSelectionModel().setCellSelectionEnabled(false);
+
+        attributes.setCellFactory(new Callback<>() {
+            @Override
+            public TableCell<Attribute, String> call(TableColumn<Attribute, String> attributeStringTableColumn) {
+                return new TableCell<>(){
+                    @Override
+                    public void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        if(isEmpty()){
+                            setText("");
+                        }
+                        else{
+                            setFont(Font.font ("Verdana", 14));
+                            setText(item);
+                        }
+                    }
+                };
+            }
+        });
 
         return resultView;
     }
