@@ -29,9 +29,7 @@ public class UserInfoScene {
         grid.add(attributes,10, 0);
         grid.add(backButton, 13, 2);
 
-        backButton.setOnAction(actionEvent -> {
-            window.setScene(mainScene);
-        });
+        backButton.setOnAction(actionEvent -> window.setScene(mainScene));
 
         return new Scene(grid, 1280, 720);
     }
