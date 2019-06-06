@@ -2236,7 +2236,7 @@ INSERT INTO lessons (group_id, subject_id,date,slot, topic) VALUES
 (52, 6, '2018-12-10', 6, 'Craig quietly performed with the disloyal mug'),
 (7, 3, '2019-2-27', 1, 'Daisy often workedadvised regarding the unwilling term'),
 (79, 4, '2019-4-24', 7, 'Alan busily sank excepting the flickering lab'),
-(17, 9, '2019-5-27', 1, 'Glenda kindly escaped about the unacceptable chair'),
+(17, 9, '2019-5-20', 1, 'Glenda kindly escaped about the unacceptable chair'),
 (79, 4, '2018-11-19', 4, 'Enid poorly clung of the lawful canadian'),
 (84, 4, '2019-5-13', 4, 'Carmelita elegantly beat off the misty saddle'),
 (9, 15, '2019-5-3', 1, 'I kookily wore inside the ripe rake'),
@@ -2611,7 +2611,13 @@ INSERT INTO lessons (group_id, subject_id,date,slot, topic) VALUES
 (3, 14, '2019-1-17', 2, 'Bronwen truthfully stopped into the striped tyvek'),
 (10, 14, '2019-2-5', 4, 'Bronwen miserably met off the roasted employment'),
 (78, 4, '2019-4-11', 1, 'Joanna lightly arrested for the clumsy grapefruit'),
-(2, 1, '2019-4-23', 8, 'Craig diligently exported following the wide-eyed applewood');
+(2, 1, '2019-4-23', 8, 'Craig diligently exported following the wide-eyed applewood'),
+(17, 9, '2019-05-27',1, 'Rosyjski');
+
+INSERT INTO exams(lesson_id, description) VALUES
+(1, 'Funkcja kwadratowa'),
+(3, 'Punishment for bad behaviour'),
+(8, 'Creating database for school');
 
 
 INSERT INTO absences(lesson_id, student_id) VALUES
@@ -3116,12 +3122,6 @@ INSERT INTO absences(lesson_id, student_id) VALUES
 (342,52),
 (311,4);
 
-
-
-INSERT INTO exams(lesson_id, description) VALUES
-(1, 'Funkcja kwadratowa'),
-(3, 'Punishment for bad behaviour'),
-(8, 'Creating database for school');
 
 
 

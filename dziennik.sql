@@ -130,7 +130,7 @@ create table grades (
 
 create table exams (
     exam_id serial primary key,
-    lesson_id serial not null references lessons,
+    lesson_id serial unique not null references lessons,
     description character varying(256));
 
 
@@ -298,6 +298,34 @@ language plpgsql;
 
 create trigger lesson_check before insert or update on lessons
     for each row execute procedure lesson_check();
+
+
+--EXAMS INSERT TRIGGER
+create or replace function exams_check()
+returns trigger as $exams_check$
+declare
+    examsInWeek int;
+    examsInDay int;
+begin
+    select into examsInWeek count(*) from lessons l1 join students_in_groups sg1 using(group_id) 
+        join students_in_groups sg2 using(student_id) join lessons l2 on(sg2.group_id = l2.group_id) join exams e2 on(e2.lesson_id = l2.lesson_id) 
+        where l1.lesson_id = new.lesson_id and l1.lesson_id != l2.lesson_id and (l1.date::Timestamp - l2.date::Timestamp <= '14 days');
+   
+    select into examsInDay count(*) from lessons l1 join students_in_groups sg1 using(group_id) 
+        join students_in_groups sg2 using(student_id) join lessons l2 on(sg2.group_id = l2.group_id) join exams e2 on(e2.lesson_id = l2.lesson_id) 
+        where l1.lesson_id = new.lesson_id and l1.lesson_id != l2.lesson_id and (extract(day from l1.date) = extract(day from l2.date));
+
+    if examsInWeek >= 2 or examsInDay >= 1 then
+        raise exception 'Error: Too many exams';
+    end if;
+    return new;
+
+end;
+$exams_check$
+language plpgsql;
+
+create trigger exams_check before insert or update on exams
+    for each row execute procedure exams_check();
 
 
 --ABSENCES INSERT TRIGGER
