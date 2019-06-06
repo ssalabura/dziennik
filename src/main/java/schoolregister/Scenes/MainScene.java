@@ -5,32 +5,56 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import schoolregister.DataType.Person;
+import schoolregister.Database;
 import schoolregister.Factory.SceneFactory;
+import sun.rmi.log.LogOutputStream;
 
 import static schoolregister.Main.*;
 import static schoolregister.Main.studentsScenes;
 
 public class MainScene {
     public static Scene newScene() {
-        GridPane grid = new GridPane();
-        grid.setAlignment(Pos.BASELINE_LEFT);
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
+        StackPane stackPane = new StackPane();
+        VBox vbox = new VBox(20);
+
+        Text name = new Text();
+        name.setFont(Font.font(30));
 
         Button studentButton = new Button("Student");
+        studentButton.setFont(Font.font(20));
         Button teacherButton = new Button("Teacher");
+        teacherButton.setFont(Font.font(20));
         Button guardianButton = new Button("Guardian");
-        grid.add(studentButton, 1, 20);
-        grid.add(teacherButton, 1, 21);
-        grid.add(guardianButton, 1, 22);
+        guardianButton.setFont(Font.font(20));
+        Button logoutButton = new Button("Log out");
+        logoutButton.setFont(Font.font(20));
 
-        if((userMask & studentMask) == 0)
-            studentButton.setVisible(false);
-        if((userMask & teacherMask) == 0)
-            teacherButton.setVisible(false);
-        if((userMask & guardianMask) == 0)
-            guardianButton.setVisible(false);
+        vbox.getChildren().add(name);
+
+        if((userMask & studentMask) != 0) {
+            vbox.getChildren().add(studentButton);
+            Person person = Database.getInstance().getPerson(userIDs[studentMask],Person.Type.student);
+            name.setText(person.getName() + " " + person.getSurname());
+        }
+        if((userMask & teacherMask) != 0) {
+            vbox.getChildren().add(teacherButton);
+            Person person = Database.getInstance().getPerson(userIDs[teacherMask],Person.Type.teacher);
+            name.setText(person.getName() + " " + person.getSurname());
+        }
+        if((userMask & guardianMask) != 0) {
+            vbox.getChildren().add(guardianButton);
+            Person person = Database.getInstance().getPerson(userIDs[guardianMask],Person.Type.guardian);
+            name.setText(person.getName() + " " + person.getSurname());
+        }
+
+        vbox.getChildren().add(logoutButton);
+        vbox.setAlignment(Pos.CENTER);
+        stackPane.getChildren().add(vbox);
 
         studentButton.setOnAction(actionEvent -> {
             if(studentScene == null)
@@ -50,6 +74,10 @@ public class MainScene {
                 window.setScene(studentsScenes.get(0));
         });
 
-        return new Scene(grid, 1280, 720);
+        logoutButton.setOnAction(actionEvent -> {
+            window.setScene(LoginScene.newScene());
+        });
+
+        return new Scene(stackPane, 1280, 720);
     }
 }

@@ -20,6 +20,8 @@ import static schoolregister.Main.userMask;
 
 public class LoginScene {
     static int badTries;
+    static String defaultMail = "Anahi_Treutel@triston.us";
+    static String defaultPassword = "su.notsirt@letuerT_ihanA";
 
     @SuppressWarnings("unchecked")
     public static Scene newScene() {
@@ -39,7 +41,7 @@ public class LoginScene {
         grid.add(email, 0, 1);
 
         TextField emailTextField = new TextField();
-        emailTextField.setText("Anahi_Treutel@triston.us");
+        emailTextField.setText(defaultMail);
         grid.add(emailTextField, 1, 1);
 
 
@@ -47,7 +49,7 @@ public class LoginScene {
         grid.add(pw, 0, 2);
 
         PasswordField pwBox = new PasswordField();
-        pwBox.setText("su.notsirt@letuerT_ihanA");
+        pwBox.setText(defaultPassword);
         grid.add(pwBox, 1, 2);
 
         Button btn = new Button("Log in");
@@ -73,7 +75,9 @@ public class LoginScene {
         grid.add(invalidEmailMessage, 0, 3,2,1);
 
         btn.setOnAction(e -> {
-            userMask = Database.getInstance().logUser(emailTextField.getText(), pwBox.getText());
+            defaultMail = emailTextField.getText();
+            defaultPassword = pwBox.getText();
+            userMask = Database.getInstance().logUser(defaultMail,defaultPassword);
             if(userMask != 0) {
                 mainScene = SceneFactory.getInstance().createMainScene();
                 Main.window.setScene(mainScene);

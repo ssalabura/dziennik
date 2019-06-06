@@ -63,7 +63,7 @@ public class StudentScene {
         backButton.setMinSize(80,30);
         lessonsButton.setMinSize(80,30);
         nextButton.setMinSize(80,30);
-        backButton.setMinSize(80,30);
+        prevButton.setMinSize(80,30);
 
 
         grid.add(backButton, 0, 4);

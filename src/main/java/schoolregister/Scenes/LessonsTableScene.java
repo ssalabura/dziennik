@@ -85,7 +85,7 @@ public class LessonsTableScene {
         TableColumn<LessonsOnSlot, String> column = new TableColumn<>(columnName);
         column.setCellValueFactory(new PropertyValueFactory<>(propertyName));
         column.setSortable(false);
-        column.setReorderable(false);
+        //column.setReorderable(false);
         return column;
 
     }
