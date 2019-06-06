@@ -1,10 +1,8 @@
 package schoolregister.Scenes;
 
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -12,10 +10,8 @@ import javafx.scene.text.Text;
 import schoolregister.DataType.Person;
 import schoolregister.Database;
 import schoolregister.Factory.SceneFactory;
-import sun.rmi.log.LogOutputStream;
 
 import static schoolregister.Main.*;
-import static schoolregister.Main.studentsScenes;
 
 public class MainScene {
     public static Scene newScene() {
@@ -57,21 +53,18 @@ public class MainScene {
         stackPane.getChildren().add(vbox);
 
         studentButton.setOnAction(actionEvent -> {
-            if(studentScene == null)
-                studentScene = SceneFactory.getInstance().createStudentScene(userIDs[studentMask], false);
+            studentScene = SceneFactory.getInstance().createStudentScene(userIDs[studentMask], false);
             window.setScene(studentScene);
         });
 
         teacherButton.setOnAction(actionEvent -> {
-            if(teacherScene == null)
-                teacherScene = SceneFactory.getInstance().createTeacherScene(userIDs[teacherMask]);
+            teacherScene = SceneFactory.getInstance().createTeacherScene(userIDs[teacherMask]);
             window.setScene(teacherScene);
         });
 
         guardianButton.setOnAction(actionEvent -> {
             SceneFactory.getInstance().createGuardianScene(userIDs[guardianMask]);
-            if(studentsScenes != null)
-                window.setScene(studentsScenes.get(0));
+            window.setScene(studentsScenes.get(0));
         });
 
         logoutButton.setOnAction(actionEvent -> {
