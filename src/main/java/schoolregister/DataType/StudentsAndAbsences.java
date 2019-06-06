@@ -1,16 +1,19 @@
 package schoolregister.DataType;
 
+
+import javafx.scene.control.CheckBox;
+
 public class StudentsAndAbsences extends Person {
-    boolean isOnLesson = true;
+    CheckBox isOnLesson = new CheckBox();
     public StudentsAndAbsences() {
         super(Type.student);
     }
 
-    public void setAbsence(boolean isOnLesson){
+    public void setAbsence(CheckBox isOnLesson){
         this.isOnLesson = isOnLesson;
     }
-    public char getAbsence() {
-        return isOnLesson ? '+' : '-';
+    public CheckBox getAbsence() {
+        return isOnLesson;
     }
 
 }

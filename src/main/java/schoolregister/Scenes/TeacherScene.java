@@ -98,6 +98,9 @@ public class TeacherScene {
             }
             if(lessons.isVisible() && currentGroup.getGroup() != null && currentLesson.getLesson() != null ) {
                 AbsencesDialog.showAndWait(currentGroup.getGroup().getId());
+                for(StudentsAndAbsences s : AbsencesDialog.res)
+                    System.out.print(s.getAbsence().isSelected()+" ");
+                System.out.println();
             }
         });
 

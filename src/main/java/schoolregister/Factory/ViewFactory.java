@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -232,14 +233,16 @@ public class ViewFactory {
         TableColumn<StudentsAndAbsences, Integer> studentId = new TableColumn<>("id");
         TableColumn<StudentsAndAbsences, String> name = new TableColumn<>("name");
         TableColumn<StudentsAndAbsences, String> surName = new TableColumn<>("surname");
-        TableColumn<StudentsAndAbsences, String> absence = new TableColumn<>("is");
+        TableColumn<StudentsAndAbsences, CheckBox> absencesColumn = new TableColumn<>( "is" );
+
 
         studentId.setCellValueFactory(new PropertyValueFactory<>("id"));
         name.setCellValueFactory(new PropertyValueFactory<>("name"));
         surName.setCellValueFactory(new PropertyValueFactory<>("surname"));
-        absence.setCellValueFactory(new PropertyValueFactory<>("absence"));
+        absencesColumn.setCellValueFactory(new PropertyValueFactory<>("absence"));
+      //  absencesColumn.setCellFactory( tc -> new CheckBoxTableCell<>().tableColumnProperty());
 
-        resultView.getColumns().addAll(studentId, name, surName,absence);
+        resultView.getColumns().addAll(studentId, name, surName,absencesColumn);
         resultView.setEditable(true);
         return resultView;
     }

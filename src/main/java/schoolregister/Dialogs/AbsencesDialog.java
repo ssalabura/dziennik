@@ -24,7 +24,7 @@ public class AbsencesDialog {
         dialog.getDialogPane().getButtonTypes().addAll(doneButton, ButtonType.CANCEL);
 
         TableView<StudentsAndAbsences> students = ViewFactory.getInstance().getStudentsAndAbsences();
-        List<Person> rawList =  Database.getInstance().getStudentsFor(group_id);
+        List<Person> rawList =  Database.getInstance().getStudentsAndAbsencesFor(group_id);
         List<StudentsAndAbsences> studentsList = new ArrayList<>();
         for(Person p : rawList) {
             StudentsAndAbsences s = new StudentsAndAbsences();
@@ -32,6 +32,7 @@ public class AbsencesDialog {
             s.setName(p.getName());
             s.setSurname(p.getSurname());
             s.setPesel(p.getPesel());
+            s.getAbsence().setSelected(true);
             studentsList.add(s);
         }
 
