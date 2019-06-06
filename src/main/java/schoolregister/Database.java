@@ -2,12 +2,12 @@ package schoolregister;
 
 import org.mindrot.jbcrypt.BCrypt;
 import schoolregister.DataType.*;
-import schoolregister.utils.ExceptionHandler;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import static schoolregister.utils.ExceptionHandler.crash;
 
 
 public class Database {
@@ -30,7 +30,7 @@ public class Database {
                 instance = null;
             }
             catch (SQLException e) {
-                ExceptionHandler.crash(e);
+                crash(e);
             }
         }
     }
@@ -44,7 +44,7 @@ public class Database {
                             ConnectionConfig.username, ConnectionConfig.password);
         }
         catch (Exception e){
-            ExceptionHandler.crash(e);
+            crash(e);
         }
     }
 
@@ -63,7 +63,7 @@ public class Database {
             p.setHash(rs.getString("password"));
         }
         catch (Exception e){
-            ExceptionHandler.crash(e);
+            crash(e);
         }
         return p;
     }
@@ -77,7 +77,7 @@ public class Database {
             g.setSubject(rs.getString("s_name"));
         }
         catch (Exception e){
-            ExceptionHandler.crash(e);
+            crash(e);
         }
         return g;
     }
@@ -85,15 +85,30 @@ public class Database {
     private Lesson createLesson(ResultSet rs){
         Lesson l = new Lesson();
         try{
-            l.setId(rs.getInt("lesson_id"));
+            l.setLessonId(rs.getInt("lesson_id"));
             l.setDate(rs.getDate("date"));
             l.setTopic(rs.getString("topic"));
             l.setSlot(rs.getInt("slot"));
         }
         catch (Exception e){
-            ExceptionHandler.crash(e);
+            crash(e);
         }
         return l;
+    }
+
+    private Exam createExam(ResultSet rs){
+        Exam exam = new Exam();
+        try{
+            exam.setLessonId(rs.getInt("lesson_id"));
+            exam.setExamId(rs.getInt("exam_id"));
+            exam.setDate(rs.getDate("date"));
+            exam.setSlot(rs.getInt("slot"));
+            exam.setDescription(rs.getString("description"));
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return exam;
     }
 
     public List<Person> getStudentsFor(int groupId){
@@ -107,7 +122,7 @@ public class Database {
             }
         }
         catch (Exception e){
-            ExceptionHandler.crash(e);
+            crash(e);
         }
         return list;
     }
@@ -125,7 +140,7 @@ public class Database {
             }
         }
         catch (Exception e){
-            ExceptionHandler.crash(e);
+            crash(e);
         }
         return list;
     }
@@ -141,7 +156,7 @@ public class Database {
             }
         }
         catch(Exception e){
-            ExceptionHandler.crash(e);
+            crash(e);
         }
 
         return null;
@@ -160,7 +175,7 @@ public class Database {
             }
         }
         catch (Exception e){
-            ExceptionHandler.crash(e);
+            crash(e);
         }
         return list;
     }
@@ -177,7 +192,7 @@ public class Database {
             }
         }
         catch (Exception e){
-            ExceptionHandler.crash(e);
+            crash(e);
         }
         return list;
     }
@@ -219,7 +234,7 @@ public class Database {
 
         }
         catch (SQLException e) {
-            ExceptionHandler.crash(e);
+            crash(e);
         }
 
         for(int i=0;i<lessons.length;i++){
@@ -242,7 +257,7 @@ public class Database {
             }
         }
         catch (Exception e){
-            ExceptionHandler.crash(e);
+            crash(e);
         }
         return list;
     }
@@ -269,7 +284,7 @@ public class Database {
             }
         }
         catch (Exception e){
-            ExceptionHandler.crash(e);
+            crash(e);
         }
         return list;
     }
@@ -294,7 +309,7 @@ public class Database {
             }
         }
         catch (Exception e){
-            ExceptionHandler.crash(e);
+            crash(e);
         }
         return list;
     }
@@ -311,7 +326,7 @@ public class Database {
             }
         }
         catch (Exception e){
-            ExceptionHandler.crash(e);
+            crash(e);
         }
         return list;
     }
@@ -343,7 +358,7 @@ public class Database {
             }
         }
         catch (Exception e){
-            ExceptionHandler.crash(e);
+            crash(e);
         }
         return 0;
     }
@@ -360,7 +375,24 @@ public class Database {
             }
         }
         catch (Exception e){
-            ExceptionHandler.crash(e);
+            crash(e);
+        }
+        return list;
+    }
+
+    public List<Exam> getExamsForGroupSubject(int groupId, int subjectId){
+        List<Exam> list = new ArrayList<>();
+
+        String query = "select exam_id, description, l.* from exams join lessons l using(lesson_id) where group_id = " + groupId + " and subject_id = " + subjectId;
+
+        try(Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(query)){
+            while(rs.next()) {
+                list.add(createExam(rs));
+            }
+        }
+        catch (Exception e){
+            crash(e);
         }
         return list;
     }
@@ -451,36 +483,5 @@ public class Database {
         finally {
             connection.setAutoCommit(true);
         }
-    }
-    public void addAbsence(int student_id, int lesson_id) throws SQLException {
-        String query = "INSERT INTO absences (student_id, lesson_id) VALUES (?,?)";
-        try(PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, student_id);
-            statement.setInt(2, lesson_id);
-            statement.execute();
-        }
-    }
-
-
-    public void testLogAll(boolean onlyErrors){
-        testLog(getPeople(Person.Type.teacher), onlyErrors, "TEACHERS");
-        testLog(getPeople(Person.Type.student), onlyErrors, "STUDENTS");
-        testLog(getPeople(Person.Type.guardian), onlyErrors, "GUARDIANS");
-    }
-
-    private void testLog(List<Person> users, boolean onlyErrors, String type){
-        System.out.println("---------------------------------" + type);
-        for(Person p : users){
-            StringBuilder password = new StringBuilder(p.getEmail()).reverse();
-            boolean goodPassword = BCrypt.checkpw(password.toString(), p.getHash());
-            if(onlyErrors){
-                if(!goodPassword)
-                    System.out.println(p.getId() + " ERROR");
-            }
-            else{
-                System.out.println(p.getId() + (goodPassword ? " OK" : " ERROR"));
-            }
-        }
-        System.out.println("-----------------------------------------------");
     }
 }

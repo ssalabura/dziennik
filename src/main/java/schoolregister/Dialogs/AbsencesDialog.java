@@ -1,12 +1,13 @@
 package schoolregister.Dialogs;
 
 import javafx.collections.FXCollections;
-import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 import schoolregister.DataType.Lesson;
-import schoolregister.DataType.Person;
 import schoolregister.DataType.StudentsAndAbsences;
 import schoolregister.Database;
 import schoolregister.Factory.ViewFactory;
@@ -26,7 +27,7 @@ public class AbsencesDialog {
         ButtonType doneButton = new ButtonType("Done", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(doneButton, ButtonType.CANCEL);
 
-        before = Database.getInstance().getStudentsAndAbsencesFor(group_id,currentLesson.getId());
+        before = Database.getInstance().getStudentsAndAbsencesFor(group_id,currentLesson.getLessonId());
         after = new ArrayList<>();
         for(StudentsAndAbsences s : before){
             StudentsAndAbsences sa = new StudentsAndAbsences(s);

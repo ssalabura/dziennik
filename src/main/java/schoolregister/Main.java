@@ -28,7 +28,6 @@ public class Main extends Application {
     private SceneFactory sceneFactory = SceneFactory.getInstance();
     @Override
     public void start(Stage stage) {
-        //Database.getInstance().testLogAll(true);
         window = stage;
         window.setTitle("School Register");
         window.setWidth(1280);

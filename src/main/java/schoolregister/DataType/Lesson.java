@@ -9,7 +9,7 @@ public class Lesson {
     public String subjectName,teacherName,groupName;
     public int dayId,slot;
     private Date date;
-    private int id;
+    private int lessonId;
     private String topic;
 
     public Lesson() {}
@@ -83,12 +83,12 @@ public class Lesson {
         this.date = date;
     }
 
-    public int getId() {
-        return id;
+    public int getLessonId() {
+        return lessonId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setLessonId(int lessonId) {
+        this.lessonId = lessonId;
     }
 
     public String getTopic() {

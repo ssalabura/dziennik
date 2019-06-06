@@ -304,4 +304,33 @@ public class ViewFactory {
         return resultView;
     }
 
+    @SuppressWarnings("unchecked")
+    public TableView<Exam> getExams() {
+        TableView<Exam> resultView = new TableView<>();
+
+        TableColumn<Exam, Date> date = new TableColumn<>("date");
+        TableColumn<Exam, String> day = new TableColumn<>("day");
+        TableColumn<Exam, Integer> slot = new TableColumn<>("slot");
+        TableColumn<Exam, String> description = new TableColumn<>("description");
+
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        day.setCellValueFactory(new PropertyValueFactory<>("dayOfWeek"));
+        slot.setCellValueFactory(new PropertyValueFactory<>("slot"));
+        description.setCellValueFactory(new PropertyValueFactory<>("topic"));
+
+        date.prefWidthProperty().bind(resultView.widthProperty().multiply(0.10));
+        date.setStyle("-fx-alignment: CENTER");
+        day.prefWidthProperty().bind(resultView.widthProperty().multiply(0.10));
+        day.setStyle("-fx-alignment: CENTER");
+        slot.prefWidthProperty().bind(resultView.widthProperty().multiply(0.05));
+        slot.setStyle("-fx-alignment: CENTER");
+        description.prefWidthProperty().bind(resultView.widthProperty().multiply(0.74));
+
+
+        resultView.getColumns().addAll(date,day, slot, description);
+        resultView.setEditable(true);
+
+        return resultView;
+    }
+
 }

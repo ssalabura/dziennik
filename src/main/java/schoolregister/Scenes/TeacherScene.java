@@ -26,6 +26,14 @@ import java.util.List;
 
 import static schoolregister.Main.*;
 
+/**
+ * currentType
+ * 0 - grades
+ * 1 - absences
+ * 2 - topics
+ * 3 - exams
+ */
+
 public class TeacherScene {
     private static ViewFactory viewFactory = ViewFactory.getInstance();
 
@@ -34,6 +42,7 @@ public class TeacherScene {
     public static TableView<Person> students;
     public static TableView<Absence> absences;
     public static TableView<Lesson> lessons;
+    public static TableView<Exam> exams;
 
     public static GroupWrapper currentGroup;
     public static PersonWrapper currentStudent;
@@ -49,6 +58,7 @@ public class TeacherScene {
         students = viewFactory.getStudents();
         absences = viewFactory.getAbsences();
         lessons = viewFactory.getLessons();
+        exams = viewFactory.getExams();
 
         currentGroup = new GroupWrapper();
         currentStudent = new PersonWrapper();
@@ -61,6 +71,7 @@ public class TeacherScene {
         Button gradesButton = new Button("Grades");
         Button absencesButton = new Button("Absences");
         Button lessonTopicButton = new Button("Topics");
+        Button examsButton = new Button("Exams");
         addRowButton = new Button("Add");
         deleteRowButton = new Button("Remove");
         absencesCheckButton = new Button("Check absences");
@@ -76,12 +87,15 @@ public class TeacherScene {
         absencesLabel.setFont(new Font("Arial", 20));
         Label lessonTopicLabel = new Label("Topics");
         lessonTopicLabel.setFont(new Font("Arial", 20));
+        Label examsLabel = new Label("Exams");
+        examsLabel.setFont(new Font("Arial", 20));
 
         backButton.setMinSize(120,30);
         lessonsButton.setMinSize(120,30);
         lessonTopicButton.setMinSize(120,30);
         gradesButton.setMinSize(120,30);
         absencesButton.setMinSize(120,30);
+        examsButton.setMinSize(120, 30);
 
         addRowButton.setMinSize(120,30);
         deleteRowButton.setMinSize(120,30);
@@ -143,7 +157,7 @@ public class TeacherScene {
                                     toAdd.add(AbsencesDialog.after.get(i));
                                 }
                             }
-                            Database.getInstance().updateAbsences(currentLesson.getLesson().getId(), toAdd, toRemove);
+                            Database.getInstance().updateAbsences(currentLesson.getLesson().getLessonId(), toAdd, toRemove);
                         }
                         catch (SQLException x) {
                             ExceptionHandler.onFailUpdate(x);
@@ -160,6 +174,7 @@ public class TeacherScene {
         grid.add(backButton, 0, 4);
         grid.add(lessonsButton, 1, 4);
         grid.add(lessonTopicButton, 1, 5);
+        grid.add(examsButton, 1, 6);
         grid.add(gradesButton, 2, 4);
         grid.add(absencesButton, 2, 5);
         grid.add(addRowButton,3,4);
@@ -187,21 +202,29 @@ public class TeacherScene {
         grid.add(lessons, 1, 1,4,1);
         lessons.setMinSize(900,400);
 
+        grid.add(examsLabel, 1, 0);
+        grid.add(exams, 1, 1, 4, 1);
+        exams.setMinSize(900, 400);
+
 
 
         groups.getSelectionModel().selectedItemProperty().addListener((observableValue, group, t1) -> {
             currentGroup.setGroup(t1);
             if(t1 != null) {
-                if(currentType.getValue() != 2)
+                if(currentType.getValue() == 0 || currentType.getValue() == 1)
                     fillStudents();
-                else
+                else if(currentType.getValue() == 2)
                     fillLessons();
+                else if(currentType.getValue() == 3)
+                    fillExams();
             }
             else{
-                if(currentType.getValue() != 2)
+                if(currentType.getValue() == 0 || currentType.getValue() == 1)
                     students.getItems().clear();
-                else
+                else if(currentType.getValue() == 2)
                     lessons.getItems().clear();
+                else if(currentType.getValue() == 3)
+                    exams.getItems().clear();
             }
         });
 
@@ -237,6 +260,8 @@ public class TeacherScene {
 
         setLessonsVisible(lessonTopicLabel, false);
 
+        setExamsVisible(examsLabel, false);
+
         lessonsButton.setOnAction(actionEvent -> {
             lessonsTableScene = SceneFactory.getInstance().createLessonTableSceneForTeacher(teacherId);
             window.setScene(lessonsTableScene);
@@ -250,6 +275,8 @@ public class TeacherScene {
             setAbsencesVisible(absencesLabel, false);
 
             setLessonsVisible(lessonTopicLabel, false);
+
+            setExamsVisible(examsLabel, false);
 
             if(currentType.getValue() == 2 && currentGroup.getGroup() != null){
                 fillStudents();
@@ -274,6 +301,8 @@ public class TeacherScene {
             setGradesVisible(gradesLabel, false);
 
             setLessonsVisible(lessonTopicLabel, false);
+
+            setExamsVisible(examsLabel, false);
 
             if(currentType.getValue() == 2 && currentGroup.getGroup() != null){
                 fillStudents();
@@ -302,6 +331,8 @@ public class TeacherScene {
 
             setStudentsVisible(studentsLabel, false);
 
+            setExamsVisible(examsLabel, false);
+
             if(currentGroup.getGroup() != null){
                 fillLessons();
             }
@@ -310,6 +341,29 @@ public class TeacherScene {
 
             currentType.setValue(2);
         });
+
+        examsButton.setOnAction(actionEvent -> {
+            if(currentType.getValue() == 3)
+                return;
+            currentStudent.setPerson(null);
+
+            setGradesVisible(gradesLabel, false);
+
+            setAbsencesVisible(absencesLabel, false);
+
+            setStudentsVisible(studentsLabel, false);
+
+            setLessonsVisible(lessonTopicLabel, false);
+
+            if(currentGroup.getGroup() != null){
+                fillExams();
+            }
+
+            setExamsVisible(examsLabel, true);
+
+            currentType.setValue(3);
+        });
+
         return new Scene(grid, 1280, 720);
     }
 
@@ -331,6 +385,11 @@ public class TeacherScene {
     public static TableView<Grade> fillGrades(){
         grades.setItems(FXCollections.observableArrayList(Database.getInstance().getGrades(currentStudent.getPerson().getId(), currentGroup.getGroup().getSubjectId())));
         return grades;
+    }
+
+    public static TableView<Exam> fillExams(){
+        exams.setItems(FXCollections.observableArrayList(Database.getInstance().getExamsForGroupSubject(currentGroup.getGroup().getId(), currentGroup.getGroup().getSubjectId())));
+        return exams;
     }
 
     public static void setLessonsVisible(Label label, boolean isVisible){
@@ -356,4 +415,8 @@ public class TeacherScene {
         grades.setVisible(isVisible);
     }
 
+    public static void setExamsVisible(Label label, boolean isVisible){
+        label.setVisible(isVisible);
+        exams.setVisible(isVisible);
+    }
 }
