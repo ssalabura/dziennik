@@ -316,7 +316,7 @@ public class ViewFactory {
         date.setCellValueFactory(new PropertyValueFactory<>("date"));
         day.setCellValueFactory(new PropertyValueFactory<>("dayOfWeek"));
         slot.setCellValueFactory(new PropertyValueFactory<>("slot"));
-        description.setCellValueFactory(new PropertyValueFactory<>("topic"));
+        description.setCellValueFactory(new PropertyValueFactory<>("description"));
 
         date.prefWidthProperty().bind(resultView.widthProperty().multiply(0.10));
         date.setStyle("-fx-alignment: CENTER");

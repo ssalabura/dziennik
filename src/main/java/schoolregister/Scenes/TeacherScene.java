@@ -12,6 +12,7 @@ import javafx.util.Pair;
 import schoolregister.DataType.*;
 import schoolregister.Database;
 import schoolregister.Dialogs.AbsencesDialog;
+import schoolregister.Dialogs.AddExamDialog;
 import schoolregister.Dialogs.AddGradeDialog;
 import schoolregister.Factory.SceneFactory;
 import schoolregister.Factory.ViewFactory;
@@ -48,9 +49,11 @@ public class TeacherScene {
     public static GroupWrapper currentGroup;
     public static PersonWrapper currentStudent;
     public static LessonWrapper currentLesson;
+
     private static Button addRowButton;
     private static Button deleteRowButton;
     private static Button absencesCheckButton;
+    private static Button addExamButton;
 
     public static Scene newTeacherScene(int teacherId) {
         groups = viewFactory.getGroupsFor(teacherId);
@@ -76,6 +79,7 @@ public class TeacherScene {
         addRowButton = new Button("Add");
         deleteRowButton = new Button("Remove");
         absencesCheckButton = new Button("Check absences");
+        addExamButton = new Button("Add Exam");
 
 
         Label groupsLabel = new Label("Groups");
@@ -101,6 +105,7 @@ public class TeacherScene {
         addRowButton.setMinSize(120,30);
         deleteRowButton.setMinSize(120,30);
         absencesCheckButton.setMinSize(120,30);
+        addExamButton.setMinSize(120, 30);
 
 
         addRowButton.setOnAction(e -> {
@@ -114,6 +119,21 @@ public class TeacherScene {
                     fillGrades();
                 } catch (SQLException | NumberFormatException x) {
                     ExceptionHandler.onFailUpdate(x);
+                }
+            }
+        });
+
+        addExamButton.setOnAction(e -> {
+            if(currentLesson.getLesson() != null){
+                String description = AddExamDialog.showAndWait();
+                if(description == null)
+                    return;
+                try{
+                    Database.getInstance().addExam(currentLesson.getLesson().getLessonId(), description);
+                    fillExams();
+                }
+                catch (SQLException x){
+                    ExceptionHandler.onExamUpdateFail(x);
                 }
             }
         });
@@ -181,6 +201,7 @@ public class TeacherScene {
         grid.add(addRowButton,3,4);
         grid.add(deleteRowButton,4,4);
         grid.add(absencesCheckButton,3,4);
+        grid.add(addExamButton, 4, 4);
 
 
         grid.add(groupsLabel, 0, 0);
@@ -262,6 +283,8 @@ public class TeacherScene {
         setLessonsVisible(lessonTopicLabel, false);
 
         setExamsVisible(examsLabel, false);
+
+        addExamButton.setVisible(false);
 
         lessonsButton.setOnAction(actionEvent -> {
             lessonsTableScene = SceneFactory.getInstance().createLessonTableSceneForTeacher(teacherId);
@@ -394,8 +417,8 @@ public class TeacherScene {
     }
 
     public static void setLessonsVisible(Label label, boolean isVisible){
-        setVisible(isVisible, label, absencesCheckButton, lessons);
-        deleteRowButton.setVisible(!isVisible);
+        setVisible(isVisible, label, absencesCheckButton, addExamButton, lessons);
+        setVisible(!isVisible, deleteRowButton);
     }
 
     public static void setStudentsVisible(Label label, boolean isVisible){
@@ -404,7 +427,7 @@ public class TeacherScene {
 
     public static void setAbsencesVisible(Label label, boolean isVisible){
         setVisible(isVisible, label, absences);
-        addRowButton.setVisible(!isVisible);
+        setVisible(!isVisible, addRowButton);
     }
 
     public static void setGradesVisible(Label label, boolean isVisible){
@@ -413,6 +436,7 @@ public class TeacherScene {
 
     public static void setExamsVisible(Label label, boolean isVisible){
         setVisible(isVisible, label, exams);
+        setVisible(!isVisible, addRowButton);
     }
 
     private static void setVisible(boolean isVisible, Node... args){

@@ -1,8 +1,6 @@
 package schoolregister.utils;
 
 import schoolregister.Scenes.TeacherScene;
-import java.sql.SQLException;
-
 
 public class ExceptionHandler {
 
@@ -10,6 +8,12 @@ public class ExceptionHandler {
         System.out.println("querying failed");
         System.out.println(e);
         TeacherScene.fillGrades();
+    }
+
+    public static void onExamUpdateFail(Exception e){
+        System.out.println("querying failed");
+        System.out.println(e);
+        TeacherScene.fillExams();
     }
 
     public static void crash(Exception e) {

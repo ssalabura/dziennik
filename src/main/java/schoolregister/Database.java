@@ -458,6 +458,15 @@ public class Database {
         }
     }
 
+    public void addExam(int lessonId, String description) throws SQLException {
+        String query = "INSERT INTO exams (lesson_id, description) VALUES (?, ?)";
+        try(PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, lessonId);
+            statement.setString(2, description);
+            statement.execute();
+        }
+    }
+
     public void removeAbsence(int student_id, int lesson_id) throws SQLException {
         String query = "DELETE FROM absences WHERE student_id = ? AND lesson_id = ?";
 

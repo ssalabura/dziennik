@@ -26,8 +26,8 @@ import static schoolregister.Main.userMask;
 
 public class LoginScene {
     static int badTries;
-    static String defaultMail = "Adrain@nella.name";
-    static String defaultPassword = "eman.allen@niardA";
+    static String defaultMail = "Anahi_Treutel@triston.us";
+    static String defaultPassword = "su.notsirt@letuerT_ihanA";
 
     @SuppressWarnings("unchecked")
     public static Scene newScene() {
