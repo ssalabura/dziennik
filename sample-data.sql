@@ -26,7 +26,7 @@ INSERT INTO subjects VALUES
 
 INSERT INTO slots(slot,start_time) VALUES(1,'8:00'), (2,'8:50'), (3,'9:40'), (4,'10:30'), (5,'11:25'),(6,'12:25'),(7,'13:10'),(8,'14:00'),(9,'14:50');
 
-INSERT INTO teachers (PESEL, name, surname, street, city, postalCode, email, phone, password) VALUES
+INSERT INTO teachers (PESEL, name, surname, city, street, postalCode, email, phone, password) VALUES
 ('00232718892','Jan','Rybson','Peabody','11 Proctor Circle','01960','Alysson_Adams@carroll.info','448512982','$2a$10$aFjGWP27SUhm426FqAm8xuIFuKysa9uUo2X.2kBaRKmoW6T9Kk3P2'),
 ('00233161224','Milena','Ważniak','Nashville','1123 Ardee Avenue','37216','Anahi_Treutel@triston.us','765221251','$2a$10$RnTVz151qmN2zCQneMsUG.fmVre/cVoyLYgcP5ueBxvGQ8Cx2Vu2W'),
 ('44092782976','Tadeusz','Łabędź','Nashville','1124 Bluewillow Court','37013','Antonina_Grady@maybelle.ca','125823879','$2a$10$g06wFoxlJtlKFV1QPv0jbOyRkie8YS1ZqIBIa1aCMODVyAL/RofrG'),
@@ -1202,7 +1202,7 @@ INSERT INTO teachers_groups_subjects (teacher_id, subject_id, group_id,day_id,sl
 
 
 
- INSERT INTO students (student_id, PESEL, name, surname, street, city, postalCode, email, phone, password) VALUES
+ INSERT INTO students (student_id, PESEL, name, surname, city, street, postalCode, email, phone, password) VALUES
 ('1','00262462237','Travis','Snow','Mansfield','10 Erick Road','02048','Abner@juwani.biz','128393192','$2a$10$E.uGO/z.1bNzPQynTWlTH.WkXnqSfQBQXelwEjG4Y7Ty3eOVh/UwK'),
 ('2','00302285451','Ronan','Riley','Oklahoma City','10001 Pheasant Lane','73162','Adaline@jan.us','376193597','$2a$10$DNNOYCu/9FD.1hL8OvDaf./mWOS5DlHqfM.//7z1ffxp5B69e3cE.'),
 ('3','01260594241','Levi','Hays','Hayward','1011 Devon Drive','94542','Adrain@nellla.name','131131626','$2a$10$t9kqEB/i8YYjmiTDK2mN1.7B70dxabgnZRpiDjWfkpuTVDkCv36CS'),
@@ -1889,7 +1889,7 @@ INSERT INTO groups_students (group_id, student_id) VALUES
 
 
 
-INSERT INTO legal_guardians (guardian_id, PESEL, name, surname, street, city, postalCode, email, phone, password) VALUES
+INSERT INTO legal_guardians (guardian_id, PESEL, name, surname, city, street, postalCode, email, phone, password) VALUES
 ('1','00210717433','Nathaniel','Reeves','Savannah','10 Dalry Lane','31419','Abbigail@paolo.ca','893412115','$2a$10$sEziM/NF8KwV46Hg3kemI.PP6E18EwYl0PUkhsINuoctd0V1Lpqoa'),
 ('2','00231383174','Abraham','Maxwell','Louisville','10124 Watsonville Road','40272','Abner.Orn@ila.name','656611963','$2a$10$1YHWQ/bNrfUHfichm6JX7e0RTQMuyihkKlHTaErsKdP70SPUy562q'),
 ('3','00252518593','Tyrone','Silva','Fayetteville','102 East Cydnee Street','72703','Abner@juwan.biz','452569341','$2a$10$rIYDX98fZcK5t4gwKrheyeXE6lOzXwUHqYkUtJn1QScYXGVvdagiW'),

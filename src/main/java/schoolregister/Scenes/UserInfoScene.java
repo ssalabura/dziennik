@@ -24,7 +24,7 @@ public class UserInfoScene {
 
         TableView<Attribute> attributes = viewFactory.userInfoTable(user);
 
-        attributes.setMinSize(900, 500);
+        attributes.setMinSize(900, 570);
 
         grid.add(attributes,10, 0);
         grid.add(backButton, 13, 2);

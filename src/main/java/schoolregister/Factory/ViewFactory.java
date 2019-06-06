@@ -458,7 +458,7 @@ public class ViewFactory {
 
 
         attributes.prefWidthProperty().bind(resultView.widthProperty().multiply(0.10));
-        values.prefWidthProperty().bind(resultView.widthProperty().multiply(0.90));
+        values.prefWidthProperty().bind(resultView.widthProperty().multiply(0.89));
 
         ObservableList<Attribute> list = FXCollections.observableArrayList();
 
