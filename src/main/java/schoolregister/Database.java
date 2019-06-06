@@ -467,6 +467,15 @@ public class Database {
         }
     }
 
+    public void removeExam(int examId) throws SQLException {
+        String query = "DELETE FROM exams WHERE exam_id = ?";
+
+        try(PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, examId);
+            statement.execute();
+        }
+    }
+
     public void removeAbsence(int student_id, int lesson_id) throws SQLException {
         String query = "DELETE FROM absences WHERE student_id = ? AND lesson_id = ?";
 

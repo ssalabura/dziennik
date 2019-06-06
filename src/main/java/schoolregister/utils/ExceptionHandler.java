@@ -2,18 +2,30 @@ package schoolregister.utils;
 
 import schoolregister.Scenes.TeacherScene;
 
+/**
+ * currentType
+ * 0 - grades
+ * 1 - absences
+ * 2 - topics
+ * 3 - exams
+ */
+
 public class ExceptionHandler {
 
-    public static void onFailUpdate(Exception e) {
+    public static void onFailUpdate(Exception e, int type) {
         System.out.println("querying failed");
         System.out.println(e);
+        switch (type){
+            case 0:
+                TeacherScene.fillGrades();
+            case 1:
+                TeacherScene.fillAbsences();
+            case 2:
+                TeacherScene.fillLessons();
+            case 3:
+                TeacherScene.fillExams();
+        }
         TeacherScene.fillGrades();
-    }
-
-    public static void onExamUpdateFail(Exception e){
-        System.out.println("querying failed");
-        System.out.println(e);
-        TeacherScene.fillExams();
     }
 
     public static void crash(Exception e) {

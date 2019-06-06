@@ -16,10 +16,7 @@ import schoolregister.Dialogs.AddExamDialog;
 import schoolregister.Dialogs.AddGradeDialog;
 import schoolregister.Factory.SceneFactory;
 import schoolregister.Factory.ViewFactory;
-import schoolregister.Wrapper.GroupWrapper;
-import schoolregister.Wrapper.IntegerWrapper;
-import schoolregister.Wrapper.LessonWrapper;
-import schoolregister.Wrapper.PersonWrapper;
+import schoolregister.Wrapper.*;
 import schoolregister.utils.ExceptionHandler;
 
 import java.sql.SQLException;
@@ -46,9 +43,11 @@ public class TeacherScene {
     public static TableView<Lesson> lessons;
     public static TableView<Exam> exams;
 
+    public static IntegerWrapper currentType;
     public static GroupWrapper currentGroup;
     public static PersonWrapper currentStudent;
     public static LessonWrapper currentLesson;
+    public static ExamWrapper currentExam;
 
     private static Button addRowButton;
     private static Button deleteRowButton;
@@ -66,7 +65,8 @@ public class TeacherScene {
 
         currentGroup = new GroupWrapper();
         currentStudent = new PersonWrapper();
-        IntegerWrapper currentType = new IntegerWrapper(0);
+        currentExam = new ExamWrapper();
+        currentType = new IntegerWrapper(0);
         currentLesson = new LessonWrapper();
 
         GridPane grid = viewFactory.createGrid();
@@ -118,7 +118,7 @@ public class TeacherScene {
                     Database.getInstance().addGrade(p.getKey(), weight, currentStudent.getPerson().getId(), currentGroup.getGroup().getSubjectId(), teacherId);
                     fillGrades();
                 } catch (SQLException | NumberFormatException x) {
-                    ExceptionHandler.onFailUpdate(x);
+                    ExceptionHandler.onFailUpdate(x, currentType.getValue());
                 }
             }
         });
@@ -133,7 +133,7 @@ public class TeacherScene {
                     fillExams();
                 }
                 catch (SQLException x){
-                    ExceptionHandler.onExamUpdateFail(x);
+                    ExceptionHandler.onFailUpdate(x, currentType.getValue());
                 }
             }
         });
@@ -154,9 +154,15 @@ public class TeacherScene {
                     Database.getInstance().removeAbsence(currentStudent.getPerson().getId(), absences.getSelectionModel().getSelectedItem().getLessonId());
                     absences.getItems().remove(selectedItem);
                 }
+                else if(exams.isVisible()){
+                    if(currentExam.getExam() == null)
+                        return;
+                    Database.getInstance().removeExam(currentExam.getExam().getExamId());
+                    exams.getItems().remove(currentExam.getExam());
+                }
             }
             catch(SQLException x) {
-                ExceptionHandler.onFailUpdate(x);
+                ExceptionHandler.onFailUpdate(x, currentType.getValue());
             }
         });
 
@@ -181,7 +187,7 @@ public class TeacherScene {
                             Database.getInstance().updateAbsences(currentLesson.getLesson().getLessonId(), toAdd, toRemove);
                         }
                         catch (SQLException x) {
-                            ExceptionHandler.onFailUpdate(x);
+                            ExceptionHandler.onFailUpdate(x, currentType.getValue());
                         }
                     }
                     AbsencesDialog.before = null;
@@ -248,6 +254,10 @@ public class TeacherScene {
                 else if(currentType.getValue() == 3)
                     exams.getItems().clear();
             }
+        });
+
+        exams.getSelectionModel().selectedItemProperty().addListener((observableValue, exam, t1) -> {
+            currentExam.setExam(t1);
         });
 
         students.getSelectionModel().selectedItemProperty().addListener((observableValue, person, t1) -> {

@@ -13,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.util.converter.IntegerStringConverter;
 import schoolregister.DataType.*;
 import schoolregister.Database;
+import schoolregister.Scenes.TeacherScene;
 import schoolregister.utils.ExceptionHandler;
 
 import java.sql.Date;
@@ -158,7 +159,7 @@ public class ViewFactory {
                         grade.setValue(t.getNewValue());
                     }
                     catch (SQLException e) {
-                        ExceptionHandler.onFailUpdate(e);
+                        ExceptionHandler.onFailUpdate(e, TeacherScene.currentType.getValue());
                     }
                 });
 
@@ -173,7 +174,7 @@ public class ViewFactory {
                         grade.setWeight(t.getNewValue());
                     }
                     catch (SQLException e) {
-                        ExceptionHandler.onFailUpdate(e);
+                        ExceptionHandler.onFailUpdate(e, TeacherScene.currentType.getValue());
                     }
                 });
 
