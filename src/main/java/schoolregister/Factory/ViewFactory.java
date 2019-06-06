@@ -289,6 +289,19 @@ public class ViewFactory {
         day.setCellValueFactory(new PropertyValueFactory<>("dayOfWeek"));
         slot.setCellValueFactory(new PropertyValueFactory<>("slot"));
         topic.setCellValueFactory(new PropertyValueFactory<>("topic"));
+        topic.setCellFactory(TextFieldTableCell.forTableColumn());
+        topic.setOnEditCommit(
+                (TableColumn.CellEditEvent<Lesson, String> t) -> {
+                    final int pos = t.getTablePosition().getRow();
+                    final Lesson lesson = t.getTableView().getItems().get(pos);
+                    try {
+                        Database.getInstance().updateLesson(lesson, t.getNewValue());
+                        lesson.setTopic(t.getNewValue());
+                    }
+                    catch (SQLException e) {
+                        ExceptionHandler.onFailUpdate(e, TeacherScene.currentType.getValue());
+                    }
+                });
 
         date.prefWidthProperty().bind(resultView.widthProperty().multiply(0.10));
         date.setStyle("-fx-alignment: CENTER");

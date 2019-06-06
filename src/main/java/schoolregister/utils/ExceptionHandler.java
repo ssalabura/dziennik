@@ -25,7 +25,6 @@ public class ExceptionHandler {
             case 3:
                 TeacherScene.fillExams();
         }
-        TeacherScene.fillGrades();
     }
 
     public static void crash(Exception e) {

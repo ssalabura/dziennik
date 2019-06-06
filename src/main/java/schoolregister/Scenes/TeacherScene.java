@@ -122,8 +122,16 @@ public class TeacherScene {
                     ExceptionHandler.onFailUpdate(x, currentType.getValue());
                 }
             }
-            else if(lessons.isVisible()) {
+            else if(lessons.isVisible() && currentGroup.getGroup() != null) {
                 AddTopicDialog.showAndWait();
+                if(AddTopicDialog.date != null && AddTopicDialog.topic != null) {
+                    try {
+                        Database.getInstance().addLesson(currentGroup.getGroup().getId(), currentGroup.getGroup().getSubjectId(), AddTopicDialog.date,AddTopicDialog.slot,AddTopicDialog.topic);
+                        fillLessons();
+                    } catch (SQLException | NumberFormatException x) {
+                        ExceptionHandler.onFailUpdate(x, currentType.getValue());
+                    }
+                }
             }
         });
 

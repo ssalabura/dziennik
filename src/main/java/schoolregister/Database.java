@@ -541,4 +541,27 @@ public class Database {
             connection.setAutoCommit(true);
         }
     }
+
+    public void addLesson(int groupId, int subjectId, Date date, int slot, String topic) throws  SQLException{
+        String query = "INSERT INTO lessons (group_id, subject_id,date,slot, topic) VALUES(?, ?, ?, ?, ?)";
+        try(PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, groupId);
+            statement.setInt(2, subjectId);
+            statement.setDate(3, date);
+            statement.setInt(4, slot);
+            statement.setString(5, topic);
+            statement.execute();
+        }
+    }
+
+
+    public void updateLesson(Lesson lesson, String newValue) throws SQLException {
+        String query = "UPDATE lessons SET topic = ? WHERE lesson_id = ?";
+
+        try(PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, newValue);
+            statement.setInt(2, lesson.getLessonId());
+            statement.execute();
+        }
+    }
 }
