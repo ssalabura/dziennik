@@ -21,6 +21,7 @@ import schoolregister.Wrapper.*;
 import schoolregister.utils.ExceptionHandler;
 
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +55,9 @@ public class TeacherScene {
     private static Button deleteRowButton;
     private static Button absencesCheckButton;
     private static Button addExamButton;
+
+    private static Label avg;
+    private static Label avgValue;
 
     public static Scene newTeacherScene(int teacherId) {
         groups = viewFactory.getGroupsFor(teacherId);
@@ -95,6 +99,10 @@ public class TeacherScene {
         lessonTopicLabel.setFont(new Font("Arial", 20));
         Label examsLabel = new Label("Exams");
         examsLabel.setFont(new Font("Arial", 20));
+        avg = new Label("Avg");
+        avg.setFont(new Font("Arial", 20));
+        avgValue = new Label();
+        avgValue.setFont(new Font("Arial", 18));
 
         backButton.setMinSize(120,30);
         lessonsButton.setMinSize(120,30);
@@ -250,6 +258,8 @@ public class TeacherScene {
         grid.add(exams, 1, 1, 4, 1);
         exams.setMinSize(900, 400);
 
+        grid.add(avg, 5, 0);
+        grid.add(avgValue, 6, 0);
 
 
         groups.getSelectionModel().selectedItemProperty().addListener((observableValue, group, t1) -> {
@@ -448,6 +458,7 @@ public class TeacherScene {
 
     public static TableView<Grade> fillGrades(){
         grades.setItems(FXCollections.observableArrayList(Database.getInstance().getGrades(currentStudent.getPerson().getId(), currentGroup.getGroup().getSubjectId())));
+        calculateAvg();
         return grades;
     }
 
@@ -485,7 +496,7 @@ public class TeacherScene {
     }
 
     public static void setGradesVisible(Label label, boolean isVisible){
-        setVisible(isVisible, label, grades);
+        setVisible(isVisible, label, avg, avgValue, grades);
         if(isVisible){
             addRowButton.setVisible(students.getSelectionModel().getSelectedItem() != null);
             deleteRowButton.setVisible(grades.getSelectionModel().getSelectedItem() != null);
@@ -508,5 +519,22 @@ public class TeacherScene {
         for(Node node : args){
             node.setVisible(isVisible);
         }
+    }
+
+    private static void calculateAvg(){
+        float value = 0;
+        float weights = 0;
+        for(Grade g : grades.getItems()){
+            value += g.getFloatValue() * g.getWeight();
+            weights += g.getWeight();
+        }
+        if(weights == 0){
+            avgValue.setText("");
+            return;
+        }
+        value /= weights;
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        String numberAsString = value == 0.0 ? "" : decimalFormat.format(value);
+        avgValue.setText(numberAsString);
     }
 }

@@ -86,7 +86,6 @@ public class AddTopicDialog {
                     date = Date.valueOf(localDate);
                     slot = slotBox.getValue();
                     topic = topicField.getText();
-                    System.out.println(date+" |"+slot+"| "+topic);
                     return new Pair<>("", "");
                 }
                 catch (Exception e){
