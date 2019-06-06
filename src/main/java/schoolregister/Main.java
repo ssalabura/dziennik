@@ -20,6 +20,7 @@ public class Main extends Application {
     public static Scene lessonsTableScene;
     public static Scene studentScene;
     public static Scene teacherScene;
+    public static Scene userInfoScene;
 
     public static ArrayList<Integer> guardianKids;
     public static int currentIndex;
