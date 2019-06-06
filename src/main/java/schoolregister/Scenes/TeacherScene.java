@@ -10,6 +10,7 @@ import javafx.scene.text.Font;
 import javafx.util.Pair;
 import schoolregister.DataType.*;
 import schoolregister.Database;
+import schoolregister.Dialogs.AbsencesDialog;
 import schoolregister.Dialogs.AddGradeDialog;
 import schoolregister.Factory.SceneFactory;
 import schoolregister.Factory.ViewFactory;
@@ -35,6 +36,8 @@ public class TeacherScene {
     public static GroupWrapper currentGroup;
     public static PersonWrapper currentStudent;
     public static LessonWrapper currentLesson;
+    private static Button addRowButton;
+    private static Button deleteRowButton;
 
     public static Scene newTeacherScene(int teacherId) {
         groups = viewFactory.getGroupsFor(teacherId);
@@ -55,8 +58,8 @@ public class TeacherScene {
         Button gradesButton = new Button("Grades");
         Button absencesButton = new Button("Absences");
         Button lessonTopicButton = new Button("Topics");
-        Button addRowButton = new Button("Add");
-        Button deleteRowButton = new Button("Remove");
+        addRowButton = new Button("Add");
+        deleteRowButton = new Button("Remove");
 
 
         Label groupsLabel = new Label("Groups");
@@ -93,15 +96,27 @@ public class TeacherScene {
                     ExceptionHandler.onFailUpdate(x);
                 }
             }
+            if(lessons.isVisible() && currentGroup.getGroup() != null && currentLesson.getLesson() != null ) {
+                AbsencesDialog.showAndWait(currentGroup.getGroup().getId());
+            }
         });
 
         deleteRowButton.setOnAction(e -> {
-            Grade selectedItem = grades.getSelectionModel().getSelectedItem();
             try {
-                if(!grades.isVisible() || grades.getSelectionModel() == null || grades.getSelectionModel() .getSelectedItem() == null)
-                    return;
-                Database.getInstance().removeGrade(grades.getSelectionModel().getSelectedItem().getId());
-                grades.getItems().remove(selectedItem);
+                if(grades.isVisible()) {
+                    Grade selectedItem = grades.getSelectionModel().getSelectedItem();
+                    if (grades.getSelectionModel() == null || grades.getSelectionModel().getSelectedItem() == null)
+                        return;
+                    Database.getInstance().removeGrade(grades.getSelectionModel().getSelectedItem().getId());
+                    grades.getItems().remove(selectedItem);
+                }
+                else if (absences.isVisible()) {
+                    Absence selectedItem = absences.getSelectionModel().getSelectedItem();
+                    if (absences.getSelectionModel() == null || absences.getSelectionModel().getSelectedItem() == null || currentStudent.getPerson() == null)
+                        return;
+                    Database.getInstance().removeAbsence(currentStudent.getPerson().getId(), absences.getSelectionModel().getSelectedItem().getLessonId());
+                    absences.getItems().remove(selectedItem);
+                }
             }
             catch(SQLException x) {
                 ExceptionHandler.onFailUpdate(x);
@@ -297,6 +312,7 @@ public class TeacherScene {
     public static void setAbsencesVisible(Label label, boolean isVisible){
         label.setVisible(isVisible);
         absences.setVisible(isVisible);
+        addRowButton.setVisible(!isVisible);
     }
 
     public static void setGradesVisible(Label label, boolean isVisible){

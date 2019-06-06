@@ -387,6 +387,26 @@ public class Database {
         }
     }
 
+    public void removeAbsence(int student_id, int lesson_id) throws SQLException {
+        String query = "DELETE FROM absences WHERE student_id = ? AND lesson_id = ?";
+
+        try(PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setLong(1, student_id);
+            statement.setLong(2, lesson_id);
+            statement.execute();
+        }
+    }
+
+    public void addAbsence(int student_id, int lesson_id) throws SQLException {
+        String query = "INSERT INTO absences (student_id, lesson_id) VALUES (?,?)";
+        try(PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, student_id);
+            statement.setInt(2, lesson_id);
+            statement.execute();
+        }
+    }
+
+
     public void testLogAll(boolean onlyErrors){
         testLog(getPeople(Person.Type.teacher), onlyErrors, "TEACHERS");
         testLog(getPeople(Person.Type.student), onlyErrors, "STUDENTS");

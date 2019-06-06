@@ -227,6 +227,23 @@ public class ViewFactory {
 
         return resultView;
     }
+    public TableView<StudentsAndAbsences> getStudentsAndAbsences() {
+        TableView<StudentsAndAbsences> resultView = new TableView<>();
+        TableColumn<StudentsAndAbsences, Integer> studentId = new TableColumn<>("id");
+        TableColumn<StudentsAndAbsences, String> name = new TableColumn<>("name");
+        TableColumn<StudentsAndAbsences, String> surName = new TableColumn<>("surname");
+        TableColumn<StudentsAndAbsences, String> absence = new TableColumn<>("is");
+
+        studentId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        name.setCellValueFactory(new PropertyValueFactory<>("name"));
+        surName.setCellValueFactory(new PropertyValueFactory<>("surname"));
+        absence.setCellValueFactory(new PropertyValueFactory<>("absence"));
+
+        resultView.getColumns().addAll(studentId, name, surName,absence);
+        resultView.setEditable(true);
+        return resultView;
+    }
+
 
     @SuppressWarnings("unchecked")
     public TableView<Absence> getAbsences(){
