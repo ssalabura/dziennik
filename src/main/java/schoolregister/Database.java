@@ -173,24 +173,6 @@ public class Database {
         return null;
     }
 
-    public List<Person> getPeople(Person.Type type){
-        List<Person> list = new ArrayList<>();
-
-        String source = (type == Person.Type.guardian) ? "legal_guardians" : (type + "s");
-        String query = "SELECT * FROM " + source;
-
-        try(Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery(query)){
-            while(rs.next()){
-                list.add(createPerson(rs, type));
-            }
-        }
-        catch (Exception e){
-            crash(e);
-        }
-        return list;
-    }
-
     public List<Group> getGroupsFor(int teacherId){
         List<Group> list = new ArrayList<>();
 

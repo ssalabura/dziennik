@@ -117,34 +117,6 @@ public class ViewFactory {
     }
 
     @SuppressWarnings("unchecked")
-    public TableView<Person> getPeopleFor(Person.Type type){
-        TableView<Person> resultTable = new TableView<>();
-        resultTable.setEditable(false);
-
-        ObservableList<Person> people = FXCollections.observableArrayList(Database.getInstance().getPeople(type));
-
-        TableColumn<Person, Integer> idCol = new TableColumn<>("id");
-        TableColumn<Person, String> nameCol = new TableColumn<>("name");
-        TableColumn<Person, String> surnameCol = new TableColumn<>("surname");
-        TableColumn<Person, String> peselCol = new TableColumn<>("pesel");
-
-        idCol.setCellValueFactory(
-                new PropertyValueFactory<>("id"));
-        nameCol.setCellValueFactory(
-                new PropertyValueFactory<>("name"));
-        surnameCol.setCellValueFactory(
-                new PropertyValueFactory<>("surname"));
-        peselCol.setCellValueFactory(
-                new PropertyValueFactory<>("pesel"));
-
-
-        resultTable.setItems(people);
-        resultTable.getColumns().addAll(idCol, nameCol, surnameCol, peselCol);
-
-        return resultTable;
-    }
-
-    @SuppressWarnings("unchecked")
     public TableView<Grade> getGrades(){
         TableView<Grade> resultTable = new TableView<>();
         resultTable.setEditable(false);
@@ -232,6 +204,8 @@ public class ViewFactory {
 
         return resultView;
     }
+
+    @SuppressWarnings("unchecked")
     public TableView<StudentsAndAbsences> getStudentsAndAbsences() {
         TableView<StudentsAndAbsences> resultView = new TableView<>();
         TableColumn<StudentsAndAbsences, Integer> studentId = new TableColumn<>("id");
@@ -463,8 +437,6 @@ public class ViewFactory {
         ObservableList<Attribute> list = FXCollections.observableArrayList();
 
         list.addAll(name, surname, pesel, email, phone, city, street, postalCode);
-
-        System.out.println(list.size());
 
         resultView.getColumns().addAll(attributes, values);
 
