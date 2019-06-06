@@ -8,6 +8,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
+import schoolregister.DataType.Group;
 import schoolregister.DataType.LessonsOnSlot;
 import schoolregister.Database;
 import schoolregister.utils.Time;
@@ -24,9 +25,9 @@ public class AddTopicDialog {
     public static int slot;
     public static String topic;
 
-    public static void showAndWait(int teacherId) {
+    public static void showAndWait(int teacherId, Group group) {
         Dialog<Pair<String, String>> dialog = new Dialog<>();
-        dialog.setTitle("Add new lesson to ");
+        dialog.setTitle("Add new lesson to "+group.getName());
 
         ButtonType doneButton = new ButtonType("Done", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(doneButton, ButtonType.CANCEL);
@@ -35,19 +36,19 @@ public class AddTopicDialog {
 
         DatePicker datePicker = new DatePicker();
 
-        final ComboBox<String> slotBox = new ComboBox<>();
+        final ComboBox<Integer> slotBox = new ComboBox<>();
 
         datePicker.valueProperty().addListener(new ChangeListener<LocalDate>() {
             @Override
             public void changed(ObservableValue<? extends LocalDate> observableValue, LocalDate oldDate, LocalDate newDate) {
-                ArrayList<String> days = new ArrayList<>();
+                ArrayList<Integer> days = new ArrayList<>();
                 for (LessonsOnSlot l : lessons) {
                     Date date = Date.valueOf(newDate);
                     int dayId = Time.dateToSqlDayId(date)-1;
-                    if(dayId >= 0 && dayId < 5 && l.get(dayId) != null)
-                        days.add(l.get(dayId).getSlot()+" ("+l.get(dayId).getGroupName()+")");
+                    if(dayId >= 0 && dayId < 5 && l.get(dayId) != null && l.get(dayId).getGroupId() == group.getId())
+                        days.add(l.get(dayId).getSlot());
                 }
-                ObservableList<String> options = FXCollections.observableArrayList(days);
+                ObservableList<Integer> options = FXCollections.observableArrayList(days);
                 slotBox.setItems(options);
             }
         });
@@ -83,7 +84,7 @@ public class AddTopicDialog {
                 try {
                     LocalDate localDate = datePicker.getValue();
                     date = Date.valueOf(localDate);
-                    slot = Integer.parseInt(slotBox.getValue().substring(0,slotBox.getValue().indexOf(' ')));
+                    slot = slotBox.getValue();
                     topic = topicField.getText();
                     System.out.println(date+" |"+slot+"| "+topic);
                     return new Pair<>("", "");

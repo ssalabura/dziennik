@@ -122,13 +122,18 @@ public class TeacherScene {
                 }
             }
             else if(lessons.isVisible() && currentGroup.getGroup() != null) {
-                AddTopicDialog.showAndWait(teacherId);
+                AddTopicDialog.showAndWait(teacherId,currentGroup.getGroup());
                 if(AddTopicDialog.date != null && AddTopicDialog.topic != null) {
                     try {
                         Database.getInstance().addLesson(currentGroup.getGroup().getId(), currentGroup.getGroup().getSubjectId(), AddTopicDialog.date,AddTopicDialog.slot,AddTopicDialog.topic);
                         fillLessons();
                     } catch (SQLException | NumberFormatException x) {
                         ExceptionHandler.onFailUpdate(x, currentType.getValue());
+                    }
+                    finally {
+                        AddTopicDialog.topic = null;
+                        AddTopicDialog.date = null;
+                        AddTopicDialog.slot = -1;
                     }
                 }
             }
@@ -249,6 +254,8 @@ public class TeacherScene {
 
         groups.getSelectionModel().selectedItemProperty().addListener((observableValue, group, t1) -> {
             currentGroup.setGroup(t1);
+            if(lessons.isVisible())
+                addRowButton.setVisible(currentGroup.getGroup() != null);
             if(t1 != null) {
                 if(currentType.getValue() == 0 || currentType.getValue() == 1)
                     fillStudents();
@@ -269,9 +276,12 @@ public class TeacherScene {
 
         exams.getSelectionModel().selectedItemProperty().addListener((observableValue, exam, t1) -> {
             currentExam.setExam(t1);
+            deleteRowButton.setVisible(t1 != null);
         });
 
         students.getSelectionModel().selectedItemProperty().addListener((observableValue, person, t1) -> {
+            if(grades.isVisible())
+                addRowButton.setVisible(t1 != null);
             currentStudent.setPerson(t1);
             if(t1 != null){
                 switch (currentType.getValue()){
@@ -297,7 +307,16 @@ public class TeacherScene {
 
         lessons.getSelectionModel().selectedItemProperty().addListener((observableValue, lesson, t1) -> {
             addExamButton.setVisible(t1 != null);
+            absencesCheckButton.setVisible(t1 != null);
             currentLesson.setLesson(t1);
+        });
+
+        grades.getSelectionModel().selectedItemProperty().addListener((observableValue, lesson, t1) -> {
+            deleteRowButton.setVisible(t1 != null);
+        });
+
+        absences.getSelectionModel().selectedItemProperty().addListener((observableValue, lesson, t1) -> {
+            deleteRowButton.setVisible(t1 != null);
         });
 
         setAbsencesVisible(absencesLabel, false);
@@ -307,6 +326,8 @@ public class TeacherScene {
         setExamsVisible(examsLabel, false);
 
         addExamButton.setVisible(false);
+        addRowButton.setVisible(false);
+        deleteRowButton.setVisible(false);
 
         lessonsButton.setOnAction(actionEvent -> {
             lessonsTableScene = SceneFactory.getInstance().createLessonTableSceneForTeacher(teacherId);
@@ -394,11 +415,8 @@ public class TeacherScene {
             currentStudent.setPerson(null);
 
             setGradesVisible(gradesLabel, false);
-
             setAbsencesVisible(absencesLabel, false);
-
             setStudentsVisible(studentsLabel, false);
-
             setLessonsVisible(lessonTopicLabel, false);
 
             if(currentGroup.getGroup() != null){
@@ -442,10 +460,15 @@ public class TeacherScene {
         setVisible(isVisible, label, absencesCheckButton, lessons);
         setVisible(!isVisible, deleteRowButton);
         if(isVisible){
+            addRowButton.setVisible(currentGroup.getGroup() != null);
+            addExamButton.setVisible(lessons.getSelectionModel().getSelectedItem() != null);
+            absencesCheckButton.setVisible(lessons.getSelectionModel().getSelectedItem() != null);
             addRowButton.setText("Add Topic");
         }
         else{
             addRowButton.setText("Add");
+            absencesCheckButton.setVisible(false);
+            addExamButton.setVisible(false);
         }
     }
 
@@ -455,12 +478,17 @@ public class TeacherScene {
 
     public static void setAbsencesVisible(Label label, boolean isVisible){
         setVisible(isVisible, label, absences);
-        setVisible(!isVisible, addRowButton);
+        if(isVisible) {
+            setVisible(false, addRowButton);
+            setVisible(absences.getSelectionModel().getSelectedItem() != null, deleteRowButton);
+        }
     }
 
     public static void setGradesVisible(Label label, boolean isVisible){
         setVisible(isVisible, label, grades);
         if(isVisible){
+            addRowButton.setVisible(students.getSelectionModel().getSelectedItem() != null);
+            deleteRowButton.setVisible(grades.getSelectionModel().getSelectedItem() != null);
             addRowButton.setText("Add Grade");
         }
         else{
@@ -470,12 +498,9 @@ public class TeacherScene {
 
     public static void setExamsVisible(Label label, boolean isVisible){
         setVisible(isVisible, label, exams);
-        setVisible(!isVisible, addRowButton);
-        if(isVisible){
-            addRowButton.setText("Add Exam");
-        }
-        else{
-            addRowButton.setText("Add");
+        if(isVisible) {
+            setVisible(false, addRowButton);
+            deleteRowButton.setVisible(currentGroup != null && exams.getSelectionModel().getSelectedItem() != null);
         }
     }
 
