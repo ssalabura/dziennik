@@ -21,6 +21,8 @@ import schoolregister.Wrapper.PersonWrapper;
 import schoolregister.utils.ExceptionHandler;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static schoolregister.Main.*;
 
@@ -38,6 +40,7 @@ public class TeacherScene {
     public static LessonWrapper currentLesson;
     private static Button addRowButton;
     private static Button deleteRowButton;
+    private static Button absencesCheckButton;
 
     public static Scene newTeacherScene(int teacherId) {
         groups = viewFactory.getGroupsFor(teacherId);
@@ -60,6 +63,7 @@ public class TeacherScene {
         Button lessonTopicButton = new Button("Topics");
         addRowButton = new Button("Add");
         deleteRowButton = new Button("Remove");
+        absencesCheckButton = new Button("Check absences");
 
 
         Label groupsLabel = new Label("Groups");
@@ -81,6 +85,7 @@ public class TeacherScene {
 
         addRowButton.setMinSize(120,30);
         deleteRowButton.setMinSize(120,30);
+        absencesCheckButton.setMinSize(120,30);
 
 
         addRowButton.setOnAction(e -> {
@@ -95,12 +100,6 @@ public class TeacherScene {
                 } catch (SQLException | NumberFormatException x) {
                     ExceptionHandler.onFailUpdate(x);
                 }
-            }
-            if(lessons.isVisible() && currentGroup.getGroup() != null && currentLesson.getLesson() != null ) {
-                AbsencesDialog.showAndWait(currentGroup.getGroup().getId());
-                for(StudentsAndAbsences s : AbsencesDialog.res)
-                    System.out.print(s.getAbsence().isSelected()+" ");
-                System.out.println();
             }
         });
 
@@ -126,6 +125,37 @@ public class TeacherScene {
             }
         });
 
+        absencesCheckButton.setOnAction(e -> {
+            if(lessons.isVisible() && currentGroup.getGroup() != null && currentLesson.getLesson() != null ) {
+                synchronized (AbsencesDialog.class) {
+                    AbsencesDialog.showAndWait(currentLesson.getLesson(), currentGroup.getGroup().getId());
+                    if (AbsencesDialog.before != null && AbsencesDialog.after != null) {
+                        try {
+                            List<StudentsAndAbsences> toAdd = new ArrayList<>();
+                            List<StudentsAndAbsences> toRemove = new ArrayList<>();
+                            for(int i=0;i<AbsencesDialog.after.size();i++) {
+                                boolean wasBefore = !AbsencesDialog.before.get(i).getAbsence().isSelected();
+                                boolean isNow =     !AbsencesDialog.after.get(i).getAbsence().isSelected();
+                                if(wasBefore && !isNow){
+                                    toRemove.add(AbsencesDialog.after.get(i));
+                                }
+                                else if(!wasBefore && isNow) {
+                                    toAdd.add(AbsencesDialog.after.get(i));
+                                }
+                            }
+                            Database.getInstance().updateAbsences(currentLesson.getLesson().getId(), toAdd, toRemove);
+                        }
+                        catch (SQLException x) {
+                            ExceptionHandler.onFailUpdate(x);
+                        }
+                    }
+                    AbsencesDialog.before = null;
+                    AbsencesDialog.after = null;
+                }
+
+            }
+        });
+
 
         grid.add(backButton, 0, 4);
         grid.add(lessonsButton, 1, 4);
@@ -134,6 +164,7 @@ public class TeacherScene {
         grid.add(absencesButton, 2, 5);
         grid.add(addRowButton,3,4);
         grid.add(deleteRowButton,4,4);
+        grid.add(absencesCheckButton,3,4);
 
 
         grid.add(groupsLabel, 0, 0);
@@ -303,6 +334,8 @@ public class TeacherScene {
     }
 
     public static void setLessonsVisible(Label label, boolean isVisible){
+        absencesCheckButton.setVisible(isVisible);
+        deleteRowButton.setVisible(!isVisible);
         label.setVisible(isVisible);
         lessons.setVisible(isVisible);
     }

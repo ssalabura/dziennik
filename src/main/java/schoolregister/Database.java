@@ -4,6 +4,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import schoolregister.DataType.*;
 import schoolregister.utils.ExceptionHandler;
 
+import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -103,6 +104,24 @@ public class Database {
         try(Statement statement = connection.createStatement(); ResultSet rs = statement.executeQuery(query)){
             while(rs.next()){
                 list.add(createPerson(rs, Person.Type.student));
+            }
+        }
+        catch (Exception e){
+            ExceptionHandler.crash(e);
+        }
+        return list;
+    }
+
+    public List<StudentsAndAbsences> getStudentsAndAbsencesFor(int group_id, int lesson_id) {
+        List<StudentsAndAbsences> list = new ArrayList<>();
+        String query = "SELECT students.*,count(nullif(absences.lesson_id = "+lesson_id+" ,false)) AS absence " +
+                       "FROM students JOIN students_in_groups USING(student_id) JOIN absences USING(student_id) " +
+                       "WHERE group_id = "+ group_id + " GROUP BY students.student_id";
+        try(Statement statement = connection.createStatement(); ResultSet rs = statement.executeQuery(query)){
+            while(rs.next()){
+                StudentsAndAbsences p = new StudentsAndAbsences(createPerson(rs, Person.Type.student));
+                p.getAbsence().setSelected(rs.getInt("absence") == 0);
+                list.add(p);
             }
         }
         catch (Exception e){
@@ -256,26 +275,17 @@ public class Database {
     }
 
     public List<Absence> getAbsences(int studentId) {
-        List<Absence> list = new ArrayList<>();
-
-        String query = "SELECT lesson_id,slot,date,s.name FROM absences JOIN lessons USING(lesson_id) JOIN subjects s USING(subject_id) WHERE student_id = "+studentId;
-
-        try(Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery(query)){
-            while(rs.next()){
-                list.add(new Absence(rs.getInt("lesson_id"),rs.getInt("slot"),rs.getDate("date"),rs.getString("name")));
-            }
-        }
-        catch (Exception e){
-            ExceptionHandler.crash(e);
-        }
-        return list;
+        return getAbsences(studentId,-1,-1);
     }
 
     public List<Absence> getAbsences(int studentId, int groupId, int subjectId){
         List<Absence> list = new ArrayList<>();
 
-        String query = "SELECT lesson_id,slot,date,s.name FROM absences JOIN lessons USING(lesson_id) JOIN subjects s USING(subject_id) WHERE student_id = "+studentId + " and subject_id = " + subjectId + " and group_id = " + groupId;
+        String query = "SELECT lesson_id,slot,date,s.name FROM absences JOIN lessons USING(lesson_id) JOIN subjects s USING(subject_id) WHERE student_id = "+studentId;
+        if(groupId != -1)
+            query += " and subject_id = " + subjectId;
+        if(subjectId != -1)
+            query += " and group_id = " + groupId;
 
         try(Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(query)){
@@ -397,6 +407,51 @@ public class Database {
         }
     }
 
+    public void updateAbsences(int lesson_id, List<StudentsAndAbsences> toAdd, List<StudentsAndAbsences> toRemove) throws SQLException{
+        if (toAdd.size() == 0 && toRemove.size() == 0)
+            return;
+
+        StringBuilder queryRemove = new StringBuilder();
+
+        if(toRemove.size() > 0) {
+            queryRemove.append("DELETE FROM absences WHERE lesson_id = ").append(lesson_id).append(" AND student_id IN (");
+            boolean first = true;
+            for(StudentsAndAbsences s : toRemove) {
+                if(!first)
+                    queryRemove.append(", ");
+                queryRemove.append(s.getId());
+                first = false;
+            }
+            queryRemove.append(")");
+        }
+
+        StringBuilder queryAdd = new StringBuilder();
+
+        if(toAdd.size() > 0) {
+            queryAdd.append("INSERT INTO absences (student_id, lesson_id) VALUES ");
+            boolean first = true;
+            for(StudentsAndAbsences s : toAdd) {
+                if(!first)
+                    queryAdd.append(",");
+                queryAdd.append("( ").append(s.getId()).append(", ").append(lesson_id).append(" )");
+                first = false;
+            }
+        }
+        try(Statement removeStatement = connection.createStatement(); Statement addStatement = connection.createStatement()){
+            connection.setAutoCommit(false);
+            removeStatement.execute(queryRemove.toString());
+            addStatement.execute(queryAdd.toString());
+            connection.commit();
+        }
+        catch (SQLException e) {
+            if(connection != null)
+                connection.rollback();
+            throw e;
+        }
+        finally {
+            connection.setAutoCommit(true);
+        }
+    }
     public void addAbsence(int student_id, int lesson_id) throws SQLException {
         String query = "INSERT INTO absences (student_id, lesson_id) VALUES (?,?)";
         try(PreparedStatement statement = connection.prepareStatement(query)) {
@@ -428,5 +483,4 @@ public class Database {
         }
         System.out.println("-----------------------------------------------");
     }
-
 }
