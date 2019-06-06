@@ -14,6 +14,7 @@ import schoolregister.Database;
 import schoolregister.Dialogs.AbsencesDialog;
 import schoolregister.Dialogs.AddExamDialog;
 import schoolregister.Dialogs.AddGradeDialog;
+import schoolregister.Dialogs.AddTopicDialog;
 import schoolregister.Factory.SceneFactory;
 import schoolregister.Factory.ViewFactory;
 import schoolregister.Wrapper.*;
@@ -121,6 +122,9 @@ public class TeacherScene {
                     ExceptionHandler.onFailUpdate(x, currentType.getValue());
                 }
             }
+            else if(lessons.isVisible()) {
+                AddTopicDialog.showAndWait();
+            }
         });
 
         addExamButton.setOnAction(e -> {
@@ -206,7 +210,7 @@ public class TeacherScene {
         grid.add(absencesButton, 2, 5);
         grid.add(addRowButton,3,4);
         grid.add(deleteRowButton,4,4);
-        grid.add(absencesCheckButton,3,4);
+        grid.add(absencesCheckButton,5,4);
         grid.add(addExamButton, 4, 4);
 
 
@@ -437,7 +441,6 @@ public class TeacherScene {
 
     public static void setAbsencesVisible(Label label, boolean isVisible){
         setVisible(isVisible, label, absences);
-        setVisible(!isVisible, addRowButton);
     }
 
     public static void setGradesVisible(Label label, boolean isVisible){
