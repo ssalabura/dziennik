@@ -47,4 +47,8 @@ public class LessonsOnSlot {
     public int getSlotId() {
         return slotId;
     }
+
+    public Lesson get(int day_id) {
+        return lessons[day_id];
+    }
 }

@@ -25,4 +25,12 @@ public class Time {
     public static String dateToDayString(Date date) {
         return dayOfWeekToString(dateToDayId(date));
     }
+
+    public static int dateToSqlDayId(Date date) {
+        int day = dateToDayId(date);
+        day--;
+        if(day < 0)
+            day += 7;
+        return day;
+    }
 }

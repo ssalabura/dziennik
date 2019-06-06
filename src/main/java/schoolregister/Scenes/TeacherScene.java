@@ -108,7 +108,6 @@ public class TeacherScene {
         absencesCheckButton.setMinSize(120,30);
         addExamButton.setMinSize(120, 30);
 
-
         addRowButton.setOnAction(e -> {
             if(grades.isVisible() && currentStudent.getPerson() != null) {
                 Pair<String, String> p = AddGradeDialog.showAndWait();
@@ -123,7 +122,7 @@ public class TeacherScene {
                 }
             }
             else if(lessons.isVisible() && currentGroup.getGroup() != null) {
-                AddTopicDialog.showAndWait();
+                AddTopicDialog.showAndWait(teacherId);
                 if(AddTopicDialog.date != null && AddTopicDialog.topic != null) {
                     try {
                         Database.getInstance().addLesson(currentGroup.getGroup().getId(), currentGroup.getGroup().getSubjectId(), AddTopicDialog.date,AddTopicDialog.slot,AddTopicDialog.topic);
@@ -297,6 +296,7 @@ public class TeacherScene {
         });
 
         lessons.getSelectionModel().selectedItemProperty().addListener((observableValue, lesson, t1) -> {
+            addExamButton.setVisible(t1 != null);
             currentLesson.setLesson(t1);
         });
 
@@ -439,8 +439,14 @@ public class TeacherScene {
     }
 
     public static void setLessonsVisible(Label label, boolean isVisible){
-        setVisible(isVisible, label, absencesCheckButton, addExamButton, lessons);
+        setVisible(isVisible, label, absencesCheckButton, lessons);
         setVisible(!isVisible, deleteRowButton);
+        if(isVisible){
+            addRowButton.setText("Add Topic");
+        }
+        else{
+            addRowButton.setText("Add");
+        }
     }
 
     public static void setStudentsVisible(Label label, boolean isVisible){
@@ -449,15 +455,28 @@ public class TeacherScene {
 
     public static void setAbsencesVisible(Label label, boolean isVisible){
         setVisible(isVisible, label, absences);
+        setVisible(!isVisible, addRowButton);
     }
 
     public static void setGradesVisible(Label label, boolean isVisible){
         setVisible(isVisible, label, grades);
+        if(isVisible){
+            addRowButton.setText("Add Grade");
+        }
+        else{
+            addRowButton.setText("Add");
+        }
     }
 
     public static void setExamsVisible(Label label, boolean isVisible){
         setVisible(isVisible, label, exams);
         setVisible(!isVisible, addRowButton);
+        if(isVisible){
+            addRowButton.setText("Add Exam");
+        }
+        else{
+            addRowButton.setText("Add");
+        }
     }
 
     private static void setVisible(boolean isVisible, Node... args){
