@@ -79,7 +79,7 @@ public class ViewFactory {
         averageColumn.prefWidthProperty().bind(resultTable.widthProperty().multiply(0.15));
 
         resultTable.setItems(observableGradeList);
-        resultTable.setMinSize(500,subjects.size()*30+30);
+        resultTable.setMinSize(500,440);
         resultTable.getColumns().addAll(subjectName, gradesColumn,averageColumn);
 
         return resultTable;
@@ -277,7 +277,7 @@ public class ViewFactory {
     }
 
     @SuppressWarnings("unchecked")
-    public TableView<Lesson> getLessons() {
+    public TableView<Lesson> getLessonsForTeacher() {
         TableView<Lesson> resultView = new TableView<>();
 
         TableColumn<Lesson, Date> date = new TableColumn<>("date");
@@ -314,6 +314,39 @@ public class ViewFactory {
 
         resultView.getColumns().addAll(date,day, slot, topic);
         resultView.setEditable(true);
+
+        return resultView;
+    }
+
+    @SuppressWarnings("unchecked")
+    public TableView<Lesson> getLessonsForStudent(int studentId) {
+        TableView<Lesson> resultView = new TableView<>();
+
+        TableColumn<Lesson, Date> date = new TableColumn<>("date");
+        TableColumn<Lesson, String> day = new TableColumn<>("day");
+        TableColumn<Lesson, Integer> slot = new TableColumn<>("slot");
+        TableColumn<Lesson, String> subject = new TableColumn<>("subjectName");
+        TableColumn<Lesson, String> topic = new TableColumn<>("topic");
+
+        date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        day.setCellValueFactory(new PropertyValueFactory<>("dayOfWeek"));
+        slot.setCellValueFactory(new PropertyValueFactory<>("slot"));
+        subject.setCellValueFactory(new PropertyValueFactory<>("subjectName"));
+        topic.setCellValueFactory(new PropertyValueFactory<>("topic"));
+
+        date.prefWidthProperty().bind(resultView.widthProperty().multiply(0.15));
+        date.setStyle("-fx-alignment: CENTER");
+        day.prefWidthProperty().bind(resultView.widthProperty().multiply(0.10));
+        day.setStyle("-fx-alignment: CENTER");
+        slot.prefWidthProperty().bind(resultView.widthProperty().multiply(0.05));
+        slot.setStyle("-fx-alignment: CENTER");
+        subject.prefWidthProperty().bind(resultView.widthProperty().multiply(0.2));
+        topic.prefWidthProperty().bind(resultView.widthProperty().multiply(0.495));
+
+
+        resultView.getColumns().addAll(date,day, slot,subject, topic);
+        resultView.setItems(FXCollections.observableArrayList(Database.getInstance().getLessonsForStudent(studentId)));
+        resultView.setEditable(false);
 
         return resultView;
     }

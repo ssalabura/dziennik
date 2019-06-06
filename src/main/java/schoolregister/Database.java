@@ -273,6 +273,24 @@ public class Database {
         return list;
     }
 
+    public List<Lesson> getLessonsForStudent(int studentId){
+        List<Lesson> list = new ArrayList<>();
+
+        String query = "SELECT * FROM lessons JOIN groups_students USING(group_id) JOIN subjects USING(subject_id) WHERE student_id = "+studentId;
+
+        try(Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query)){
+            while(rs.next()){
+                list.add(createLesson(rs));
+                list.get(list.size()-1).setSubjectId(rs.getInt("subject_id"));
+                list.get(list.size()-1).setSubjectName(rs.getString("name"));
+            }
+        }
+        catch (Exception e){
+            crash(e);
+        }
+        return list;
+    }
 
 
     public List<Grade> getGrades(int studentID){

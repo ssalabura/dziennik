@@ -12,10 +12,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import schoolregister.DataType.Absence;
-import schoolregister.DataType.Exam;
-import schoolregister.DataType.GradeList;
-import schoolregister.DataType.Person;
+import schoolregister.DataType.*;
 import schoolregister.Database;
 import schoolregister.Factory.SceneFactory;
 import schoolregister.Factory.ViewFactory;
@@ -27,6 +24,7 @@ import static schoolregister.Main.*;
  * currentType
  * 0 - absences
  * 1 - exams
+ * 2 - topics
  */
 
 public class StudentScene {
@@ -52,29 +50,37 @@ public class StudentScene {
         Label gradesLabel = new Label("Grades");
         gradesLabel.setFont(new Font("Arial", 20));
         TableView<GradeList> grades = tableFactory.getGradesFor(studentId);
-        grid.add(gradesLabel, 0, 0,2,1);
-        grid.add(grades, 0 ,1,2,1);
+        grid.add(gradesLabel, 0, 0,3,1);
+        grid.add(grades, 0 ,1,3,1);
 
         Label absencesLabel = new Label("Absences");
         absencesLabel.setFont(new Font("Arial", 20));
         TableView<Absence> absences = tableFactory.getAbsencesFor(studentId);
-        grid.add(absencesLabel, 2, 0,2,1);
-        grid.add(absences, 2 ,1,2,1);
+        grid.add(absencesLabel, 3, 0,2,1);
+        grid.add(absences, 3 ,1,2,1);
 
         Label examsLabel = new Label("Exams");
         examsLabel.setFont(new Font("Arial", 20));
         TableView<Exam> exams = tableFactory.getExamsForStudent(studentId);
         exams.setMinSize(700, 300);
-        grid.add(examsLabel, 2, 0, 2, 1);
-        grid.add(exams, 2, 1, 2, 1);
+        grid.add(examsLabel, 3, 0, 2, 1);
+        grid.add(exams, 3, 1, 2, 1);
+
+        Label topicsLabel = new Label("Topics");
+        topicsLabel.setFont(new Font("Arial", 20));
+        TableView<Lesson> topics = tableFactory.getLessonsForStudent(studentId);
+        topics.setMinSize(700, 300);
+        grid.add(topicsLabel, 3, 0, 2, 1);
+        grid.add(topics, 3, 1, 2, 1);
 
 
-        Button lessonsButton = new Button("Lessons");
-        Button absencesButton = new Button("absences");
+        Button lessonsButton = new Button("Plan");
+        Button absencesButton = new Button("Absences");
         Button examsButton = new Button("Exams");
+        Button topicsButton = new Button("Topics");
         Button backButton = new Button("Back");
-        Button nextButton = new Button("next");
-        Button prevButton = new Button("prev");
+        Button nextButton = new Button("Next");
+        Button prevButton = new Button("Prev");
 
 
         backButton.setMinSize(80,30);
@@ -82,15 +88,17 @@ public class StudentScene {
         nextButton.setMinSize(80,30);
         prevButton.setMinSize(80,30);
         examsButton.setMinSize(80, 30);
+        topicsButton.setMinSize(80,30);
         absencesButton.setMinSize(80, 30);
 
 
         grid.add(backButton, 0, 4);
         grid.add(lessonsButton, 1, 4);
         grid.add(examsButton, 1, 5);
-        grid.add(absencesButton, 0, 5);
-        grid.add(prevButton, 2, 4,2,1);
-        grid.add(nextButton, 2, 5,2,1);
+        grid.add(topicsButton, 2, 5);
+        grid.add(absencesButton, 2, 4);
+        grid.add(prevButton, 3, 4,1,1);
+        grid.add(nextButton, 4, 4,1,1);
         GridPane.setHalignment(prevButton, HPos.RIGHT);
         GridPane.setHalignment(nextButton,HPos.RIGHT);
 
@@ -126,7 +134,7 @@ public class StudentScene {
         absencesButton.setOnAction(actionEvent -> {
             if(currentType.getValue() == 0)
                 return;
-            setVisible(false, examsLabel, exams);
+            setVisible(false, examsLabel, exams, topicsLabel, topics);
 
             setVisible(true, absencesLabel, absences);
 
@@ -136,15 +144,26 @@ public class StudentScene {
         examsButton.setOnAction(actionEvent -> {
             if(currentType.getValue() == 1)
                 return;
-            setVisible(false, absencesLabel, absences);
+            setVisible(false, absencesLabel, absences, topicsLabel, topics);
 
             setVisible(true, examsLabel, exams);
 
             currentType.setValue(1);
         });
 
+        topicsButton.setOnAction(actionEvent -> {
+            if(currentType.getValue() == 2)
+                return;
+            setVisible(false, absencesLabel, absences, examsLabel, exams);
+
+            setVisible(true, topicsLabel, topics);
+
+            currentType.setValue(2);
+        });
+
 
         setVisible(false, examsLabel, exams);
+        setVisible(false, topicsLabel, topics);
 
         return new Scene(grid, 1280, 720);
     }

@@ -61,7 +61,7 @@ public class TeacherScene {
         grades.setEditable(true);
         students = viewFactory.getStudents();
         absences = viewFactory.getAbsences();
-        lessons = viewFactory.getLessons();
+        lessons = viewFactory.getLessonsForTeacher();
         exams = viewFactory.getExamsForTeacher();
 
         currentGroup = new GroupWrapper();
@@ -72,7 +72,7 @@ public class TeacherScene {
 
         GridPane grid = viewFactory.createGrid();
         Button backButton = new Button("Back");
-        Button lessonsButton = new Button("Lessons");
+        Button lessonsButton = new Button("Plan");
         Button gradesButton = new Button("Grades");
         Button absencesButton = new Button("Absences");
         Button lessonTopicButton = new Button("Topics");

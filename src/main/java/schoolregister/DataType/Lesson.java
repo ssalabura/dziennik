@@ -35,6 +35,10 @@ public class Lesson {
         this.subjectName = subjectName;
     }
 
+    public String getSubjectName() {
+        return subjectName;
+    }
+
     public String getTeacherName() {
         return teacherName;
     }
