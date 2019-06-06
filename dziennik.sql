@@ -72,7 +72,7 @@ create table slots(
 );
 
 create table lessons (
-    lesson_id numeric(10) check (lesson_id >= 0) primary key,
+    lesson_id serial primary key,
     group_id numeric(10) not null references groups on delete cascade,
     subject_id numeric(10) not null references subjects on delete cascade,
     topic character varying(256) not null,
@@ -82,7 +82,7 @@ create table lessons (
 );
 
 create table absences (
-    lesson_id numeric(10) references lessons on delete cascade,
+    lesson_id serial references lessons on delete cascade,
     student_id numeric(10) references students on delete cascade,
     primary key(lesson_id, student_id)
 );
@@ -130,7 +130,7 @@ create table grades (
 
 create table exams (
     exam_id serial primary key,
-    lesson_id numeric(10) not null references lessons,
+    lesson_id serial not null references lessons,
     description character varying(256));
 
 
